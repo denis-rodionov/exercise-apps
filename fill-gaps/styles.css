@@ -1,0 +1,103 @@
+.exercise>* {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  td, th {
+    text-align: left;
+    vertical-align: top;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #eeeeee;
+  }
+  
+  a {
+    color: black;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .button {
+    background-color: #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+  }
+  
+  .button:hover {
+    background-color: #ddd;
+  }
+  
+  .button:active {
+    background-color: #bbb;
+  }
+  
+  .button.disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+  }
+  
+  .words {
+    border: 1px dotted #ccc;
+    padding: 4px;
+    border-radius: 7px;
+    min-height: 40px;
+    min-width: 150px;
+  }
+  
+  .gap {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    min-width: 60px;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .gap.drag {
+    border-bottom: 2px dashed black;
+  }
+  
+  .gap.filled {
+    border: 0;
+  }
+  
+  .gap.missed {
+    background-color: #fc8d83;
+  }
+  
+  .word {
+    padding: 3px 10px 3px 10px;
+    margin: 2px;
+    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+  }
+  
+  .word.right {
+    background-color: #99ffcc;
+  }
+  
+  .word.wrong {
+    background-color: #fc8d83;
+  }
+  
