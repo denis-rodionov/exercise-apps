@@ -1,0 +1,28 @@
+.exercise>* {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .sentence {
+    padding: 7px;
+    margin: 10px;
+    border-radius: 10px;
+    user-select: none;
+    border: 1.5px dashed #222;
+  }
+  
+  .sentence.selected {
+    background-color: #dddddd;
+  }
+  
+  .sentence.wrong {
+    background-color: #fc8d83;
+  }
+  
+  .sentence.right {
+    background-color: #99ffcc;
+  }
+  
+  .hidden {
+    visibility: hidden;
+  }
