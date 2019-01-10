@@ -1,0 +1,120 @@
+.offer-container {
+    background-color: #ddd;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .offer-card {
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
+    background-color: white;
+    min-width: 240px;
+    max-width: 360px;
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    margin: 60px 5px 0px 5px;
+  }
+  
+  .offer-image {
+    display: block;
+    position: relative;
+    top: -50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .offer-card-text {
+    position:relative;
+    top: -40px;
+  }
+  
+  .offer-header {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0px;
+  }
+  
+  .advantages-mark {
+    display: inline-block;
+    background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/241/h/4253e3719e7f57dba502bced97d0c5c1.png);
+    width: 32px;
+    height: 32px;
+  }
+  
+  .disadvantages-mark {
+    display: inline-block;
+    background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/47/h/ff6898f048f89323857e6f78525aa557.png);
+    width: 24px;
+    height: 32px;
+    background-repeat: no-repeat;
+  }
+  
+  .advantage-sentence {
+    padding: 5px 0px 5px 10px;
+    text-align: left;
+  }
+  
+  .price-container {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .old-price {
+    color: red;
+    text-decoration: line-through;
+  }
+  
+  .offer-disabled {
+    visibility: hidden;
+    height: 0px;
+    display: none !important; 
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .limited-offer-text {
+    font-size: 14px;
+  }
+  
+  .current-price {
+    color: #5ba651;
+    font-size: 30px;
+  }
+  
+  .order-button {
+    display: inline-block;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .order-button a {
+    color: while;
+    display: inline-block;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 30px;
+    background-color: #5ba651;
+  }
+  
+  .order-button a:link {
+    color: inherit;
+  }
+  
+  .order-button a:visited {
+    color: inherit;
+  }
+  
+  .order-button a:hover {
+    color: inherit;
+    background-color: green;
+  }
+  
+  
