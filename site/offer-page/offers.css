@@ -1,133 +1,200 @@
-.webinar-offer-disabled {
-  display: none !important;
-}
+    .webinar-offer-disabled {
+    display: none !important;
+    }
 
-.discounts-offer-disabled {
-  display: none !important;
-}
+    .discounts-offer-disabled {
+    display: none !important;
+    }
 
-.normal-offer-disabled {
-  display: none !important;
-}
+    .normal-offer-disabled {
+    display: none !important;
+    }
 
-.offer-container {
-  background-color: #ddd;
-  padding: 30px;
-  text-align: center;
-}
+    @media screen and (min-width: 1001px) {
+        .mobile-offer-container {
+            display: none;
+        }
+    }
 
-.offer-card {
-  display: inline-block;
-  vertical-align: top;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
-  background-color: white;
-  min-width: 240px;
-  max-width: 360px;
-  margin-top: 30px;
-  padding: 10px;
-  text-align: center;
-  margin: 60px 5px 0px 5px;
-}
+    @media screen and (max-width: 1000px) {
+        .desktop-offer-container {
+            display: none;
+        }
+    }
 
-.offer-image {
-  display: block;
-  position: relative;
-  top: -50px;
-  margin-left: auto;
-  margin-right: auto;
-}
+    .mobile-offer-container {
+    background-color: #ddd;
+    padding: 30px;
+    text-align: center;
+    }
 
-.offer-card-text {
-  position:relative;
-  top: -40px;
-}
+    .desktop-offer-container {
+        background-color: #ddd;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .offer-table { 
+        display: table;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .offer-table-row {display: table-row; }
+    
+    .offer-table-cell {
+        display: table-cell; 
+        border-top: 2px solid #b8b4b4;
+        border-left: 2px solid #b8b4b4;
+        padding: 7px;
+        vertical-align: middle;
+        min-width: 230px;
+    }
+    
+    .offer-table-headers > * {
+        font-weight: 700;
+        font-size: 25px;
+        border-top: none;
+        border-left: none;
+    }
+    
+    .offers-images > * {
+        border-top: none;
+        border-left: none;
+    }
+    
+    .offers-last-raw > * {
+        border-bottom: none;
+    }
+    
+    .offer-table-horizontal-header {
+        text-align: left;
+        border-left: none;
+    }
+    
+    .bonus-text {
+        font-size: 22px;
+        font-weight: 700;
+        color: #65c156;
+    }
+    
+    .offers-buy-row > * {
+        border: none;
+    }
+    
+    .offer-card {
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
+    background-color: white;
+    min-width: 240px;
+    max-width: 360px;
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    margin: 60px 5px 0px 5px;
+    }
 
-.offer-header {
-  display: block;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0px;
-}
+    .offer-image {
+    display: block;
+    position: relative;
+    top: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
-.advantages-mark {
-  display: inline-block;
-  background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/241/h/4253e3719e7f57dba502bced97d0c5c1.png);
-  width: 32px;
-  height: 32px;
-}
+    .offer-card-text {
+    position:relative;
+    top: -40px;
+    }
 
-.disadvantages-mark {
-  display: inline-block;
-  background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/47/h/ff6898f048f89323857e6f78525aa557.png);
-  width: 24px;
-  height: 32px;
-  background-repeat: no-repeat;
-}
+    .offer-header {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0px;
+    }
 
-.advantage-sentence {
-  padding: 5px 0px 5px 10px;
-  text-align: left;
-}
+    .advantages-mark {
+    display: inline-block;
+    background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/241/h/4253e3719e7f57dba502bced97d0c5c1.png);
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    }
 
-.old-price {
-  color: red;
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: line-through;
-}
+    .disadvantages-mark {
+        display: inline-block;
+        background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/321/h/15b91b1d5a1e6cdab1f7cbdd9012368d.png);
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+    }
 
-.current-price.webinar-offer-price-text {
-    color: red;
-}
+    .advantage-sentence {
+    padding: 5px 0px 5px 10px;
+    text-align: left;
+    }
 
-.selected-price-container {
-    border: 1.5px dashed black;
-    border-radius: 15px;
-}
+    .old-price {
+    color: #ff5656;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: line-through;
+    }
 
-.limited-offer-text {
-  font-size: 14px;
-}
+    .current-price.webinar-offer-price-text {
+        color: #ff5656;
+    }
 
-.current-price {
-  color: #5ba651;
-  font-size: 30px;
-  font-weight: 700;
-}
+    .selected-price-container {
+        border: 1.5px dashed black;
+        border-radius: 15px;
+    }
 
-.order-button {
-  display: inline-block;
-  color: white;
-  font-size: 22px;
-  font-weight: 700;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+    .limited-offer-text {
+    font-size: 14px;
+    }
 
-.order-button a {
-  color: while;
-  display: inline-block;
-  padding: 12px 30px 12px 30px;
-  text-decoration: none;
-  border-radius: 30px;
-  background-color: #5ba651;
-}
+    .current-price {
+    color: #5ba651;
+    font-size: 30px;
+    font-weight: 700;
+    }
 
-.order-button.webinar-offer-button a {
-    background-color: red;
-}
+    .order-button {
+    display: inline-block;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    }
 
-.order-button a:link {
-  color: inherit;
-}
+    .order-button a {
+    color: while;
+    display: inline-block;
+    padding: 12px 30px 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    background-color: #5ba651;
+    }
 
-.order-button a:visited {
-  color: inherit;
-}
+    .order-button.webinar-offer-button a {
+        background-color: #ff5656;
+    }
 
-.order-button a:hover {
-  color: inherit;
-  background-color: green;
-}
+    .order-button a:link {
+    color: inherit;
+    }
+
+    .order-button a:visited {
+    color: inherit;
+    }
+
+    .order-button a:hover {
+    color: inherit;
+    background-color: green;
+    }
