@@ -70,15 +70,20 @@
   text-align: left;
 }
 
-.price-container {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-}
-
 .old-price {
   color: red;
+  font-size: 24px;
+  font-weight: 700;
   text-decoration: line-through;
+}
+
+.current-price.webinar-offer-price-text {
+    color: red;
+}
+
+.selected-price-container {
+    border: 1.5px dashed black;
+    border-radius: 15px;
 }
 
 .limited-offer-text {
@@ -88,6 +93,7 @@
 .current-price {
   color: #5ba651;
   font-size: 30px;
+  font-weight: 700;
 }
 
 .order-button {
@@ -97,6 +103,7 @@
   font-weight: 700;
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .order-button a {
@@ -106,6 +113,10 @@
   text-decoration: none;
   border-radius: 30px;
   background-color: #5ba651;
+}
+
+.order-button.webinar-offer-button a {
+    background-color: red;
 }
 
 .order-button a:link {
