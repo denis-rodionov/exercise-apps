@@ -20,9 +20,9 @@ angular
 
     var config = {
       apiKey: "AIzaSyAAOUeUiCurdNVBPsVGahuAfdkrJlwsOK0",
-      authDomain: "project-215770576270.firebaseapp.com",
-      databaseURL: "https://project-215770576270.firebaseio.com",
-      storageBucket: "project-215770576270.appspot.com",
+      authDomain: "english-with.firebaseapp.com",
+      databaseURL: "https://english-with.firebaseio.com",
+      storageBucket: "english-with.appspot.com",
     };
 
     $firebaseRefProvider
