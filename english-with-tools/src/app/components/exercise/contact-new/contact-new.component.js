@@ -4,7 +4,7 @@ var contactNew = {
 };
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .component('contactNew', contactNew)
   .config(function ($stateProvider) {
     $stateProvider

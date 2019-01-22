@@ -7,7 +7,7 @@ var contactEdit = {
 };
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .component('contactEdit', contactEdit)
   .config(function ($stateProvider) {
     $stateProvider

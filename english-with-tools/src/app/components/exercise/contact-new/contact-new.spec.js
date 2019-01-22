@@ -1,5 +1,5 @@
 describe('Contact', function () {
-  beforeEach(module('components.contact', function ($provide) {
+  beforeEach(module('components.exercise', function ($provide) {
     $provide.value('cfpLoadingBar', {
       start: angular.noop,
       complete: angular.noop

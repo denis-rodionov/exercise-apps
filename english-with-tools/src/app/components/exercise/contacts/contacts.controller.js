@@ -13,5 +13,5 @@ function ContactsController($filter, $state) {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactsController', ContactsController);

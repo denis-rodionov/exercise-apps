@@ -10,5 +10,5 @@ var contactDetail = {
 };
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .component('contactDetail', contactDetail);

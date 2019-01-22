@@ -1,5 +1,5 @@
 describe('Contact', function () {
-  beforeEach(module('components.contact'));
+  beforeEach(module('components.exercise'));
 
   describe('ContactController', function () {
     var $componentController,

@@ -23,7 +23,7 @@ function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObje
 /**
  * @ngdoc service
  * @name ContactService
- * @module components.contact
+ * @module components.exercise
  *
  * @description Provides HTTP methods for our firebase connection.
  *
@@ -37,5 +37,5 @@ function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObje
  */
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .factory('ContactService', ContactService);

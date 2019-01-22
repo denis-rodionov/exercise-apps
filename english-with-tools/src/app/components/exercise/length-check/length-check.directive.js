@@ -23,7 +23,7 @@ function lengthCheck() {
 /**
  * @ngdoc directive
  * @name lengthCheck
- * @module components.contact
+ * @module components.exercise
  *
  * @description
  *
@@ -37,5 +37,5 @@ function lengthCheck() {
  * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
  **/
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .directive('lengthCheck', lengthCheck);

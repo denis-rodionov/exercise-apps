@@ -2,7 +2,7 @@
 /**
  *
  * @ngdoc module
- * @name components.contact
+ * @name components.exercise
  *
  * @requires ui.router
  *
@@ -12,6 +12,6 @@
  *
  **/
  angular
-  .module('components.contact', [
+  .module('components.exercise', [
     'ui.router'
   ]);

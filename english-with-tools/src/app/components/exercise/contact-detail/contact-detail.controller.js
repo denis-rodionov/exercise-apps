@@ -31,5 +31,5 @@ function ContactDetailController() {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactDetailController', ContactDetailController);

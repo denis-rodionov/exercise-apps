@@ -8,7 +8,7 @@ var contacts = {
 };
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .component('contacts', contacts)
   .config(function ($stateProvider) {
     $stateProvider

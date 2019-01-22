@@ -1,7 +1,7 @@
 describe('Contact', function () {
   beforeEach(module('components.auth'));
 
-  beforeEach(module('components.contact', function ($provide) {
+  beforeEach(module('components.exercise', function ($provide) {
     $provide.value('ContactService', {
       updateContact: angular.noop,
       deleteContact: angular.noop,

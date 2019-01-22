@@ -20,5 +20,5 @@ function ContactTagController() {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactTagController', ContactTagController);

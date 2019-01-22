@@ -9,5 +9,5 @@ function contactsFilter() {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .filter('contactsFilter', contactsFilter);

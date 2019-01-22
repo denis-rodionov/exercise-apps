@@ -10,5 +10,5 @@ function ContactController() {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactController', ContactController);

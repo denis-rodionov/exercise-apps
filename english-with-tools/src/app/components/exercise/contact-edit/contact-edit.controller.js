@@ -37,7 +37,7 @@ function ContactEditController($state, ContactService, cfpLoadingBar, $window) {
 
 /**
  * @ngdoc type
- * @module components.contact
+ * @module components.exercise
  * @name ContactEditController
  *
  * @description
@@ -51,5 +51,5 @@ function ContactEditController($state, ContactService, cfpLoadingBar, $window) {
  * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
  */
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactEditController', ContactEditController);

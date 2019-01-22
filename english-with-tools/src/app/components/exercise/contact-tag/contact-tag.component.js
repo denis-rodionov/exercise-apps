@@ -8,5 +8,5 @@ var contactTag = {
 };
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .component('contactTag', contactTag);

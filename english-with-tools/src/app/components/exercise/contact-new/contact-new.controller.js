@@ -27,5 +27,5 @@ function ContactNewController(ContactService, $state) {
 }
 
 angular
-  .module('components.contact')
+  .module('components.exercise')
   .controller('ContactNewController', ContactNewController);
