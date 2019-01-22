@@ -2,7 +2,7 @@ function ExerciseTagController() {
   var ctrl = this;
   ctrl.$onInit = function () {
     ctrl.tags = [
-      'friends', 'family', 'acquaintances', 'following'
+      'fill-gaps'
     ];
   };
   ctrl.$onChanges = function (changes) {

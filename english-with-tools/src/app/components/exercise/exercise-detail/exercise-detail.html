@@ -1,15 +1,15 @@
 <div class="exercise">
   <form name="exerciseDetailForm" novalidate>
     <div>
-      <span class="exercise__required">*</span> field is required
+      <span class="exercise__required">*</span> обязательное поле
     </div>
     <div class="exercise__box">
       <h3 class="exercise__sub-title">
-        Personal
+        Текст
       </h3>
       <div class="exercise__field">
         <label>
-          Name <span class="exercise__required">*</span>
+          Имя <span class="exercise__required">*</span>
         </label>
         <input
           type="text"
@@ -49,7 +49,7 @@
       </div>
       <div class="exercise__field">
         <label>
-          Job title
+          Должность
         </label>
         <input
           type="text"
@@ -67,7 +67,7 @@
       </div>
       <div class="exercise__field">
         <label>
-          Location
+          Город
         </label>
         <input
           type="text"
@@ -86,80 +86,8 @@
     </div>
     <div class="exercise__box exercise__box--no-margin">
       <h3 class="exercise__sub-title">
-        Social
+        Слова
       </h3>
-      <div class="exercise__field">
-        <label>
-          Facebook
-        </label>
-        <input
-          type="text"
-          name="facebook"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.social.facebook">
-      </div>
-      <div class="exercise__field">
-        <label>
-          GitHub
-        </label>
-        <input
-          type="text"
-          name="github"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.social.github">
-      </div>
-      <div class="exercise__field">
-        <label>
-          Twitter
-        </label>
-        <input
-          type="text"
-          name="twitter"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.social.twitter">
-      </div>
-      <div class="exercise__field">
-        <label>
-          LinkedIn
-        </label>
-        <input
-          type="text"
-          name="linkedin"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.social.linkedin">
-      </div>
     </div>
 
     <exercise-tag
@@ -172,14 +100,14 @@
         class="exercise__action button"
         ng-disabled="exerciseDetailForm.$invalid"
         ng-click="$ctrl.saveExercise();">
-        Create exercise
+        Создать упражнение
       </button>
     </div>
     <div ng-if="!$ctrl.isNewExercise">
       <button
         class="exercise__action button delete"
         ng-click="$ctrl.deletExercise();">
-        Delete exercise
+        Удалить упражнение
       </button>
     </div>
 

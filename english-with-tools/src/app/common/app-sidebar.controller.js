@@ -5,9 +5,9 @@ function AppSidebarController() {
     icon: 'list_alt',
     state: 'none'
   }, {
-    label: 'Заполни пустоты',
+    label: 'fill-gaps',
     icon: 'mouse',
-    state: 'friends'
+    state: 'fill-gaps'
   }];
 }
 
