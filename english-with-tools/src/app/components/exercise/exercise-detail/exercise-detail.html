@@ -1,22 +1,22 @@
-<div class="contact">
-  <form name="contactDetailForm" novalidate>
+<div class="exercise">
+  <form name="exerciseDetailForm" novalidate>
     <div>
-      <span class="contact__required">*</span> field is required
+      <span class="exercise__required">*</span> field is required
     </div>
-    <div class="contact__box">
-      <h3 class="contact__sub-title">
+    <div class="exercise__box">
+      <h3 class="exercise__sub-title">
         Personal
       </h3>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
-          Name <span class="contact__required">*</span>
+          Name <span class="exercise__required">*</span>
         </label>
         <input
           type="text"
           name="name"
           length-check
           required="required"
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -24,12 +24,12 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.name">
+          ng-model="$ctrl.exercise.name">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           Email
-          <span class="contact__error" ng-if="contactDetailForm.email.$error.email">
+          <span class="exercise__error" ng-if="exerciseDetailForm.email.$error.email">
             Must be a valid email
           </span>
         </label>
@@ -37,7 +37,7 @@
           type="email"
           name="email"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -45,9 +45,9 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.email">
+          ng-model="$ctrl.exercise.email">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           Job title
         </label>
@@ -55,7 +55,7 @@
           type="text"
           name="jobTitle"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -63,9 +63,9 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.job">
+          ng-model="$ctrl.exercise.job">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           Location
         </label>
@@ -73,7 +73,7 @@
           type="text"
           name="location"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -81,14 +81,14 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.location">
+          ng-model="$ctrl.exercise.location">
       </div>
     </div>
-    <div class="contact__box contact__box--no-margin">
-      <h3 class="contact__sub-title">
+    <div class="exercise__box exercise__box--no-margin">
+      <h3 class="exercise__sub-title">
         Social
       </h3>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           Facebook
         </label>
@@ -96,7 +96,7 @@
           type="text"
           name="facebook"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -104,9 +104,9 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.social.facebook">
+          ng-model="$ctrl.exercise.social.facebook">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           GitHub
         </label>
@@ -114,7 +114,7 @@
           type="text"
           name="github"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -122,9 +122,9 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.social.github">
+          ng-model="$ctrl.exercise.social.github">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           Twitter
         </label>
@@ -132,7 +132,7 @@
           type="text"
           name="twitter"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -140,9 +140,9 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.social.twitter">
+          ng-model="$ctrl.exercise.social.twitter">
       </div>
-      <div class="contact__field">
+      <div class="exercise__field">
         <label>
           LinkedIn
         </label>
@@ -150,7 +150,7 @@
           type="text"
           name="linkedin"
           length-check
-          ng-change="$ctrl.updateContact();"
+          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -158,28 +158,28 @@
               'blur': 0
             }
           }"
-          ng-model="$ctrl.contact.social.linkedin">
+          ng-model="$ctrl.exercise.social.linkedin">
       </div>
     </div>
 
-    <contact-tag
-      tag="$ctrl.contact.tag"
+    <exercise-tag
+      tag="$ctrl.exercise.tag"
       on-change="$ctrl.tagChange($event);">
-    </contact-tag>
+    </exercise-tag>
 
-    <div ng-if="$ctrl.isNewContact">
+    <div ng-if="$ctrl.isNewExercise">
       <button
-        class="contact__action button"
-        ng-disabled="contactDetailForm.$invalid"
-        ng-click="$ctrl.saveContact();">
-        Create contact
+        class="exercise__action button"
+        ng-disabled="exerciseDetailForm.$invalid"
+        ng-click="$ctrl.saveExercise();">
+        Create exercise
       </button>
     </div>
-    <div ng-if="!$ctrl.isNewContact">
+    <div ng-if="!$ctrl.isNewExercise">
       <button
-        class="contact__action button delete"
-        ng-click="$ctrl.deleteContact();">
-        Delete contact
+        class="exercise__action button delete"
+        ng-click="$ctrl.deletExercise();">
+        Delete exercise
       </button>
     </div>
 

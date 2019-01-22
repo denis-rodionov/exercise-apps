@@ -1,6 +1,6 @@
 function AppSidebarController() {
   var ctrl = this;
-  ctrl.contactTags = [{
+  ctrl.exerciseTags = [{
     label: 'Все упражнения',
     icon: 'list_alt',
     state: 'none'

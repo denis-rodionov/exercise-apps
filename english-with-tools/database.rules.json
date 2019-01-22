@@ -1,7 +1,7 @@
 {
   "rules": {
     ".read": true,
-    "contacts": {
+    "exercises": {
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"

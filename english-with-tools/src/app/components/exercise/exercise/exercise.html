@@ -1,0 +1,15 @@
+<div class="exercise-card">
+  <button
+    class="exercise-card__link button--clean"
+    ng-click="$ctrl.selectExercise();">
+    <div class="exercise-card__column exercise-card__column--name">
+      {{ ::$ctrl.exercise.name }}
+      <span class="exercise-card__pill exercise-card__pill--{{ ::$ctrl.exercise.tag }}">
+        {{ ::$ctrl.exercise.tag }}
+      </span>
+    </div>
+    <div class="exercise-card__column exercise-card__column--email">
+      {{ ::$ctrl.exercise.email }}
+    </div>
+  </button>
+</div>

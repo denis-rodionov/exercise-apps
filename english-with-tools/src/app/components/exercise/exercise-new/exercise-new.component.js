@@ -1,16 +1,16 @@
-var contactNew = {
-  templateUrl: './contact-new.html',
-  controller: 'ContactNewController'
+var exerciseNew = {
+  templateUrl: './exercise-new.html',
+  controller: 'ExerciseNewController'
 };
 
 angular
   .module('components.exercise')
-  .component('contactNew', contactNew)
+  .component('exerciseNew', exerciseNew)
   .config(function ($stateProvider) {
     $stateProvider
       .state('new', {
         parent: 'app',
         url: '/new',
-        component: 'contactNew'
+        component: 'exerciseNew'
       });
   });

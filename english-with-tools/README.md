@@ -6,7 +6,7 @@
 
 # AngularJS 1.5 component architecture app
 
-> Try the [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) app! You'll need to register and create an account.
+> Try the [exercises Manager](https://exercises-manager-e486f.firebaseapp.com) app! You'll need to register and create an account.
 
 ---
 
@@ -14,7 +14,7 @@
 
 ---
 
-A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on AngularJS 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [AngularJS 1.5 Pro course](https://ultimateangular.com).
+A [exercises Manager](https://exercises-manager-e486f.firebaseapp.com) application built on AngularJS 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [AngularJS 1.5 Pro course](https://ultimateangular.com).
 
 ### List of features:
 
@@ -32,4 +32,4 @@ A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application
 
 To run this app, follow the [instructions here](https://github.com/toddmotto/ultimate-angular-master-seed). Basically `npm install` and `npm start`. Run tests with `npm test`. Have fun!
 
-![Contacts Manager](https://cloud.githubusercontent.com/assets/1655968/17981372/5907ffb0-6afb-11e6-9bb4-7e223b56e0d4.gif)
+![exercises Manager](https://cloud.githubusercontent.com/assets/1655968/17981372/5907ffb0-6afb-11e6-9bb4-7e223b56e0d4.gif)

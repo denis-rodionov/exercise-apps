@@ -1,20 +1,20 @@
-.contact-card {
+.exercise-card {
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
 }
-.contact-card__link {
+.exercise-card__link {
   display: block;
   padding: 15px 20px;
   font-size: 16px;
   overflow: hidden;
 }
-.contact-card__column {
+.exercise-card__column {
   float: left;
 }
-.contact-card__column--name {
+.exercise-card__column--name {
   width: 30%;
 }
-.contact-card__pill {
+.exercise-card__pill {
   opacity: 0.4;
   display: inline-block;
   font-size: 12px;
@@ -28,21 +28,21 @@
     opacity: 0.65;
   }
 }
-.contact-card__column .contact-card__pill {
+.exercise-card__column .exercise-card__pill {
   opacity: 1
 }
-.contact-card__pill a {
+.exercise-card__pill a {
   color: #fff;
 }
-.contact-card__pill--friends {
+.exercise-card__pill--friends {
   background: colors(pills);
 }
-.contact-card__pill--family {
+.exercise-card__pill--family {
   background: colors(pills, family);
 }
-.contact-card__pill--acquaintances {
+.exercise-card__pill--acquaintances {
   background: colors(pills, acquaintances);
 }
-.contact-card__pill--following {
+.exercise-card__pill--following {
   background: colors(pills, following);
 }

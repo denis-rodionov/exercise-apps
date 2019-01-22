@@ -1,4 +1,4 @@
-function contactsFilter() {
+function exercisesFilter() {
   return function (collection, params) {
     return collection.filter(function (item) {
       return item.tag === (
@@ -10,4 +10,4 @@ function contactsFilter() {
 
 angular
   .module('components.exercise')
-  .filter('contactsFilter', contactsFilter);
+  .filter('exercisesFilter', exercisesFilter);

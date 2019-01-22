@@ -25,7 +25,7 @@ angular
   .config(function ($stateProvider) {
     $stateProvider
       .state('app', {
-        redirectTo: 'contacts',
+        redirectTo: 'exercises',
         url: '/app',
         data: {
           requiredAuth: true

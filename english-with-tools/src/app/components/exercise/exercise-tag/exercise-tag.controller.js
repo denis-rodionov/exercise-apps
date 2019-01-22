@@ -1,4 +1,4 @@
-function ContactTagController() {
+function ExerciseTagController() {
   var ctrl = this;
   ctrl.$onInit = function () {
     ctrl.tags = [
@@ -21,4 +21,4 @@ function ContactTagController() {
 
 angular
   .module('components.exercise')
-  .controller('ContactTagController', ContactTagController);
+  .controller('ExerciseTagController', ExerciseTagController);

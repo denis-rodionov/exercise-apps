@@ -1,35 +1,35 @@
-function ContactEditController($state, ContactService, cfpLoadingBar, $window) {
+function ExerciseEditController($state, ExerciseService, cfpLoadingBar, $window) {
   var ctrl = this;
   /**
    * @ngdoc method
-   * @name ContactEditController#updateContact
+   * @name ExerciseEditController#updateExercise
    *
    * @param {event} event Receive the emitted event
-   * Updates the contact information
+   * Updates the exercise information
    *
-   * @return {method} ContactService returns the updateContact method and a promise
+   * @return {method} ExerciseService returns the updateExercise method and a promise
    */
-  ctrl.updateContact = function (event) {
+  ctrl.updateExercise = function (event) {
     cfpLoadingBar.start();
-    return ContactService
-      .updateContact(event.contact)
+    return ExerciseService
+      .updateExercise(event.exercise)
       .then(cfpLoadingBar.complete, cfpLoadingBar.complete);
   };
   /**
    * @ngdoc method
-   * @name ContactEditController#deleteContact
+   * @name exerciseEditController#deleteExercise
    *
-   * @param {event} event Delete the contact
+   * @param {event} event Delete the exercise
    *
-   * @return {method} ContactService returns the deleteContact method and a promise
+   * @return {method} ExerciseService returns the deleteExercise method and a promise
    */
-  ctrl.deleteContact = function (event) {
-    var message = 'Delete ' + event.contact.name + ' from contacts?';
+  ctrl.deleteexercise = function (event) {
+    var message = 'Delete ' + event.exercise.name + ' from exercises?';
     if ($window.confirm(message)) {
-      return ContactService
-        .deleteContact(event.contact)
+      return ExerciseService
+        .deleteExercise(event.exercise)
         .then(function () {
-          $state.go('contacts');
+          $state.go('exercises');
         });
     }
   };
@@ -38,7 +38,7 @@ function ContactEditController($state, ContactService, cfpLoadingBar, $window) {
 /**
  * @ngdoc type
  * @module components.exercise
- * @name ContactEditController
+ * @name ExerciseEditController
  *
  * @description
  *
@@ -52,4 +52,4 @@ function ContactEditController($state, ContactService, cfpLoadingBar, $window) {
  */
 angular
   .module('components.exercise')
-  .controller('ContactEditController', ContactEditController);
+  .controller('ExerciseEditController', ExerciseEditController);

@@ -8,7 +8,7 @@
  *
  * @description
  *
- * This is the contact module. It includes all of our components for the contact feature.
+ * This is the exercise module. It includes all of our components for the exercise feature.
  *
  **/
  angular

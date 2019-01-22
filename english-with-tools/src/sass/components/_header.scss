@@ -37,12 +37,12 @@
   top: 2px;
   margin-right: 3px;
 }
-.header__button--new-contact {
-  color: colors(scaffold, newContact);
+.header__button--new-exercise {
+  color: colors(scaffold, newexercise);
   margin-left: 30px;
   position: relative;
   top: -2px;
   &:hover {
-    color: darken(colors(scaffold, newContact), 15%);
+    color: darken(colors(scaffold, newexercise), 15%);
   }
 }

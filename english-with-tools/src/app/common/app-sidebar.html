@@ -10,10 +10,10 @@
   <ul class="sidebar__lst">
     <li
       class="sidebar__item"
-      ng-repeat="item in ::$ctrl.contactTags">
+      ng-repeat="item in ::$ctrl.exerciseTags">
         <a
           class="sidebar__link"
-          ui-sref="contacts({ filter: item.state })"
+          ui-sref="exercises({ filter: item.state })"
           ui-sref-active-eq="sidebar__link--active">
           <i class="material-icons">
             {{ ::item.icon }}

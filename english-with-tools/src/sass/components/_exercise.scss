@@ -1,7 +1,7 @@
-.contact {
+.exercise {
   padding: 10px 15px;
 }
-.contact__saving {
+.exercise__saving {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
@@ -11,14 +11,14 @@
   font-size: 16px;
   border-radius: 3px;
 }
-.contact__field {
+.exercise__field {
   margin-bottom: 15px;
   padding-right: 30px;
 }
-.contact button {
+.exercise button {
   float: right;
 }
-.contact__required {
+.exercise__required {
   color: colors(scaffold, error);
   font-size: 16px;
   line-height: 0px;
@@ -26,14 +26,14 @@
   top: 4px;
   margin-left: 5px;
 }
-.contact__field--long {
+.exercise__field--long {
   width: 600px;
 }
-.contact__error {
+.exercise__error {
   float: right;
   color: colors(scaffold, error);
 }
-.contact__field label {
+.exercise__field label {
   font-size: 12px;
   color: #A4B4C4;
   font-weight: 500;
@@ -42,29 +42,29 @@
   display: block;
   margin-bottom: 3px;
 }
-.contact__field input {
+.exercise__field input {
   width: 100%;
 }
-.contact__box {
+.exercise__box {
   float: left;
   width: 50%;
   max-width: 770px;
 }
-.contact__box--no-margin {
+.exercise__box--no-margin {
   margin-right: 0;
 }
-.contact__pill {
+.exercise__pill {
   opacity: 0.4;
   cursor: pointer;
   font-size: 16px;
 }
-.contact__pill--active {
+.exercise__pill--active {
   opacity: 1;
   &:hover {
     opacity: 1;
   }
 }
-.contact__sub-title {
+.exercise__sub-title {
   font-size: 24px;
   font-weight: 300;
   margin: 10px 15px;

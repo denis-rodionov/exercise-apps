@@ -1,29 +1,29 @@
-var contacts = {
+var exercises = {
   bindings: {
-    contacts: '<',
+    exercises: '<',
     filter: '<'
   },
-  templateUrl: './contacts.html',
-  controller: 'ContactsController'
+  templateUrl: './exercises.html',
+  controller: 'ExercisesController'
 };
 
 angular
   .module('components.exercise')
-  .component('contacts', contacts)
+  .component('exercises', exercises)
   .config(function ($stateProvider) {
     $stateProvider
-      .state('contacts', {
+      .state('exercises', {
         parent: 'app',
-        url: '/contacts?filter',
-        component: 'contacts',
+        url: '/exercises?filter',
+        component: 'exercises',
         params: {
           filter: {
             value: 'none'
           }
         },
         resolve: {
-          contacts: function (ContactService) {
-            return ContactService.getContactList().$loaded();
+          exercises: function (ExerciseService) {
+            return ExerciseService.getExerciseList().$loaded();
           },
           filter: function ($transition$) {
             return $transition$.params();

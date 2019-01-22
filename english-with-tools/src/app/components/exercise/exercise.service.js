@@ -1,28 +1,28 @@
-function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
-  var ref = $firebaseRef.contacts;
+function ExerciseService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
+  var ref = $firebaseRef.exercises;
   var uid = AuthService.getUser().uid;
   return {
-    createNewContact: function (contact) {
-      return $firebaseArray(ref.child(uid)).$add(contact);
+    createNewExercise: function (exercise) {
+      return $firebaseArray(ref.child(uid)).$add(exercise);
     },
-    getContactById: function (id) {
+    getExerciseById: function (id) {
       return $firebaseObject(ref.child(uid).child(id));
     },
-    getContactList: function () {
+    getExerciseList: function () {
       return $firebaseArray(ref.child(uid));
     },
-    updateContact: function (contact) {
-      return contact.$save();
+    updateExercise: function (exercise) {
+      return exercise.$save();
     },
-    deleteContact: function (contact) {
-      return contact.$remove();
+    deleteExercise: function (exercise) {
+      return exercise.$remove();
     }
   };
 }
 
 /**
  * @ngdoc service
- * @name ContactService
+ * @name ExerciseService
  * @module components.exercise
  *
  * @description Provides HTTP methods for our firebase connection.
@@ -38,4 +38,4 @@ function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObje
 
 angular
   .module('components.exercise')
-  .factory('ContactService', ContactService);
+  .factory('ExerciseService', ExerciseService);

@@ -1,0 +1,16 @@
+<div class="exercises">
+  <ul class="exercises-list">
+    <li ng-repeat="exercise in $ctrl.filteredExercises">
+      <exercise
+        exercise="exercise"
+        on-select="$ctrl.goToExercise($event);">
+      </exercise>
+    </li>
+  </ul>
+  <div
+    class="exercises__empty"
+    ng-if="!$ctrl.filteredExercises.length">
+    <i class="material-icons">face</i>
+    There's no one here...
+  </div>
+</div>
