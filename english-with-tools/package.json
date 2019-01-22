@@ -1,8 +1,8 @@
 {
-  "name": "contacts",
+  "name": "exercises",
   "version": "1.0.0",
   "author": "@toddmotto",
-  "description": "Contacts manager app for Ultimate AngularJS",
+  "description": "Exercise tool for English With",
   "scripts": {
     "start": "gulp",
     "test": "karma start",
