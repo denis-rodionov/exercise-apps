@@ -2,14 +2,11 @@
   <button
     class="exercise-card__link button--clean"
     ng-click="$ctrl.selectExercise();">
-    <div class="exercise-card__column exercise-card__column--name">
+    <span class="exercise-card__column--name">
       {{ ::$ctrl.exercise.name }}
-      <span class="exercise-card__pill exercise-card__pill--{{ ::$ctrl.exercise.tag }}">
-        {{ ::$ctrl.exercise.tag }}
-      </span>
-    </div>
-    <div class="exercise-card__column exercise-card__column--email">
-      {{ ::$ctrl.exercise.email }}
-    </div>
+    </span>
+    <span ng-if="$ctrl.exercise.date" class="exercise-card__column--date">
+      {{ ::$ctrl.exercise.date }}
+    </span>
   </button>
 </div>

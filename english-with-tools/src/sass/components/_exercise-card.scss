@@ -9,11 +9,20 @@
   overflow: hidden;
 }
 .exercise-card__column {
+  padding-left: 10px;
   float: left;
 }
 .exercise-card__column--name {
   width: 30%;
 }
+.exercise-card__column--date {
+  background: #aaa;
+  margin-left: 15px;
+  padding: 3px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 .exercise-card__pill {
   opacity: 0.4;
   display: inline-block;
