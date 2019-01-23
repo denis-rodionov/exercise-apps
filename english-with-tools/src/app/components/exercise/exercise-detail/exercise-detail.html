@@ -4,19 +4,15 @@
       <span class="exercise__required">*</span> обязательное поле
     </div>
     <div class="exercise__box">
-      <h3 class="exercise__sub-title">
-        Текст
-      </h3>
       <div class="exercise__field">
         <label>
-          Имя <span class="exercise__required">*</span>
+          Название <span class="exercise__required">*</span>
         </label>
         <input
           type="text"
           name="name"
           length-check
           required="required"
-          ng-change="$ctrl.updateExercise();"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
@@ -25,91 +21,44 @@
             }
           }"
           ng-model="$ctrl.exercise.name">
-      </div>
-      <div class="exercise__field">
-        <label>
-          Email
-          <span class="exercise__error" ng-if="exerciseDetailForm.email.$error.email">
-            Must be a valid email
-          </span>
-        </label>
-        <input
-          type="email"
-          name="email"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.email">
-      </div>
-      <div class="exercise__field">
-        <label>
-          Должность
-        </label>
-        <input
-          type="text"
-          name="jobTitle"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.job">
-      </div>
-      <div class="exercise__field">
-        <label>
-          Город
-        </label>
-        <input
-          type="text"
-          name="location"
-          length-check
-          ng-change="$ctrl.updateExercise();"
-          ng-model-options="{
-            'updateOn': 'default blur',
-            'debounce': {
-              'default': 250,
-              'blur': 0
-            }
-          }"
-          ng-model="$ctrl.exercise.location">
-      </div>
-    </div>
-    <div class="exercise__box exercise__box--no-margin">
-      <h3 class="exercise__sub-title">
-        Слова
-      </h3>
-    </div>
+      </div>  
 
-    <exercise-tag
-      tag="$ctrl.exercise.tag"
-      on-change="$ctrl.tagChange($event);">
-    </exercise-tag>
+      <div ng-repeat="sentence in $ctrl.exercise.sentences" class="exercise__sentences">
+        <fill-gaps-sentence sentence="sentence" on-delete="$ctrl.deleteSentence($event)"></fill-gaps-sentence>     
+      </div>
 
-    <div ng-if="$ctrl.isNewExercise">
-      <button
-        class="exercise__action button"
-        ng-disabled="exerciseDetailForm.$invalid"
-        ng-click="$ctrl.saveExercise();">
-        Создать упражнение
-      </button>
-    </div>
-    <div ng-if="!$ctrl.isNewExercise">
-      <button
-        class="exercise__action button delete"
-        ng-click="$ctrl.deletExercise();">
-        Удалить упражнение
-      </button>
-    </div>
+      <div ng-if="!$ctrl.exercise.sentences.length" class="exercises__empty">Пока что упражнение не содержит ни одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"</div>
 
+      <div>
+        <button
+          class="exercise__action button"
+          ng-disabled="exerciseDetailForm.$invalid"
+          ng-click="$ctrl.addSentence();">
+          Добавить предложение
+        </button>
+      </div>
+      <div ng-if="$ctrl.isNewExercise">
+        <button
+          class="exercise__action button"
+          ng-disabled="exerciseDetailForm.$invalid"
+          ng-click="$ctrl.saveExercise();">
+          Создать упражнение
+        </button>
+      </div>
+      <div ng-if="!$ctrl.isNewExercise">
+        <button
+          class="exercise__action button delete"
+          ng-click="$ctrl.deleteExercise();">
+          Удалить упражнение
+        </button>
+      </div>
+      <div ng-if="!$ctrl.isNewExercise">
+        <button
+          class="exercise__action button update"
+          ng-click="$ctrl.updateExercise();">
+          Сохранить упражнение
+        </button>
+      </div>
+    </div>
   </form>
 </div>

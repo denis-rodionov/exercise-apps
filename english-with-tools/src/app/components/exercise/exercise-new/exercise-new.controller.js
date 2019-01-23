@@ -3,16 +3,10 @@ function ExerciseNewController(ExerciseService, $state) {
   ctrl.$onInit = function () {
     ctrl.exercise = {
       name: '',
-      email: '',
-      job: '',
-      location: '',
-      social: {
-        facebook: '',
-        github: '',
-        twitter: '',
-        linkedin: ''
-      },
-      tag: 'none'
+      date: '',   //TODO: make date field
+      orderNumber: 0,
+      tag: 'fill-gaps',
+      sentences: []
     };
   };
   ctrl.createNewExercise = function (event) {

@@ -23,8 +23,8 @@ function ExerciseEditController($state, ExerciseService, cfpLoadingBar, $window)
    *
    * @return {method} ExerciseService returns the deleteExercise method and a promise
    */
-  ctrl.deleteexercise = function (event) {
-    var message = 'Delete ' + event.exercise.name + ' from exercises?';
+  ctrl.deleteExercise = function (event) {
+    var message = 'Удалить упражнение ' + event.exercise.name + ' из базы данных?';
     if ($window.confirm(message)) {
       return ExerciseService
         .deleteExercise(event.exercise)

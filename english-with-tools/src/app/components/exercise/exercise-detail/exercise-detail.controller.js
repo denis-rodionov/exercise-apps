@@ -28,6 +28,19 @@ function ExerciseDetailController() {
     ctrl.exercise.tag = event.tag;
     ctrl.updateExercise();
   }
+  ctrl.addSentence = function () {
+    if (!ctrl.exercise.sentences) {
+      ctrl.exercise.sentences = [];
+    }
+    ctrl.exercise.sentences.push({
+      text: "Test text for the first sentence"
+    });
+  };
+
+  ctrl.deleteSentence = function (event) {
+    const index = ctrl.exercise.sentences.indexOf(event.sentence);
+    ctrl.exercise.sentences.splice(index, 1);
+  };
 }
 
 angular
