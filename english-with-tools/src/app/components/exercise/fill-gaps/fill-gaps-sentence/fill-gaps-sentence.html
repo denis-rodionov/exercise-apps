@@ -13,10 +13,20 @@
         </div>
     </div>
 
-    <div class="fill-gaps-sentence-cell words">
-        Words
-    </div>
-
+    <div class="fill-gaps-sentence-row">
+            <div class="fill-gaps-sentence-cell text">
+                <div class="exercise__field">
+                    <textarea ng-model-options="{
+                'updateOn': 'default blur',
+                'debounce': {
+                  'default': 250,
+                  'blur': 0
+                }
+                }"
+                        class="sentence-text" ng-model="$ctrl.sentence.words">
+            </div>
+        </div>
+        
     <div class="fill-gaps-sentence-cell delete">
         <a href=""
             ng-click="$ctrl.deleteSentence();">            
