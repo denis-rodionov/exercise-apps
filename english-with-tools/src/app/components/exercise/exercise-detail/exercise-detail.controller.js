@@ -33,7 +33,8 @@ function ExerciseDetailController() {
       ctrl.exercise.sentences = [];
     }
     ctrl.exercise.sentences.push({
-      text: "Test text for the first sentence"
+      text: "",
+      words: ""
     });
   };
 
