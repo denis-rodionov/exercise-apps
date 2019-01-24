@@ -59,6 +59,16 @@
           Сохранить упражнение
         </button>
       </div>
+      <div>
+          <button
+            class="exercise__action button update"
+            ng-click="$ctrl.markup();">
+            Сверстать и скопировать
+          </button>
+      </div>
+
+      <input type="text" ng-if="$ctrl.markupText" ng-model="$ctrl.markupText" id="markup">
+      <button ng-if="$ctrl.markupText" ng-click="$ctrl.copyToClipboard()">Скопировать в буфер обмена</button>
     </div>
   </form>
 </div>
