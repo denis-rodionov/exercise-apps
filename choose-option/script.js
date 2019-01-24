@@ -49,4 +49,13 @@ document.getElementById("checkResultsButton").onclick = function() {
   
   document.getElementById("resultScore").innerText = score + "/" + rows.length;
   document.getElementById("resultScoreP").classList.remove('hidden');
+
+  sendAnswer("Итог: " + score + " баллов из " + rows.length);
+}
+
+function sendAnswer(answer) {
+  var answerInput = document.getElementById('lessonanswer-answer_text');
+  answerInput.innerText = answer;
+  var sendButton = document.getElementsByName('send-answer')[0];
+  sendButton.click();
 }

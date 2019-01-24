@@ -24,6 +24,15 @@ checkButton.onclick = function() {
 
 	freeze();
   document.getElementById("result").innerText = "Result: " + rightCount + " / " + gaps.length;
+
+  sendAnswer("Итог: " + rightCount + " баллов из " + gaps.length);
+}
+
+function sendAnswer(answer) {
+  var answerInput = document.getElementById('lessonanswer-answer_text');
+  answerInput.innerText = answer;
+  var sendButton = document.getElementsByName('send-answer')[0];
+  sendButton.click();
 }
 
 function freeze() {
