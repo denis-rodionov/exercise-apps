@@ -1,23 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { MatButtonModule, MatCardModule, MatIconModule, MatTabsModule,
-MatFormFieldModule, MatSelectModule, MatInputModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatListModule
+} from '@angular/material';
 
 @NgModule({
-  imports: [MatButtonModule,
-    MatCardModule,
+  imports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
     MatIconModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule],
-  exports: [MatButtonModule,
     MatCardModule,
+    MatSidenavModule,
+    MatListModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
     MatIconModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule]
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatListModule
+  ]
 })
 export class MaterialModule {}

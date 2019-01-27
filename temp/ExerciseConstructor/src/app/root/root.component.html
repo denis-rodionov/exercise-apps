@@ -1,1 +1,51 @@
-<exercise-list></exercise-list>
+<mat-sidenav-container fullscreen autosize class="sidenav-container">
+  <mat-sidenav #drawer  closed mode="side" [opened]="authService.isLoggedIn()">
+
+    <div class="logo" *ngIf="menuExpanded">
+    </div>
+    <mat-nav-list *ngIf="menuExpanded">
+      <mat-list-item matTooltip="Partners" routerLink="/partners">
+        <mat-icon>verified_user</mat-icon> Partners
+      </mat-list-item>
+      <mat-list-item matTooltip="Documentation" routerLink="/docs">
+        <mat-icon>file_copy</mat-icon> Documentation
+      </mat-list-item>
+      <mat-list-item class="shrink-menu" (click)="toggleMenuExpanded()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <div class="logo_small" *ngIf="!menuExpanded">
+    </div>
+
+    <mat-nav-list *ngIf="!menuExpanded">
+      <mat-list-item matTooltip="Partners" routerLink="/partners">
+        <mat-icon>verified_user</mat-icon>
+      </mat-list-item>
+      <mat-list-item matTooltip="Documentation" routerLink="/docs">
+        <mat-icon>file_copy</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="toggleMenuExpanded()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar class="mat-elevation-z2">
+      <mat-toolbar-row>
+        <button mat-button style="color: #ccc;" (click)="toggleDrawer(drawer)" *ngIf="authService.isLoggedIn()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="page-title"> <span class="page-title-title">{{title}}</span></span>
+        <span class="flex"></span>
+        <app-common-user></app-common-user>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
