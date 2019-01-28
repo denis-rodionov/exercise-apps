@@ -10,7 +10,7 @@ export const environment = {
     databaseURL: 'https://english-with.firebaseio.com',
     projectId: 'english-with',
     storageBucket: 'english-with.appspot.com',
-    messagingSenderId: '<your-messaging-sender-id>'
+    messagingSenderId: '215770576270'
   }
 };
 

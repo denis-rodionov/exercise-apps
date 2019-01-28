@@ -10,20 +10,37 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './auth/login/login.component';
+
+import { FormsModule } from '@angular/forms';
+import { ExerciseService } from './services/execise.service';
+
 @NgModule({
   declarations: [
     RootComponent,
-    ExerciseListComponent
+    ExerciseListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    FormsModule
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    ExerciseService
   ],
   bootstrap: [RootComponent],
   schemas: [

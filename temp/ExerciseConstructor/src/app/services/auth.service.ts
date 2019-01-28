@@ -5,39 +5,58 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 import { User } from '../model/user';
+import { AngularFireAuth } from '@angular/fire/auth';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
-  private user: User;
+  user: Observable<firebase.User>;
 
-  constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
-  }
-
-  public redirectToLoginPage() {
-    this.router.navigate(['auth', 'login']);
-  }
-
-  public navigateToLoginService() {
-    console.log('navigateToLoginService');
-  }
-
-  public getUser(): Observable<User> {
-    return Observable.create(observer => {
-      console.log('Returning cached user...');
-      observer.next(this.user);
+  constructor(private router: Router, private firebaseAuth: AngularFireAuth) {
+    this.user = firebaseAuth.authState;
+    this.firebaseAuth.authState.subscribe((user: firebase.User) => {
+      if (user) {
+          sessionStorage.setItem('user', JSON.stringify({
+              displayName: user.displayName,
+              email: user.email,
+              phoneNumber: user.phoneNumber,
+              photoURL: user.photoURL,
+              providerId: user.providerId,
+              uid: user.uid
+          }));
+          this.router.navigate(['/']);
+      }
     });
   }
 
-  public logout(): Observable<Object> {
-    this.user = undefined;
-    console.log('Navigating to the logout URL');
-    return Observable.create(observer => {
-      console.log('Returning cached user...');
-      observer.next(this.user);
-    });
+  public signup(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('successfully signed up', value);
+      })
+      .catch(err => {
+        console.log('signin failed: ', err.message);
+      });
+  }
+
+  public login(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('successgully login');
+      })
+      .catch(err => {
+        console.log('failed to login',err.message);
+      });
+  }
+
+  public logout() {
+    this.firebaseAuth
+      .auth
+      .signOut();
   }
 
   public isLoggedIn(): boolean {
