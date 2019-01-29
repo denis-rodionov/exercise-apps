@@ -11,18 +11,13 @@ export class AuthGuardService implements CanActivate {
   }
 
   public canActivate(): boolean {
-    let user: any = sessionStorage.getItem('user');
-    if (user) {
-        try {
-            user = JSON.parse(user);
-            if (user && user.email && user.providerId) {
-                return true;
-            }
-        } catch (error) {
-            console.log(error);
-        }
+    const user = this.authService.getUser();
+
+    if (user == null) {
+        this.router.navigate(['auth']);
+        return false;
     }
-    this.router.navigate(['auth']);
-    return false;
+
+    return true;
   }
 }

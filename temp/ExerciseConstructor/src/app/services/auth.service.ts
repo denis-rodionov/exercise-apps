@@ -12,6 +12,24 @@ export class AuthService {
 
   user: Observable<firebase.User>;
 
+  public getUser(): User {
+      let user: any = sessionStorage.getItem('user');
+      console.log('from session storage: ' + user);
+      if (user) {
+          try {
+              user = JSON.parse(user);
+              console.log('parsed user json: ' + user);
+              if (user && user.email && user.uid) {
+                  return new User(user.uid, user.email);
+              }
+          } catch (error) {
+            console.log('failed to get user: ' + error);
+            return null;
+          }
+      }
+    }
+
+
   constructor(private router: Router, private firebaseAuth: AngularFireAuth) {
     this.user = firebaseAuth.authState;
     this.firebaseAuth.authState.subscribe((user: firebase.User) => {
