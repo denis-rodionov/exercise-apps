@@ -10,6 +10,14 @@
     display: none !important;
     }
 
+    .promo-only {
+    display: none !important;
+    }
+
+    .nopromo-only {
+    display: none !important;
+    }
+
     @media screen and (min-width: 1001px) {
         .mobile-offer-container {
             display: none;
@@ -122,6 +130,14 @@
     width: 32px;
     height: 32px;
     background-repeat: no-repeat;
+    }
+
+    .advantages-plus-mark {
+        display: inline-block;
+        background-image: url(https://fs.getcourse.ru/fileservice/file/download/a/57091/sc/93/h/12ab9392bd2df989421446c0b5e85a02.png);
+        width: 50px;
+        height: 50px;
+        background-repeat: no-repeat;
     }
 
     .disadvantages-mark {
