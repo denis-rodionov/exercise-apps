@@ -158,9 +158,14 @@
     }
 
     .current-price {
-    color: #5ba651;
-    font-size: 30px;
-    font-weight: 700;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .monthly-price {
+        color: #5ba651;
+        font-size: 25px;
+        font-weight: 700;
     }
 
     .order-button {
