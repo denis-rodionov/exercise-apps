@@ -9,33 +9,60 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class ExerciseService {
     collectionRef: AngularFirestoreCollection<Exercise>;
-    exercisesX: Observable<Exercise[]>;
+    exercises$: Observable<Exercise[]>;
 
     collectionName = 'exercises';
     rootCollectionName = 'users';
     userId: string;
 
-  constructor(public database: AngularFirestore, private authService: AuthService) {
-    this.userId = this.authService.getUser().uid;
-    this.collectionRef = this.database.collection(this.rootCollectionName + '/' + this.userId + '/' + this.collectionName);
-    this.exercisesX = this.collectionRef.snapshotChanges().pipe(map(changes => {
-      console.log('change comes...');
-      return changes.map(a => {
-        const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
-        console.log('exercise converted: Exercise name:' + data.name + ', json:' + JSON.stringify(data));
-        return data;
-      });
-    }));
-  }
+    constructor(public database: AngularFirestore, private authService: AuthService) {
+        this.userId = this.authService.getUser().uid;
+        this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
+        this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
+        console.log('change comes...');
+        return changes.map(a => {
+            const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
+            data.id = a.payload.doc.id;
+            console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
+            return data;
+        });
+        }));
+    }
 
     getExercises(): Observable<Exercise[]> {
-        return this.exercisesX;
+        return this.exercises$;
+    }
+
+    getDbPath(userId: string, exerciseId: string) {
+        const res = this.rootCollectionName + '/' + userId + '/' + this.collectionName;
+
+        if (exerciseId) {
+            return res + '/' + exerciseId;
+        }
+
+        return res;
     }
 
     createExercise(exercise) {
-        return this.database.collection(this.rootCollectionName + '/' + this.userId + '/' + this.collectionName).add({
+        return this.database.collection(this.rootCollectionName + '/' + this.userId + '/' + this.collectionName)
+            .add(this.toDbEntity(exercise));
+    }
+
+    private toDbEntity(exercise: Exercise): {} {
+        return {
             json: JSON.stringify(exercise)
-        });
+        };
+    }
+
+    deleteExercise(exercise: Exercise) {
+        console.log('deleting exercise with id=' + exercise.id + ' : ' + JSON.stringify(exercise));
+        const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
+        ref.delete();
+    }
+
+    updateExercise(exercise: Exercise) {
+        const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
+        ref.update(this.toDbEntity(exercise));
     }
 
     private toExercise(json: string): Exercise {

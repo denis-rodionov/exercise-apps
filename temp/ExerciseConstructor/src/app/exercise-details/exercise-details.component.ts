@@ -17,7 +17,7 @@ export class ExerciseDetailsComponent implements OnInit {
   changed: boolean;
 
   constructor(private exerciseService: ExerciseService, private router: Router) {
-      this.exercise = new Exercise('', '', []);
+      this.exercise = new Exercise(null, '', '', []);
       this.isNew = true;
   }
 
