@@ -1,6 +1,7 @@
 <div class="exercise">
-    <h1 *ngIf="isNew">Новое упражнение<mat-spinner *ngIf="inProgress" class="top-spinner" diameter="50"></mat-spinner>
+    <h1 *ngIf="isNew">Новое упражнение
     </h1>
+    
     <form name="exerciseDetailForm" novalidate>
         <div class="exercise__box">
             <mat-form-field class="example-full-width">
@@ -37,10 +38,12 @@
                         Сверстать и скопировать
                     </button>
                 </div>
+                <mat-spinner  mode="indeterminate" *ngIf="inProgress" class="top-spinner" diameter="150"></mat-spinner>
             </div>
 
             <input matInput type="text" *ngIf="markupText" id="markup" [value]="markupText">
             <button mat-raised-button *ngIf="markupText" (click)="copyToClipboard()">Скопировать в буфер обмена</button>
         </div>
     </form>
+    
 </div>

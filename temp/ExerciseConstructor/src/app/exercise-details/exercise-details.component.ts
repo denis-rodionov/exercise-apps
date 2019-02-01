@@ -24,6 +24,7 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.inProgress = true;
     this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', []);
     this.route.params.subscribe( params => {
       console.log('params' + params);
@@ -33,10 +34,11 @@ export class ExerciseDetailsComponent implements OnInit {
         this.exerciseService.getExercise(exerciseId).subscribe(ex => {
           console.log('exercise got by id (' + exerciseId + '):' + ex);
           this.exercise = ex;
+          this.inProgress = false;
         });
-        this.inProgress = false;
       } else {
         this.isNew = true;
+        this.inProgress = false;
       }
     });
   }
