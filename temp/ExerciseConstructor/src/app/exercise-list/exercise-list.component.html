@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <mat-list-item (click)="editExercise(exercise)" *ngFor="let exercise of exercises$ | async">
+  <mat-list-item *ngFor="let exercise of exercises$ | async">
     <div mat-line>
       {{ exercise.name }}
     </div>
@@ -12,7 +12,8 @@
   </mat-list-item>
   <mat-menu matMenuContent #menu="matMenu">
     <ng-template matMenuContent let-exercise="exercise">
-      <button mat-menu-item (click)="deleteExercise(exercise)">Удалить</button>
+      <button mat-menu-item [routerLink]="['/exercises', exercise.id]">Редактировать</button>
+      <button mat-menu-item (click)="deleteExercise(exercise)">Удалить</button>      
     </ng-template>
   </mat-menu>
 </mat-nav-list>

@@ -19,7 +19,7 @@ export class ExerciseService {
         this.userId = this.authService.getUser().uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
-        console.log('change comes...');
+        console.log('change comes: ' + changes.length);
         return changes.map(a => {
             const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
             data.id = a.payload.doc.id;
@@ -32,6 +32,23 @@ export class ExerciseService {
     getExercises(): Observable<Exercise[]> {
         return this.exercises$;
     }
+
+    getExercise(id: string): Observable<Exercise> {
+        return this.database.doc(this.getDbPath(this.userId, id)).get().pipe(map(
+            a => {
+                const data: Exercise = this.toExercise(a.data()['json'] as string);
+                data.id = a.id;
+                console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
+                return data;
+            }));
+    }
+
+    /*
+    getExercise(id: string): Observable<Exercise> {
+        return this.exercises$.pipe(map(list =>
+            list.find(ex => ex.id === id)
+        ));
+    }*/
 
     getDbPath(userId: string, exerciseId: string) {
         const res = this.rootCollectionName + '/' + userId + '/' + this.collectionName;
@@ -57,12 +74,12 @@ export class ExerciseService {
     deleteExercise(exercise: Exercise) {
         console.log('deleting exercise with id=' + exercise.id + ' : ' + JSON.stringify(exercise));
         const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
-        ref.delete();
+        return ref.delete();
     }
 
     updateExercise(exercise: Exercise) {
         const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
-        ref.update(this.toDbEntity(exercise));
+        return ref.update(this.toDbEntity(exercise));
     }
 
     private toExercise(json: string): Exercise {

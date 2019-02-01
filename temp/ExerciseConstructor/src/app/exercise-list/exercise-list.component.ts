@@ -27,6 +27,7 @@ export class ExerciseListComponent implements OnInit {
       this.exerciseService.deleteExercise(exercise);
       console.log('after');
     }
+    return;
   }
 
   editExercise(exercise: Exercise) {
