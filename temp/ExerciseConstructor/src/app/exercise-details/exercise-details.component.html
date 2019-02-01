@@ -1,9 +1,18 @@
 <div class="exercise">
-    <h1 *ngIf="isNew">Новое упражнение<mat-spinner *ngIf="inProgress" class="top-spinner" diameter="50"></mat-spinner></h1>
+    <h1 *ngIf="isNew">Новое упражнение<mat-spinner *ngIf="inProgress" class="top-spinner" diameter="50"></mat-spinner>
+    </h1>
     <form name="exerciseDetailForm" novalidate>
         <div class="exercise__box">
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Название" [(ngModel)]="exercise.name" name="name">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-select placeholder="Тип" [(value)]="exercise.type">
+                    <mat-option *ngFor="let exerciseType of possibleTypes" [value]="exerciseType.value">
+                        {{exerciseType.viewValue}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
 
             <div ng-repeat="sentence in $ctrl.exercise.sentences" class="exercise__sentences">

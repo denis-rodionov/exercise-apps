@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExerciseService } from '../services/execise.service';
-import { Exercise } from '../model/exercise';
+import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { Sentence } from '../model/sentence';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-exercise-details',
@@ -16,11 +17,14 @@ export class ExerciseDetailsComponent implements OnInit {
   inProgress: boolean;
   changed: boolean;
 
+  possibleTypes: ExerciseTypeView[];
+
   constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute) {
+    this.possibleTypes = this.exerciseService.getTypes();
   }
 
   ngOnInit() {
-    this.exercise = new Exercise(null, '', '', []);
+    this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', []);
     this.route.params.subscribe( params => {
       console.log('params' + params);
       if (params['id']) {

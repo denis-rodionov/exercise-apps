@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
-import { Exercise } from '../model/exercise';
+import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { AuthService } from './auth.service';
 
 
@@ -23,14 +23,20 @@ export class ExerciseService {
         this.userId = this.authService.getUser().uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
-        console.log('change comes: ' + changes.length);
-        return changes.map(a => {
-            const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
-            data.id = a.payload.doc.id;
-            console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
-            return data;
-        });
+            console.log('change comes: ' + changes.length);
+            return changes.map(a => {
+                const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
+                data.id = a.payload.doc.id;
+                console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
+                return data;
+            });
         }));
+    }
+
+    public getTypes(): ExerciseTypeView[] {
+        return [
+            { value: ExerciseType.FillGaps, viewValue: 'Заполнить пробелы' }
+        ];
     }
 
     getExercises(): Observable<Exercise[]> {
