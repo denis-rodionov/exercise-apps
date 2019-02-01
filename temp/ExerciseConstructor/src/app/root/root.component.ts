@@ -12,12 +12,14 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 export class RootComponent implements OnInit {
   title = 'Конструктор упражнений';
   public menuExpanded = false;
+  userName: string;
 
   constructor(public authService: AuthService, private router: Router) {
   }
 
   public ngOnInit() {
     console.log('#### AppComponent::ngOnInit');
+    this.userName = this.authService.getUser().email;
   }
 
   addExercise() {
@@ -34,5 +36,10 @@ export class RootComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       drawer.toggle();
     }
+  }
+
+  logout() {
+    this.userName = null;
+    this.authService.logout();
   }
 }

@@ -6,11 +6,34 @@ import { tap } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 import { User } from '../model/user';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ExerciseService } from './execise.service';
+import { FirebaseApp } from '@angular/fire';
 
 @Injectable()
 export class AuthService {
 
   user: Observable<firebase.User>;
+
+  constructor(private router: Router, private firebaseAuth: AngularFireAuth) {
+    this.init();
+  }
+
+  init() {
+    this.user = this.firebaseAuth.authState;
+    this.firebaseAuth.authState.subscribe((user: firebase.User) => {
+      if (user) {
+          sessionStorage.setItem('user', JSON.stringify({
+              displayName: user.displayName,
+              email: user.email,
+              phoneNumber: user.phoneNumber,
+              photoURL: user.photoURL,
+              providerId: user.providerId,
+              uid: user.uid
+          }));
+          this.router.navigate(['/']);
+      }
+    });
+  }
 
   public getUser(): User {
       let user: any = sessionStorage.getItem('user');
@@ -29,55 +52,34 @@ export class AuthService {
       }
     }
 
-
-  constructor(private router: Router, private firebaseAuth: AngularFireAuth) {
-    this.user = firebaseAuth.authState;
-    this.firebaseAuth.authState.subscribe((user: firebase.User) => {
-      if (user) {
-          sessionStorage.setItem('user', JSON.stringify({
-              displayName: user.displayName,
-              email: user.email,
-              phoneNumber: user.phoneNumber,
-              photoURL: user.photoURL,
-              providerId: user.providerId,
-              uid: user.uid
-          }));
-          this.router.navigate(['/']);
-      }
-    });
-  }
-
   public signup(email: string, password: string) {
-    this.firebaseAuth
+    return this.firebaseAuth
       .auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('successfully signed up', value);
-      })
-      .catch(err => {
-        console.log('signin failed: ', err.message);
-      });
+      .createUserWithEmailAndPassword(email, password);
   }
 
   public login(email: string, password: string) {
-    this.firebaseAuth
+    return this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('successgully login');
-      })
-      .catch(err => {
-        console.log('failed to login',err.message);
-      });
+      .then(
+        val => this.init()
+      );
   }
 
   public logout() {
     this.firebaseAuth
       .auth
-      .signOut();
+      .signOut()
+      .then(val => {
+        console.log('successfuly logged out: ' + val);
+        sessionStorage.clear();
+        this.router.navigateByUrl('auth');
+      })
+      .catch(err => alert(err));
   }
 
   public isLoggedIn(): boolean {
-    return true;
+    return this.getUser() != null;
   }
 }

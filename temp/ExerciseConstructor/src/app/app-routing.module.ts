@@ -13,6 +13,7 @@ const routes: Routes = [
         component: ExerciseListComponent,
         canActivate: [ AuthGuardService ] },
   { path: 'auth', component: LoginComponent },
+  { path: 'signup', component: LoginComponent },
   { path: '', redirectTo: 'exercises', pathMatch: 'full'}
 ];
 

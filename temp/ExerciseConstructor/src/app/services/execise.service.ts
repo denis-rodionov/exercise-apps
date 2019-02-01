@@ -16,6 +16,10 @@ export class ExerciseService {
     userId: string;
 
     constructor(public database: AngularFirestore, private authService: AuthService) {
+        this.init();
+    }
+
+    public init() {
         this.userId = this.authService.getUser().uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {

@@ -37,6 +37,10 @@
           <mat-icon>note_add</mat-icon>&nbsp;Новое упражнение
         </button>
         <span class="flex"></span>
+        <span class="user-name" *ngIf="authService.isLoggedIn()">{{ userName }}</span> 
+        <button mat-button class="toolbar-button" (click)="logout()" *ngIf="authService.isLoggedIn()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>     
         <app-common-user></app-common-user>
       </mat-toolbar-row>
 

@@ -1,5 +1,7 @@
+$text-header-color: #ccc;
+
 .toolbar-button {
-  color: #ccc;
+  color: $text-header-color;
 }
 
 .add-exercise-button {
@@ -11,7 +13,17 @@
 }
 .page-title {
   font-size: 20pt;
-  color: #ccc;
+  color: $text-header-color;
+}
+
+.user-name {
+  font-size: 16pt;
+  color: $text-header-color;
+}
+
+.exit-icon {
+  color: $text-header-color;
+  margin-left: 20px;
 }
 
 .page-title-title {
