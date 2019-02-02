@@ -16,6 +16,7 @@ export class Exercise {
         public name: string,
         public type: ExerciseType,
         public tag: string,
+        public header: string,
         public sentences: Sentence[]) {
     }
 }

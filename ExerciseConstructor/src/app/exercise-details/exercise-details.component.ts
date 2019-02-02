@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
 import { FillGapsService } from '../services/fill-gaps-service';
 import { MatSnackBar } from '@angular/material';
+import { ChooseSentenceService } from '../services/choose-sentence.service';
 
 
 @Component({
@@ -23,13 +24,13 @@ export class ExerciseDetailsComponent implements OnInit {
   possibleTypes: ExerciseTypeView[];
 
   constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute,
-      private fillGapsService: FillGapsService, private snackBar: MatSnackBar) {
+      private fillGapsService: FillGapsService, private snackBar: MatSnackBar, private chooseSentenceService: ChooseSentenceService) {
     this.possibleTypes = this.exerciseService.getTypes();
   }
 
   ngOnInit() {
     this.inProgress = true;
-    this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', []);
+    this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', '', []);
     this.route.params.subscribe( params => {
       console.log('params' + params);
       if (params['id']) {
@@ -67,7 +68,7 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   addSentence() {
-    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', ''));
+    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', '', ''));
   }
 
   deleteSentence(sentence: Sentence) {
@@ -85,7 +86,18 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   createMarkup() {
-    this.copyToClipboard(this.fillGapsService.createMarkup(this.exercise));
+    switch (this.exercise.type) {
+      case ExerciseType.FillGaps: {
+        console.log('option1');
+        this.copyToClipboard(this.fillGapsService.createMarkup(this.exercise));
+        break;
+      }
+      case ExerciseType.ChooseSentence: {
+        console.log('option2');
+        this.copyToClipboard(this.chooseSentenceService.createMarkup(this.exercise));
+        break;
+      }
+    }
   }
 
   copyToClipboard(val: string) {
@@ -108,5 +120,10 @@ export class ExerciseDetailsComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 4000,
     });
+  }
+
+  isOfType(exerciseType: string) {
+    const exerciseTypeParsed: ExerciseType = ExerciseType[exerciseType];
+    return this.exercise.type === exerciseTypeParsed;
   }
 }

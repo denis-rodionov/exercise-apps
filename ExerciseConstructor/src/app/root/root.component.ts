@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatDrawer } from '@angular/material';
 import { Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { ExerciseService } from '../services/execise.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class RootComponent implements OnInit {
   public menuExpanded = false;
   userName: string;
 
-  constructor(public authService: AuthService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router, private exerciseService: ExerciseService) {
   }
 
   public ngOnInit() {

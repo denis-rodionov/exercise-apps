@@ -22,6 +22,7 @@ export class ExerciseService {
     }
 
     public init() {
+        console.log('ExerciseService.init()');
         this.userId = this.authService.getUser().uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
@@ -42,16 +43,23 @@ export class ExerciseService {
 
     public resetFilter() {
         this.filter = null;
+        this.init();
     }
 
     public getTypes(): ExerciseTypeView[] {
         return [
-            { value: ExerciseType.FillGaps, viewValue: 'Drag & Drop' }
+            { value: ExerciseType.FillGaps, viewValue: 'Drag & Drop' },
+            { value: ExerciseType.ChooseSentence, viewValue: 'Выбери предложение' }
         ];
     }
 
-    getExercises(): Observable<Exercise[]> {
+    public getExercises(): Observable<Exercise[]> {
         return this.exercises$;
+    }
+
+    public getExerciseTypeView(exerciseType: string) {
+        const exerciseTypeParsed: ExerciseType = ExerciseType[exerciseType];
+        return this.getTypes().find(t => t.value === exerciseTypeParsed).viewValue;
     }
 
     getExercise(id: string): Observable<Exercise> {

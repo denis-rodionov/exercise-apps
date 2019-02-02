@@ -9,15 +9,12 @@ import { ExerciseDetailsComponent } from './exercise-details/exercise-details.co
 const routes: Routes = [
   { path: 'exercises/new', component: ExerciseDetailsComponent },
   { path: 'exercises-details/:id', component: ExerciseDetailsComponent },
-  { path: 'exercises',
-        component: ExerciseListComponent,
-        canActivate: [ AuthGuardService ] },
   { path: 'exercises/:filter',
         component: ExerciseListComponent,
         canActivate: [ AuthGuardService ] },
   { path: 'auth', component: LoginComponent },
   { path: 'signup', component: LoginComponent },
-  { path: '', redirectTo: 'exercises', pathMatch: 'full'}
+  { path: '', redirectTo: 'exercises/all', pathMatch: 'full'}
 ];
 
 @NgModule({

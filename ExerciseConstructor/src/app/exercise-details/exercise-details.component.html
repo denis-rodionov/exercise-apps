@@ -3,8 +3,8 @@
     </h1>
     
     <form name="exerciseDetailForm" novalidate>
-        <div class="exercise__box">
-            <mat-form-field class="example-full-width">
+        <div>
+            <mat-form-field class="long-input">
                 <input matInput placeholder="Название" [(ngModel)]="exercise.name" name="name" class="long-input">
             </mat-form-field>
             <br>
@@ -15,10 +15,19 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+            <br>
+            <mat-form-field class="long-input" *ngIf="isOfType('ChooseSentence')">
+                <input matInput placeholder="Заголовок упражнения" [(ngModel)]="exercise.header" name="header" class="long-input">
+            </mat-form-field>
 
-            <mat-accordion>
+            <mat-accordion *ngIf="isOfType('FillGaps')">
                 <app-fill-gaps-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
                 </app-fill-gaps-sentence>
+            </mat-accordion>
+
+            <mat-accordion *ngIf="isOfType('ChooseSentence')">
+                <app-choose-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-choose-sentence>
             </mat-accordion>
 
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни

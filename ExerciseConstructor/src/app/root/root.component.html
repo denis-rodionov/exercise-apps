@@ -4,12 +4,15 @@
     <div class="logo" *ngIf="menuExpanded">
     </div>
     <mat-nav-list *ngIf="menuExpanded">
-      <mat-list-item matTooltip="Все упражнения" [routerLink]="['exercises']">
+      <mat-list-item [routerLink]="['exercises', 'all']">
         <mat-icon>list_alt</mat-icon>Все упражнения
       </mat-list-item>
-      <mat-list-item matTooltip="Drag & Drop" [routerLink]="['exercises', 'FillGaps']">
-        <mat-icon>library_books</mat-icon>Drag & Drop
+      <mat-list-item [routerLink]="['exercises', 'FillGaps']">
+        <mat-icon>library_books</mat-icon>{{ this.exerciseService.getExerciseTypeView('FillGaps') }}
       </mat-list-item>
+      <mat-list-item [routerLink]="['exercises', 'ChooseSentence']">
+          <mat-icon>import_contacts</mat-icon>{{ this.exerciseService.getExerciseTypeView('ChooseSentence') }}
+        </mat-list-item>
       <mat-list-item class="shrink-menu" (click)="toggleMenuExpanded()">
         <mat-icon>keyboard_arrow_left</mat-icon>
       </mat-list-item>
@@ -19,12 +22,15 @@
     </div>
 
     <mat-nav-list *ngIf="!menuExpanded">
-      <mat-list-item matTooltip="Все упражнения" [routerLink]="['exercises']">
+      <mat-list-item [routerLink]="['exercises', 'all']">
         <mat-icon>list_alt</mat-icon>
       </mat-list-item>
-      <mat-list-item matTooltip="Drag & Drop" [routerLink]="['exercises', 'FillGaps']">
+      <mat-list-item [routerLink]="['exercises', 'FillGaps']">
         <mat-icon>library_books</mat-icon>
       </mat-list-item>
+      <mat-list-item [routerLink]="['exercises', 'ChooseSentence']">
+          <mat-icon>import_contacts</mat-icon>
+        </mat-list-item>
       <mat-list-item (click)="toggleMenuExpanded()">
         <mat-icon>keyboard_arrow_right</mat-icon>
       </mat-list-item>

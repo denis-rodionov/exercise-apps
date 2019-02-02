@@ -17,18 +17,21 @@ export class ExerciseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.exercises$ = this.exerciseService.getExercises();
+    console.log('ExerciseListComponent: exercises$: ' + this.exercises$);
 
     this.route.params.subscribe( params => {
       console.log('ExerciseListComponent: params' + JSON.stringify(params));
+      this.exercises$ = this.exerciseService.getExercises();
+
       if (params['filter']) {
         const filter: string = params['filter'];
-        const filterType: ExerciseType = ExerciseType[filter];
-        this.exerciseService.filterExercises(filterType);
-      } else {
-        this.exerciseService.resetFilter();
-      }
-    });
+        if (filter === 'all') {
+          this.exerciseService.resetFilter();
+        } else {
+          const filterType: ExerciseType = ExerciseType[filter];
+          this.exerciseService.filterExercises(filterType);
+        }
+      }});
   }
 
   deleteExercise(exercise: Exercise) {

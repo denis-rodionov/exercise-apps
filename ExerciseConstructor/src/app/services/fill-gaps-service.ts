@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from '../model/exercise';
+import { CommonService } from './common.service';
 
 @Injectable()
 export class FillGapsService {
 
-    constructor() {
+    constructor(private commonService: CommonService) {
     }
 
     public createMarkup(exercise: Exercise): string {
@@ -35,7 +36,7 @@ export class FillGapsService {
                     processedText = processedText.replace(separator + str + separator, preWord + str + postWord);
                 }
             });
-            words = _this.shuffle(words);
+            words = _this.commonService.shuffle(words);
 
             // markup
             const wordsMarkup = words.map(function (word) {
@@ -46,16 +47,5 @@ export class FillGapsService {
         });
 
         return preExercise + result + postExercise;
-    }
-
-    shuffle(arr) {
-        let newArray = new Array<string>();
-
-        while (arr.length) {
-            const i = Math.floor(Math.random() * arr.length);
-            newArray = newArray.concat(arr.splice(i, 1));
-        }
-
-        return newArray;
     }
 }
