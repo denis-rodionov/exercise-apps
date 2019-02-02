@@ -27,7 +27,7 @@ a:hover {
   color: black;
 }
 
-.button {
+.ew-button {
   background-color: #ccc;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -41,15 +41,15 @@ a:hover {
   text-shadow: 0px 1px 0px #2f6627;
 }
 
-.button:hover {
+.ew-button:hover {
   background-color: #ddd;
 }
 
-.button:active {
+.ew-button:active {
   background-color: #bbb;
 }
 
-.button.disabled {
+.ew-button.disabled {
   color: currentColor;
   cursor: not-allowed;
   opacity: 0.5;
