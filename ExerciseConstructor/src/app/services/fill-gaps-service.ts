@@ -10,7 +10,7 @@ export class FillGapsService {
     public createMarkup(exercise: Exercise): string {
         const preExercise = '<div class=\"exercise\"><table>';
         // tslint:disable-next-line:max-line-length
-        const postExercise = '</table><div class=\"controls\"><a class=\"button\" id=\"checkResult\" href=\"#\" draggable=\"false\">Check</a><a class=\"button\" id=\"resetResults\" href=\"#\" draggable=\"false\" style=\"visibility: hidden\">Reset</a></div><div id=\"result\"></div></div>';
+        const postExercise = '</table><div class="controls"><a class="button" id="checkResult" href="#" draggable="fals">Проверить</a></div><div id="result"></div></div>';
         const preText = '<tr><td><div class=\"text\"><p>';
         const middleMarkup = '</p></div><div class=\"words\">';
         const postText = '</div></td></tr>';
