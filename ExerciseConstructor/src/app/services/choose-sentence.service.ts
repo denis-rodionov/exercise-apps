@@ -9,7 +9,6 @@ export class ChooseSentenceService {
     }
 
     public createMarkup(exercise: Exercise): string {
-        console.log('222');
         const preExercise = '<div class="exercise"><p>';
         const postHeader = '</p><table>';
         // tslint:disable-next-line:max-line-length

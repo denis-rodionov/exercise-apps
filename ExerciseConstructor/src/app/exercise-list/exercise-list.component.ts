@@ -37,9 +37,7 @@ export class ExerciseListComponent implements OnInit {
   deleteExercise(exercise: Exercise) {
     const response = confirm('Вы уверены что хотите удалить упражнение ' + exercise.name);
     if (response) {
-      console.log('before: ' + JSON.stringify(exercise));
       this.exerciseService.deleteExercise(exercise);
-      console.log('after');
     }
     return;
   }

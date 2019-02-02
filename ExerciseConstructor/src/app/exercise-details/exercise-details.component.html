@@ -8,7 +8,7 @@
                 <input matInput placeholder="Название" [(ngModel)]="exercise.name" name="name" class="long-input">
             </mat-form-field>
             <br>
-            <mat-form-field>
+            <mat-form-field class="exercise-type-input">
                 <mat-select placeholder="Тип" [(value)]="exercise.type">
                     <mat-option *ngFor="let exerciseType of possibleTypes" [value]="exerciseType.value">
                         {{exerciseType.viewValue}}

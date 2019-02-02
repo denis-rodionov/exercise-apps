@@ -88,12 +88,10 @@ export class ExerciseDetailsComponent implements OnInit {
   createMarkup() {
     switch (this.exercise.type) {
       case ExerciseType.FillGaps: {
-        console.log('option1');
         this.copyToClipboard(this.fillGapsService.createMarkup(this.exercise));
         break;
       }
       case ExerciseType.ChooseSentence: {
-        console.log('option2');
         this.copyToClipboard(this.chooseSentenceService.createMarkup(this.exercise));
         break;
       }
