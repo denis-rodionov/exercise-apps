@@ -1,0 +1,51 @@
+<div class="exercise">
+    <h1 *ngIf="isNew">Новое упражнение
+    </h1>
+    
+    <form name="exerciseDetailForm" novalidate>
+        <div class="exercise__box">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Название" [(ngModel)]="exercise.name" name="name">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-select placeholder="Тип" [(value)]="exercise.type">
+                    <mat-option *ngFor="let exerciseType of possibleTypes" [value]="exerciseType.value">
+                        {{exerciseType.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-accordion>
+                <app-fill-gaps-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-fill-gaps-sentence>
+            </mat-accordion>
+
+            <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
+                одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
+            </div>
+            <div>
+                <div>
+                    <button mat-raised-button class="form-button" (click)="addSentence()">
+                        Добавить предложение
+                    </button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" class="form-button" (click)="saveExercise()">
+                        Сохранить упражнение
+                    </button>
+                </div>
+                <div>
+                    <button mat-raised-button class="form-button" (click)="createMarkup()">
+                        Сверстать и скопировать
+                    </button>
+                </div>
+                <mat-spinner  mode="indeterminate" *ngIf="inProgress" class="top-spinner" diameter="150"></mat-spinner>
+            </div>
+
+            <input matInput type="text" *ngIf="markupText" id="markup" [value]="markupText">
+            <button mat-raised-button *ngIf="markupText" (click)="copyToClipboard()">Скопировать в буфер обмена</button>
+        </div>
+    </form>
+    
+</div>

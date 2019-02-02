@@ -1,0 +1,52 @@
+<mat-sidenav-container fullscreen autosize class="sidenav-container">
+  <mat-sidenav #drawer closed mode="side" [opened]="authService.isLoggedIn()">
+
+    <div class="logo" *ngIf="menuExpanded">
+    </div>
+    <mat-nav-list *ngIf="menuExpanded">
+      <mat-list-item matTooltip="Partners" routerLink="/exercises">
+        <mat-icon>list_alt</mat-icon>Все упражнения
+      </mat-list-item>
+      <mat-list-item class="shrink-menu" (click)="toggleMenuExpanded()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <div class="logo_small" *ngIf="!menuExpanded">
+    </div>
+
+    <mat-nav-list *ngIf="!menuExpanded">
+      <mat-list-item matTooltip="Partners" routerLink="/exercises">
+        <mat-icon>list_alt</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="toggleMenuExpanded()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar class="mat-elevation-z2">
+      <mat-toolbar-row>
+        <button mat-button class="toolbar-button" (click)="toggleDrawer(drawer)" *ngIf="authService.isLoggedIn()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="page-title"> <span class="page-title-title">{{title}}</span></span>
+        <button mat-button class="toolbar-button add-exercise-button" (click)="addExercise()" *ngIf="authService.isLoggedIn()">
+          <mat-icon>note_add</mat-icon>&nbsp;Новое упражнение
+        </button>
+        <span class="flex"></span>
+        <span class="user-name" *ngIf="authService.isLoggedIn()">{{ userName }}</span>
+        <button mat-button class="toolbar-button" (click)="logout()" *ngIf="authService.isLoggedIn()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+        <app-common-user></app-common-user>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

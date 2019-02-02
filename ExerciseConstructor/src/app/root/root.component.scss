@@ -1,0 +1,71 @@
+$text-header-color: #ccc;
+
+.toolbar-button {
+  color: $text-header-color;
+}
+
+.add-exercise-button {
+  margin-left: 100px;
+}
+
+.flex {
+  flex: 1 1 auto;
+}
+.page-title {
+  font-size: 20pt;
+  color: $text-header-color;
+}
+
+.user-name {
+  font-size: 16pt;
+  color: $text-header-color;
+}
+
+.exit-icon {
+  color: $text-header-color;
+  margin-left: 20px;
+}
+
+.page-title-title {
+  vertical-align: text-bottom;
+}
+
+mat-toolbar {
+  background-color: #212529;
+  margin-bottom: 1em;
+  padding: 0.25em;
+}
+
+.logo {
+  margin: 5px 0;
+  min-width: 175px;
+  width: 100%;
+  height: 80px;
+  background: transparent  url("/assets/logo3.png") no-repeat 18px center;
+  background-size: 150px auto;
+}
+
+.logo_small {
+  margin: 5px 0;
+  width: 100%;
+  height: 80px;
+  background: transparent  url("/assets/logo0.png") no-repeat 8px center;
+  background-size: 45px auto;
+}
+
+mat-nav-list .mat-button {
+  width: 100%;
+  text-align: left;
+}
+
+.shrink-menu .mat-list-item-content {
+  text-align: right;
+}
+
+mat-list-item mat-icon {
+  margin-right: 5px;
+}
+
+.content-container {
+  padding: 2em 4em;
+}
