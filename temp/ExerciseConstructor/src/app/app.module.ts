@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { ExerciseService } from './services/execise.service';
 import { ExerciseDetailsComponent } from './exercise-details/exercise-details.component';
 import { FillGapsSentenceComponent } from './exercise-components/fill-gaps-sentence/fill-gaps-sentence.component';
+import { FillGapsService } from './services/fill-gaps-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FillGapsSentenceComponent } from './exercise-components/fill-gaps-sente
   providers: [
     AuthService,
     AuthGuardService,
-    ExerciseService
+    ExerciseService,
+    FillGapsService
   ],
   bootstrap: [RootComponent],
   schemas: [

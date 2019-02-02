@@ -5,6 +5,8 @@ import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { Sentence } from '../model/sentence';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
+import { FillGapsService } from '../services/fill-gaps-service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class ExerciseDetailsComponent implements OnInit {
 
   possibleTypes: ExerciseTypeView[];
 
-  constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute) {
+  constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute, 
+      private fillGapsService: FillGapsService, private snackBar: MatSnackBar) {
     this.possibleTypes = this.exerciseService.getTypes();
   }
 
@@ -79,5 +82,31 @@ export class ExerciseDetailsComponent implements OnInit {
     });
 
     this.exercise.sentences = temp;
+  }
+
+  createMarkup() {
+    this.copyToClipboard(this.fillGapsService.createMarkup(this.exercise));
+  }
+
+  copyToClipboard(val: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+
+    this.openSnackBar('Упражнение в HTML виде скопировано в буфер обмена', 'Закрыть');
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+    });
   }
 }
