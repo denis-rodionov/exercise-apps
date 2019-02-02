@@ -49,7 +49,13 @@ export class FillGapsService {
     }
 
     shuffle(arr) {
-        for (let j, x, i = arr.length; i; j = Math.random() * i, x = arr[--i], arr[i] = arr[j], arr[j] = x) { }
-        return arr;
+        let newArray = new Array<string>();
+
+        while (arr.length) {
+            const i = Math.floor(Math.random() * arr.length);
+            newArray = newArray.concat(arr.splice(i, 1));
+        }
+
+        return newArray;
     }
 }
