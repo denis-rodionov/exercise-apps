@@ -1,4 +1,4 @@
 export class Sentence {
-    constructor(text: string) {
+    constructor(public number: number, public text: string, public words: string) {
     }
 }

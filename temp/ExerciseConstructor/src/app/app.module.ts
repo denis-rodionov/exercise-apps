@@ -20,13 +20,15 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ExerciseService } from './services/execise.service';
 import { ExerciseDetailsComponent } from './exercise-details/exercise-details.component';
+import { FillGapsSentenceComponent } from './exercise-components/fill-gaps-sentence/fill-gaps-sentence.component';
 
 @NgModule({
   declarations: [
     RootComponent,
     ExerciseListComponent,
     ExerciseDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    FillGapsSentenceComponent
   ],
   imports: [
     BrowserModule,

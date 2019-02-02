@@ -4,6 +4,7 @@ import { ExerciseService } from '../services/execise.service';
 import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { Sentence } from '../model/sentence';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
 
 
 @Component({
@@ -60,5 +61,23 @@ export class ExerciseDetailsComponent implements OnInit {
             this.changed = false;
         }
     );
+  }
+
+  addSentence() {
+    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', ''));
+  }
+
+  deleteSentence(sentence: Sentence) {
+    const temp: Sentence[] = [];
+
+    let newNumber = 1;
+    this.exercise.sentences.forEach(s => {
+      if (s.number !== sentence.number) {
+        s.number = newNumber++;
+        temp.push(s);
+      }
+    });
+
+    this.exercise.sentences = temp;
   }
 }

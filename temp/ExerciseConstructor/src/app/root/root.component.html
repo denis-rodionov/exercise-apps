@@ -1,5 +1,5 @@
 <mat-sidenav-container fullscreen autosize class="sidenav-container">
-  <mat-sidenav #drawer  closed mode="side" [opened]="authService.isLoggedIn()">
+  <mat-sidenav #drawer closed mode="side" [opened]="authService.isLoggedIn()">
 
     <div class="logo" *ngIf="menuExpanded">
     </div>
@@ -37,10 +37,10 @@
           <mat-icon>note_add</mat-icon>&nbsp;Новое упражнение
         </button>
         <span class="flex"></span>
-        <span class="user-name" *ngIf="authService.isLoggedIn()">{{ userName }}</span> 
+        <span class="user-name" *ngIf="authService.isLoggedIn()">{{ userName }}</span>
         <button mat-button class="toolbar-button" (click)="logout()" *ngIf="authService.isLoggedIn()">
-            <mat-icon>exit_to_app</mat-icon>
-          </button>     
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
         <app-common-user></app-common-user>
       </mat-toolbar-row>
 

@@ -16,12 +16,14 @@
                 </mat-select>
             </mat-form-field>
 
-            <div ng-repeat="sentence in $ctrl.exercise.sentences" class="exercise__sentences">
-                <fill-gaps-sentence sentence="sentence" on-delete="$ctrl.deleteSentence($event)"></fill-gaps-sentence>
-            </div>
+            <mat-accordion>
+                <app-fill-gaps-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-fill-gaps-sentence>
+            </mat-accordion>
 
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
-                одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"</div>
+                одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
+            </div>
             <div>
                 <div>
                     <button mat-raised-button class="form-button" (click)="addSentence()">
