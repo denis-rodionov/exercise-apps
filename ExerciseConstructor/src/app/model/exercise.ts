@@ -1,7 +1,8 @@
 import { Sentence } from './sentence';
 
 export enum ExerciseType {
-    FillGaps = 1
+    FillGaps = 1,
+    ChooseSentence = 2
 }
 
 export interface ExerciseTypeView {
@@ -17,4 +18,8 @@ export class Exercise {
         public tag: string,
         public sentences: Sentence[]) {
     }
+}
+
+export function parse(mode: string): ExerciseType {
+    return ExerciseType[mode];
 }

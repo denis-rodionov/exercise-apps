@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExerciseService } from '../services/execise.service';
-import { Exercise } from '../model/exercise';
+import { Exercise, ExerciseType } from '../model/exercise';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-exercise-list',
@@ -12,12 +13,22 @@ export class ExerciseListComponent implements OnInit {
 
   exercises$: Observable<Exercise[]>;
 
-  constructor(private exerciseService: ExerciseService) {
+  constructor(private exerciseService: ExerciseService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    console.log('init ExerciseListComponent');
     this.exercises$ = this.exerciseService.getExercises();
+
+    this.route.params.subscribe( params => {
+      console.log('ExerciseListComponent: params' + JSON.stringify(params));
+      if (params['filter']) {
+        const filter: string = params['filter'];
+        const filterType: ExerciseType = ExerciseType[filter];
+        this.exerciseService.filterExercises(filterType);
+      } else {
+        this.exerciseService.resetFilter();
+      }
+    });
   }
 
   deleteExercise(exercise: Exercise) {

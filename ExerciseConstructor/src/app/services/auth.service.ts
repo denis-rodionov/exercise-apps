@@ -37,11 +37,9 @@ export class AuthService {
 
   public getUser(): User {
       let user: any = sessionStorage.getItem('user');
-      console.log('from session storage: ' + user);
       if (user) {
           try {
               user = JSON.parse(user);
-              console.log('parsed user json: ' + user);
               if (user && user.email && user.uid) {
                   return new User(user.uid, user.email);
               }

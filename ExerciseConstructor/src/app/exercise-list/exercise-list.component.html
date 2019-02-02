@@ -12,7 +12,7 @@
   </mat-list-item>
   <mat-menu matMenuContent #menu="matMenu">
     <ng-template matMenuContent let-exercise="exercise">
-      <button mat-menu-item [routerLink]="['/exercises', exercise.id]">Редактировать</button>
+      <button mat-menu-item [routerLink]="['/exercises-details', exercise.id]">Редактировать</button>
       <button mat-menu-item (click)="deleteExercise(exercise)">Удалить</button>      
     </ng-template>
   </mat-menu>

@@ -22,7 +22,7 @@ export class ExerciseDetailsComponent implements OnInit {
 
   possibleTypes: ExerciseTypeView[];
 
-  constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute, 
+  constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute,
       private fillGapsService: FillGapsService, private snackBar: MatSnackBar) {
     this.possibleTypes = this.exerciseService.getTypes();
   }

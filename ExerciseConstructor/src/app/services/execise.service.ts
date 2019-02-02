@@ -15,6 +15,8 @@ export class ExerciseService {
     rootCollectionName = 'users';
     userId: string;
 
+    filter: ExerciseType;
+
     constructor(public database: AngularFirestore, private authService: AuthService) {
         this.init();
     }
@@ -23,19 +25,28 @@ export class ExerciseService {
         this.userId = this.authService.getUser().uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
-            console.log('change comes: ' + changes.length);
+            console.log('change comes: ' + changes.length + ', filter: ' + this.filter);
             return changes.map(a => {
                 const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
                 data.id = a.payload.doc.id;
-                console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
                 return data;
-            });
+            }).filter(ex => !this.filter || this.filter === ex.type);
         }));
+    }
+
+    public filterExercises(filterValue: ExerciseType) {
+        console.log(filterValue);
+        this.filter = filterValue;
+        this.init();
+    }
+
+    public resetFilter() {
+        this.filter = null;
     }
 
     public getTypes(): ExerciseTypeView[] {
         return [
-            { value: ExerciseType.FillGaps, viewValue: 'Заполнить пробелы' }
+            { value: ExerciseType.FillGaps, viewValue: 'Drag & Drop' }
         ];
     }
 
@@ -52,13 +63,6 @@ export class ExerciseService {
                 return data;
             }));
     }
-
-    /*
-    getExercise(id: string): Observable<Exercise> {
-        return this.exercises$.pipe(map(list =>
-            list.find(ex => ex.id === id)
-        ));
-    }*/
 
     getDbPath(userId: string, exerciseId: string) {
         const res = this.rootCollectionName + '/' + userId + '/' + this.collectionName;
