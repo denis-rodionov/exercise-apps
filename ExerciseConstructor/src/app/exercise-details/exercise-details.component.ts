@@ -9,6 +9,7 @@ import { FillGapsService } from '../services/fill-gaps-service';
 import { MatSnackBar } from '@angular/material';
 import { ChooseSentenceService } from '../services/choose-sentence.service';
 import { QuestionAnswersService } from '../services/question-answers.service';
+import { FreeFormAnswerService } from '../services/free-form-answer.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ExerciseDetailsComponent implements OnInit {
 
   constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute,
       private fillGapsService: FillGapsService, private snackBar: MatSnackBar, private chooseSentenceService: ChooseSentenceService,
-      private questionAnswersService: QuestionAnswersService) {
+      private questionAnswersService: QuestionAnswersService, private freeFormAnswerService: FreeFormAnswerService) {
     this.possibleTypes = this.exerciseService.getTypes();
   }
 
@@ -99,6 +100,10 @@ export class ExerciseDetailsComponent implements OnInit {
       }
       case ExerciseType.QuestionAnswers: {
         this.copyToClipboard(this.questionAnswersService.createMarkup(this.exercise));
+        break;
+      }
+      case ExerciseType.FreeFormAnswer: {
+        this.copyToClipboard(this.freeFormAnswerService.createMarkup(this.exercise));
         break;
       }
     }

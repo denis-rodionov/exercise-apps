@@ -46,3 +46,10 @@ document.getElementById("checkResultsButton").onclick = function() {
       }
     }
   }
+
+  function sendAnswer(answer) {
+    var answerInput = document.getElementById('lessonanswer-answer_text');
+    answerInput.innerText = answer;
+    var sendButton = document.getElementsByName('send-answer')[0];
+    sendButton.click();
+  }

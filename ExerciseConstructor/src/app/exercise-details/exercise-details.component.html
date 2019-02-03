@@ -35,6 +35,11 @@
                 </app-question-answers>
             </mat-accordion>
 
+            <mat-accordion *ngIf="isOfType('FreeFormAnswer')">
+                <app-free-form-answer [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-free-form-answer>
+            </mat-accordion>
+
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
                 одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
             </div>

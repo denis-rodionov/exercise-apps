@@ -3,7 +3,8 @@ import { Sentence } from './sentence';
 export enum ExerciseType {
     FillGaps = 1,
     ChooseSentence = 2,
-    QuestionAnswers = 3
+    QuestionAnswers = 3,
+    FreeFormAnswer = 4
 }
 
 export interface ExerciseTypeView {
