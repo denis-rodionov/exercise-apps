@@ -1,12 +1,12 @@
 <mat-nav-list>
-  <mat-list-item *ngFor="let exercise of exercises$ | async">
+  <mat-list-item *ngFor="let exercise of exercises$ | async" [routerLink]="['/exercises-details', exercise.id]">
     <div mat-line>
       {{ exercise.name }}
     </div>
     <p mat-line>
       {{ exercise.tag }}
     </p>
-    <button mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [matMenuTriggerData]="{exercise: exercise}">
+    <button mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [matMenuTriggerData]="{exercise: exercise}"  (click)="$event.stopPropagation()">
       <mat-icon>more_vert</mat-icon>
    </button>
   </mat-list-item>

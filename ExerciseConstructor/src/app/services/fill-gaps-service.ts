@@ -12,7 +12,7 @@ export class FillGapsService {
         const preExercise = '<div class=\"exercise\"><p>';
         const postHeader = '</p><table>';
         // tslint:disable-next-line:max-line-length
-        const postExercise = '</table><div class="controls"><a class="button" id="checkResult" href="#" draggable="fals">Проверить</a></div><div id="result"></div></div>';
+        const postExercise = '</table><div class="controls"><a class="ew-button" id="checkResult" href="#" draggable="fals">Проверить</a></div><div id="result"></div></div>';
         const preText = '<tr><td><div class=\"text\"><p>';
         const middleMarkup = '</p></div><div class=\"words\">';
         const postText = '</div></td></tr>';
