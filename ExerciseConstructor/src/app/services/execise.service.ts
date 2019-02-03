@@ -49,7 +49,8 @@ export class ExerciseService {
     public getTypes(): ExerciseTypeView[] {
         return [
             { value: ExerciseType.FillGaps, viewValue: 'Drag & Drop' },
-            { value: ExerciseType.ChooseSentence, viewValue: 'Выбери предложение' }
+            { value: ExerciseType.ChooseSentence, viewValue: 'Выбери предложение' },
+            { value: ExerciseType.QuestionAnswers, viewValue: 'Вопрос ответ'}
         ];
     }
 

@@ -25,6 +25,8 @@ import { FillGapsService } from './services/fill-gaps-service';
 import { ChooseSentenceComponent } from './exercise-components/choose-sentence-sentence/choose-sentence.component';
 import { ChooseSentenceService } from './services/choose-sentence.service';
 import { CommonService } from './services/common.service';
+import { QuestionAnswersComponent } from './exercise-components/question-answers/question-answers.component';
+import { QuestionAnswersService } from './services/question-answers.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CommonService } from './services/common.service';
     ExerciseDetailsComponent,
     LoginComponent,
     FillGapsSentenceComponent,
-    ChooseSentenceComponent
+    ChooseSentenceComponent,
+    QuestionAnswersComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { CommonService } from './services/common.service';
     ExerciseService,
     FillGapsService,
     ChooseSentenceService,
-    CommonService
+    CommonService,
+    QuestionAnswersService
   ],
   bootstrap: [RootComponent],
   schemas: [

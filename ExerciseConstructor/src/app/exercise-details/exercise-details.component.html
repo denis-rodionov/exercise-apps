@@ -16,7 +16,7 @@
                 </mat-select>
             </mat-form-field>
             <br>
-            <mat-form-field class="long-input" *ngIf="isOfType('ChooseSentence')">
+            <mat-form-field class="long-input" *ngIf="!isOfType('FillGaps')">
                 <input matInput placeholder="Заголовок упражнения" [(ngModel)]="exercise.header" name="header" class="long-input">
             </mat-form-field>
 
@@ -28,6 +28,11 @@
             <mat-accordion *ngIf="isOfType('ChooseSentence')">
                 <app-choose-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
                 </app-choose-sentence>
+            </mat-accordion>
+
+            <mat-accordion *ngIf="isOfType('QuestionAnswers')">
+                <app-question-answers [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-question-answers>
             </mat-accordion>
 
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
