@@ -14,7 +14,7 @@ function answerOnClick(e) {
   }
 }
 
-document.getElementById("checkResultsButton").onclick = function() {
+document.getElementById("ew-check-results").onclick = function() {
   var answers = document.getElementsByClassName('ew-answer');
 	var totalAnswers = 0;
   var correctAnswers = 0;
@@ -34,11 +34,13 @@ document.getElementById("checkResultsButton").onclick = function() {
     answers[i].classList.remove('selected');
   }
   
-  document.getElementById("resultScore").innerText = correctAnswers + "/" + totalAnswers;
-  document.getElementById("resultScoreP").classList.remove('hidden');
-  document.getElementById("checkResultsButton").classList.add('disabled');
+  showResult(correctAnswers, totalAnswers);
+}
 
-  sendAnswer("Результат: " + correctAnswers + " баллов из " + totalAnswers);
+function showResult(score, total) {
+  var resultText = "Набрано баллов: " + score + " из " + total;
+  document.getElementById("ew-result-text").innerText = resultText;
+  sendAnswer(resultText);
 }
 
 function sendAnswer(answer) {

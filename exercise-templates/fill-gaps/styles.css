@@ -1,11 +1,15 @@
-.exercise>* {
+.ew-exercise>* {
   margin: 10px;
   padding: 10px;
 }
 
-table {
+.ew-table {
   border-collapse: collapse;
-  width: 80%;
+  width: 100%;
+}
+
+.ew-controls {
+  text-align: center;
 }
 
 td, th {
@@ -15,38 +19,30 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #eeeeee;
-}
-
-a {
-  color: black;
-}
-
-a:hover {
-  text-decoration: none;
-  color: black;
+  background-color: #f7f3f3;
 }
 
 .ew-button {
-  background-color: #ccc;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  background-color: #199c68;
+  color: white;
   display: inline-block;
   cursor: pointer;
   font-family: Arial;
   font-size: 17px;
   padding: 10px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
 }
 
 .ew-button:hover {
-  background-color: #ddd;
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
 }
 
 .ew-button:active {
-  background-color: #bbb;
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
 }
 
 .ew-button.disabled {
@@ -57,16 +53,34 @@ a:hover {
   pointer-events: none;
 }
 
-.words {
+.ew-text {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.ew-text-half {
+  display: inline-block;
+  width: 400px;
+  text-align: center;
+}
+
+.ew-header {
+  font-size: 20px;
+  font-weight: bolt;
+}
+
+.ew-words {
   border: 0px dotted #ccc;
   padding: 4px;
   border-radius: 7px;
   min-height: 40px;
   min-width: 150px;
   text-align: center;
+  margin-top: 5px;
 }
 
-.gap {
+.ew-gap {
   display: inline-block;
   border-bottom: 1px solid #ccc;
   min-width: 60px;
@@ -75,19 +89,19 @@ a:hover {
   text-align: center;
 }
 
-.gap.drag {
+.ew-gap.drag {
   border-bottom: 2px dashed black;
 }
 
-.gap.filled {
+.ew-gap.filled {
   border: 0;
 }
 
-.gap.missed {
+.ew-gap.missed {
   background-color: #fc8d83;
 }
 
-.word {
+.ew-word {
   padding: 3px 10px 3px 10px;
   margin: 2px;
   display: inline-block;
@@ -95,10 +109,10 @@ a:hover {
   background-color: white;
 }
 
-.word.right {
-  background-color: #99ffcc;
+.ew-word.right {
+  background-color: #71bb44;
 }
 
-.word.wrong {
+.ew-word.wrong {
   background-color: #fc8d83;
 }

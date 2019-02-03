@@ -9,13 +9,8 @@ export class ChooseSentenceService {
     }
 
     public createMarkup(exercise: Exercise): string {
-        const preExercise = '<div class="exercise"><p>';
-        const postHeader = '</p><table>';
-        // tslint:disable-next-line:max-line-length
-        const postExercise = '</table><button id="checkResultsButton">Проверить</button><br/><p id="resultScoreP" class="hidden">Результат: <span id="resultScore"></span></p></div>';
-
-        const preCorrectOption = '<td><div class="sentence" data-answer="1">';
-        const preWrongOption = '<td><div class="sentence" data-answer="0">';
+        const preCorrectOption = '<td><div class="ew-sentence" data-answer="1">';
+        const preWrongOption = '<td><div class="ew-sentence" data-answer="0">';
         const postOption = '</div></td>';
 
         const _this = this;
@@ -32,6 +27,6 @@ export class ChooseSentenceService {
             sentences += '<tr>' + sentenceMarkup + '</tr>';
         });
 
-        return preExercise + exercise.header + postHeader + sentences + postExercise;
+        return this.commonService.getHeader(exercise.header) + sentences + this.commonService.getFooter();
     }
 }

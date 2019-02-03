@@ -1,10 +1,14 @@
-var checkButton = document.getElementById("checkResult");
+var checkButton = document.getElementById("ew-check-results");
 
 setWordsDraggable(true);
 
+if (!checkButton) {
+  console.log('check button not found');
+}
+
 checkButton.onclick = function() {
   var rightCount = 0;
-  var gaps = document.getElementsByClassName('gap');
+  var gaps = document.getElementsByClassName('ew-gap');
   var i;
   for (i = 0; i < gaps.length; i++) {
     var gap = gaps[i];
@@ -22,10 +26,14 @@ checkButton.onclick = function() {
     }
   }
 
-	freeze();
-  document.getElementById("result").innerText = "Result: " + rightCount + " / " + gaps.length;
+  freeze();
+  showResult(rightCount, gaps.length);
+}
 
-  sendAnswer("Итог: " + rightCount + " баллов из " + gaps.length);
+function showResult(score, total) {
+  var resultText = "Набрано баллов: " + score + " из " + total;
+  document.getElementById("ew-result-text").innerText = resultText;
+  sendAnswer(resultText);
 }
 
 function sendAnswer(answer) {
@@ -42,7 +50,7 @@ function freeze() {
 }
 
 function setWordsDraggable(value) {
-	var words = document.getElementsByClassName('word');
+	var words = document.getElementsByClassName('ew-word');
   var i;
   for (i = 0; i < words.length; i++) {
     words[i].draggable = value;
@@ -56,14 +64,14 @@ document.addEventListener("dragstart", function(event) {
 
 // When the draggable p element enters the droptarget, change the DIVS's border style
 document.addEventListener("dragenter", function(event) {
-  if (event.target.classList.contains('gap') && !event.target.classList.contains('filled')) {
+  if (event.target.classList.contains('ew-gap') && !event.target.classList.contains('filled')) {
     event.target.classList.add('drag')
   }
 });
 
 // When the draggable p element leaves the droptarget, reset the DIVS's border style
 document.addEventListener("dragleave", function(event) {
-  if (event.target.classList.contains('gap')) {
+  if (event.target.classList.contains('ew-gap')) {
     event.target.classList.remove('drag');
   }
 });
@@ -84,14 +92,14 @@ document.addEventListener("drop", function(event) {
   var wordId = event.dataTransfer.getData("Text");
   var word = document.getElementById(wordId);
 
-  if (event.target.classList.contains('gap') && !event.target.classList.contains('filled')) {
+  if (event.target.classList.contains('ew-gap') && !event.target.classList.contains('filled')) {
     var gap = event.target;
     gap.appendChild(word);
     gap.classList.remove('drag');
     gap.classList.add('filled')
   }
 
-  if (event.target.classList.contains('words')) {
+  if (event.target.classList.contains('ew-words')) {
     event.target.appendChild(word);
   }
 });
@@ -100,11 +108,11 @@ document.addEventListener("drop", function(event) {
  * Fixing gaps to avoid inconsisten state
  */
 function fixGaps() {
-  var gaps = document.getElementsByClassName('gap');
+  var gaps = document.getElementsByClassName('ew-gap');
   var i;
   for (i = 0; i < gaps.length; i++) {
     if (!gaps[i].hasChildNodes()) {
-      gaps[i].className = 'gap';
+      gaps[i].className = 'ew-gap';
     }
   }
 }
@@ -113,7 +121,7 @@ function fixGaps() {
  * Fixing gaps to avoid inconsisten state
  */
 function fixWords() {
-  var words = document.getElementsByClassName('word');
+  var words = document.getElementsByClassName('ew-word');
   var i;
   for (i = 0; i < words.length; i++) {
     words[i].style.opacity = "1";

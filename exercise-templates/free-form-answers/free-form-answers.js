@@ -1,4 +1,4 @@
-document.getElementById("checkResultsButton").onclick = function() {
+document.getElementById("ew-check-results").onclick = function() {
     var answers = document.getElementsByClassName('ew-input');
     
     var totalAnswers = 0;
@@ -14,11 +14,13 @@ document.getElementById("checkResultsButton").onclick = function() {
       }
     }
     
-    document.getElementById("resultScore").innerText = rightAnswers + "/" + totalAnswers;
-    document.getElementById("resultScoreP").classList.remove('hidden');
-    document.getElementById("checkResultsButton").classList.add('disabled');
-  
-    sendAnswer("Итог: " + rightAnswers + " баллов из " + totalAnswers);
+    showResult(rightAnswers, totalAnswers);
+  }
+
+  function showResult(score, total) {
+    var resultText = "Набрано баллов: " + score + " из " + total;
+    document.getElementById("ew-result-text").innerText = resultText;
+    sendAnswer(resultText);
   }
   
   function isCorrectAnswer(answer) {
@@ -34,7 +36,7 @@ document.getElementById("checkResultsButton").onclick = function() {
   
   function sanitize(text) {
       text = text.replace(/\s\s+/g, ' ');
-    text = text.replace(/(\r\n|\n|\r)/gm,"");
+    text = text.replace(/(\r\n|\n|\r|\?)/gm,"");
     return text.trim().toLowerCase();
   }
   

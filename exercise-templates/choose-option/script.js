@@ -1,14 +1,14 @@
-var sentences = document.getElementsByClassName('sentence')
+var sentences = document.getElementsByClassName('ew-sentence')
 for (var i = 0; i < sentences.length; i++)
   sentences[i].onclick = sentenceOnClick;
 
 function sentenceOnClick(e) {
   var parent = this.parentElement.parentElement;
   var neighbour;
-  if (parent.getElementsByClassName("sentence")[0].innerHTML === this.innerHTML) {
-  	neighbour = parent.getElementsByClassName("sentence")[1];
+  if (parent.getElementsByClassName("ew-sentence")[0].innerHTML === this.innerHTML) {
+  	neighbour = parent.getElementsByClassName("ew-sentence")[1];
   } else {
-  	neighbour = parent.getElementsByClassName("sentence")[0];
+  	neighbour = parent.getElementsByClassName("ew-sentence")[0];
   }
   
   this.classList.toggle('selected');
@@ -17,15 +17,14 @@ function sentenceOnClick(e) {
   }  
 }
 
-document.getElementById("checkResultsButton").onclick = function() {
-  var rows = document.getElementsByClassName('exercise')[0].getElementsByTagName('tr');
-  
+document.getElementById("ew-check-results").onclick = function() {
+  var rows = document.getElementsByClassName('ew-exercise')[0].getElementsByTagName('tr');
   
   var score = 0;
   for (var i = 0; i < rows.length; i++) {
   	var row = rows[i];
     
-    var sentences = row.getElementsByClassName('sentence');
+    var sentences = row.getElementsByClassName('ew-sentence');
     if (sentences.length != 2) {
     	alert("System error: found " + sentences.length + " in one row");
     };
@@ -46,12 +45,14 @@ document.getElementById("checkResultsButton").onclick = function() {
     	selected.classList.add('wrong');
     }
   }
-  
-  document.getElementById("resultScore").innerText = score + "/" + rows.length;
-  document.getElementById("resultScoreP").classList.remove('hidden');
-  document.getElementById("checkResultsButton").classList.add('disabled');
 
-  sendAnswer("Итог: " + score + " баллов из " + rows.length);
+  showResult(score, rows.length);
+}
+
+function showResult(score, total) {
+  var resultText = "Набрано баллов: " + score + " из " + total;
+  document.getElementById("ew-result-text").innerText = resultText;
+  sendAnswer(resultText);
 }
 
 function sendAnswer(answer) {

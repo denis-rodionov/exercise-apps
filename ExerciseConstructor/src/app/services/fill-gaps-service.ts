@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from '../model/exercise';
 import { CommonService } from './common.service';
+import { getFactoryOf } from '@angular/core/src/render3';
 
 @Injectable()
 export class FillGapsService {
@@ -9,14 +10,11 @@ export class FillGapsService {
     }
 
     public createMarkup(exercise: Exercise): string {
-        const preExercise = '<div class=\"exercise\"><p>';
-        const postHeader = '</p><table>';
         // tslint:disable-next-line:max-line-length
-        const postExercise = '</table><div class="controls"><a class="ew-button" id="checkResult" href="#" draggable="fals">Проверить</a></div><div id="result"></div></div>';
-        const preText = '<tr><td><div class=\"text\"><p>';
-        const middleMarkup = '</p></div><div class=\"words\">';
+        const preText = '<tr><td><div class=\"ew-text\">';
+        const middleMarkup = '</div><div class=\"ew-words\">';
         const postText = '</div></td></tr>';
-        const preWord = '<span class=\"gap\" data-answer=\"';
+        const preWord = '<span class=\"ew-gap\" data-answer=\"';
         const postWord = '\"></span>';
         const separator = '#';
         const _this = this;
@@ -41,12 +39,12 @@ export class FillGapsService {
 
             // markup
             const wordsMarkup = words.map(function (word) {
-                return '<div id=\"' + wordsCounter++ + '\" class=\"word\">' + word + '</div>';
+                return '<div id=\"' + wordsCounter++ + '\" class=\"ew-word\">' + word + '</div>';
             }).join('');
 
             result += preText + processedText + middleMarkup + wordsMarkup + postText;
         });
 
-        return preExercise + exercise.header + postHeader + result + postExercise;
+        return this.commonService.getHeader(exercise.header) + result + this.commonService.getFooter();
     }
 }

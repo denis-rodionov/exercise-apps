@@ -1,27 +1,27 @@
-.exercise>* {
+.ew-exercise>* {
     margin: 10px;
     padding: 10px;
   }
   
-  .sentence {
+  .ew-sentence {
     padding: 7px;
     margin: 10px;
-    border-radius: 10px;
+    min-height: 100%;
     user-select: none;
-    border: 1.5px dashed #222;
+    border: 1px dashed #222;
     cursor: pointer;
   }
   
-  .sentence.selected {
-    background-color: #dddddd;
+  .ew-sentence.selected {
+    background-color: #fdf8d2;
   }
   
-  .sentence.wrong {
+  .ew-sentence.wrong {
     background-color: #fc8d83;
   }
   
-  .sentence.right {
-    background-color: #99ffcc;
+  .ew-sentence.right {
+    background-color: #71bb44;
   }
   
   .hidden {
@@ -29,27 +29,32 @@
   }
 
   .ew-button {
-    background-color: #ccc;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    display: inline-block;
-    cursor: pointer;
-    font-family: Arial;
-    font-size: 17px;
-    padding: 10px;
-    margin: 20px;
+  background-color: #199c68;
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.ew-button:hover {
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
+}
+
+.ew-button:focus {
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
+}
+
+  .ew-button:visited {
     text-decoration: none;
-    text-shadow: 0px 1px 0px #2f6627;
   }
   
-  .ew-button:hover {
-    background-color: #ddd;
-  }
-  
-  .ew-button:active {
-    background-color: #bbb;
-  }
   
   .ew-button.disabled {
     color: currentColor;
@@ -60,6 +65,9 @@
   }
 
   tr:nth-child(even) {
-    background-color: #eeeeee;
+    background-color: #f7f3f3;
   }
   
+  .ew-controls {
+    text-align: center;
+  }
