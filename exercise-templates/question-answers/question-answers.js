@@ -36,6 +36,7 @@ document.getElementById("checkResultsButton").onclick = function() {
   
   document.getElementById("resultScore").innerText = correctAnswers + "/" + totalAnswers;
   document.getElementById("resultScoreP").classList.remove('hidden');
+  document.getElementById("checkResultsButton").classList.add('disabled');
 
   sendAnswer("Результат: " + correctAnswers + " баллов из " + totalAnswers);
 }

@@ -49,6 +49,7 @@ document.getElementById("checkResultsButton").onclick = function() {
   
   document.getElementById("resultScore").innerText = score + "/" + rows.length;
   document.getElementById("resultScoreP").classList.remove('hidden');
+  document.getElementById("checkResultsButton").classList.add('disabled');
 
   sendAnswer("Итог: " + score + " баллов из " + rows.length);
 }
