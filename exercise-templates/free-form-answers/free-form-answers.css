@@ -1,0 +1,72 @@
+.free-form-answer >* {
+    margin: 10px;
+    padding: 10px
+  }
+  
+  .ew-text {
+    width: 300px;
+    padding: 7px;
+  }
+  
+  .ew-answer {
+    width: 300px;
+    padding: 10px;
+  }
+  
+  .right-answer {
+    padding: 10px;
+  }
+  
+  .right-answer-text {
+    color: #0f9954;
+  }
+  
+  .ew-input {
+    width: 100%;
+  }
+  
+  .ew-input.correct {
+    background-color: #99ffcc;
+  }
+  
+  .ew-input.incorrect {
+    background-color: #fc8d83;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #eeeeee;
+  }
+  
+  .ew-button {
+      background-color: #ccc;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      display: inline-block;
+      cursor: pointer;
+      font-family: Arial;
+      font-size: 17px;
+      padding: 10px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #2f6627;
+    }
+    
+    .ew-button:hover {
+      background-color: #ddd;
+    }
+    
+    .ew-button:active {
+      background-color: #bbb;
+    }
+    
+    .ew-button.disabled {
+      color: currentColor;
+      cursor: not-allowed;
+      opacity: 0.5;
+      text-decoration: none;
+      pointer-events: none;
+    }
+    
+    .hidden {
+      display: none;
+    }
