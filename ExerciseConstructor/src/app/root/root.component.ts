@@ -20,7 +20,12 @@ export class RootComponent implements OnInit {
 
   public ngOnInit() {
     console.log('#### AppComponent::ngOnInit');
-    this.userName = this.authService.getUser().email;
+    const user = this.authService.getUser();
+    if (user) {
+      this.userName = user.email;
+    } else {
+      console.log('no user');
+    }
   }
 
   addExercise() {

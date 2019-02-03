@@ -31,6 +31,7 @@ export class ExerciseListComponent implements OnInit {
           const filterType: ExerciseType = ExerciseType[filter];
           this.exerciseService.filterExercises(filterType);
         }
+        this.exercises$ = this.exerciseService.getExercises();
       }});
   }
 

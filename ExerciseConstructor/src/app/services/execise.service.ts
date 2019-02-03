@@ -23,7 +23,12 @@ export class ExerciseService {
 
     public init() {
         console.log('ExerciseService.init()');
-        this.userId = this.authService.getUser().uid;
+        const user = this.authService.getUser();
+        if (!user) {
+            console.log('ExerciseService.init: no user');
+            return;
+        }
+        this.userId = user.uid;
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
             console.log('change comes: ' + changes.length + ', filter: ' + this.filter);
