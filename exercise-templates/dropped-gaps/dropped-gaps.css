@@ -1,0 +1,125 @@
+.ew-exercise>* {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .ew-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .ew-controls {
+    text-align: center;
+  }
+  
+  .ew-gap-option {
+    padding: 4px 10px;
+    margin: 8px 4px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .ew-gap-option.wrong {
+    background-color: #fc8d83;
+  }
+  
+  .ew-gap-option.right {
+    background-color: #71bb44;
+  }
+  
+  .ew-td {
+    text-align: left;
+    vertical-align: top;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f7f3f3;
+  }
+  
+  .ew-button {
+    background-color: #199c68;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  .ew-button:hover {
+    background-color: #21c784;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .ew-button:active {
+    background-color: #21c784;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .ew-button.disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+  }
+  
+  .ew-text {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .ew-text-half {
+    display: inline-block;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .ew-header {
+    font-size: 20px;
+    font-weight: bolt;
+  }
+  
+  .ew-gap {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    min-width: 60px;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .ew-gap.drag {
+    border-bottom: 2px dashed black;
+  }
+  
+  .ew-gap.filled {
+    border: 0;
+  }
+  
+  .ew-gap.missed {
+    background-color: #fc8d83;
+  }
+  
+  .ew-word {
+    padding: 3px 10px 3px 10px;
+    margin: 2px;
+    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
+    background-color: white;
+  }
+  
+  .ew-word.right {
+    background-color: #71bb44;
+  }
+  
+  .ew-word.wrong {
+    background-color: #fc8d83;
+  }
