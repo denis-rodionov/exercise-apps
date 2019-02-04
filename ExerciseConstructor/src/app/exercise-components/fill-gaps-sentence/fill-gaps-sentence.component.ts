@@ -9,12 +9,15 @@ import { EventEmitter } from '@angular/core';
 })
 export class FillGapsSentenceComponent implements OnInit {
 
+  secondColumnEnabled = false;
+
   @Input() sentence: Sentence;
   @Output() deleted = new EventEmitter<Sentence>();
 
   constructor() { }
 
   ngOnInit() {
+    this.secondColumnEnabled = this.sentence.extraText && this.sentence.extraText !== '';
   }
 
   delete() {

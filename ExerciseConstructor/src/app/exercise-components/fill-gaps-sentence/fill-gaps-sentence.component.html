@@ -8,14 +8,20 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <mat-form-field class="long-input">
+  <mat-form-field class="long-input big-text">
     <textarea matInput placeholder="Введите текст предложения заключая в решётки (#) скрытые слова" [(ngModel)]="sentence.text"></textarea>
   </mat-form-field>
 
-  <br>
-
   <mat-form-field class="long-input">
     <input matInput placeholder="Введите неверные варианты слов через запятую" [(ngModel)]="sentence.words">
+  </mat-form-field>
+
+  <mat-checkbox [(ngModel)]="secondColumnEnabled">Колонка 2</mat-checkbox>
+
+  <mat-form-field class="long-input big-text" *ngIf="secondColumnEnabled">
+    <textarea matInput
+      placeholder="Колонка 2: Введите текст предложения заключая в решётки (#) скрытые слова" 
+      [(ngModel)]="sentence.extraText"></textarea>
   </mat-form-field>
 
   <br>

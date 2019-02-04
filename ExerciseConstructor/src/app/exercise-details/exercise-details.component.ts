@@ -73,7 +73,7 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   addSentence() {
-    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', '', '', ''));
+    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', '', '', '', ''));
   }
 
   deleteSentence(sentence: Sentence) {

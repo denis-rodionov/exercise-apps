@@ -7,7 +7,6 @@
             <mat-form-field class="long-input">
                 <input matInput placeholder="Название" [(ngModel)]="exercise.name" name="name" class="long-input">
             </mat-form-field>
-            <br>
             <mat-form-field class="exercise-type-input">
                 <mat-select placeholder="Тип" [(value)]="exercise.type">
                     <mat-option *ngFor="let exerciseType of possibleTypes" [value]="exerciseType.value">
@@ -15,7 +14,6 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <br>
             <mat-form-field class="long-input">
                 <input matInput placeholder="Заголовок упражнения" [(ngModel)]="exercise.header" name="header" class="long-input">
             </mat-form-field>

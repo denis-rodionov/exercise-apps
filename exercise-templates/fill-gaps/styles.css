@@ -9,8 +9,20 @@
 }
 
 .ew-inner-table {
+  display: table;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0);
+}
+
+.ew-row {
+  display: table-row;
+  text-align: center;
+  width: 100%;
+}
+
+.ew-cell {
+  display: table-cell;
+  text-align: center;
+  padding: 0 30px 0 30px;
 }
 
 .ew-controls {
@@ -23,7 +35,7 @@
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.ew-tr:nth-child(even) {
   background-color: #f7f3f3;
 }
 
@@ -57,12 +69,6 @@ tr:nth-child(even) {
   opacity: 0.5;
   text-decoration: none;
   pointer-events: none;
-}
-
-.ew-text {
-  display: inline-block;
-  text-align: center;
-  width: 100%;
 }
 
 .ew-text-half {
