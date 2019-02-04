@@ -38,9 +38,29 @@ function showResult(score, total) {
 
 function sendAnswer(answer) {
   var answerInput = document.getElementById('lessonanswer-answer_text');
-  answerInput.innerText = answer;
-  var sendButton = document.getElementsByName('send-answer')[0];
-  sendButton.click();
+
+  if (answerInput) {
+    console.log('answer input found!')
+    answerInput.innerText = answer;
+    var sendButton = document.getElementsByName('send-answer')[0];
+    sendButton.click();
+  } else {
+    //var answerPanel = document.getElementsByClassName('answer-')
+    var commentIntputs = document.getElementsByClassName('new-comment-textarea');
+    if (commentIntputs.length == 0) {
+      console.log('comment input not found!')
+    } else {
+      console.log('comment input found. inserting answer: ' + answer);
+      commentIntputs[0].innerText = answer;
+      var sendButtons = document.getElementsByClassName('btn-send');
+      if (sendButtons.legnth == 0) {
+        console.log('not found a button to send a comment');
+      } else {
+        console.log('send comment button found');
+        sendButtons[0].click();
+      }
+    }
+  }
 }
 
 function freeze() {
