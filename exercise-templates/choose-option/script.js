@@ -17,7 +17,8 @@ function sentenceOnClick(e) {
   }  
 }
 
-document.getElementById("ew-check-results").onclick = function() {
+document.getElementById("ew-check-results").onclick = function(e) {
+  e.preventDefault();
   var rows = document.getElementsByClassName('ew-exercise')[0].getElementsByTagName('tr');
   
   var score = 0;
@@ -49,7 +50,10 @@ document.getElementById("ew-check-results").onclick = function() {
   showResult(score, rows.length);
 }
 
+// --------  Common functions -------------------
+
 function showResult(score, total) {
+  document.getElementById("ew-check-results").classList.add('disabled');
   var resultText = "Набрано баллов: " + score + " из " + total;
   document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
@@ -62,13 +66,13 @@ function sendAnswer(answer) {
     console.log('answer input found!')
     answerInput.innerText = answer;
     var sendButton = document.getElementsByName('send-answer')[0];
-    sendButton.click();
   } else {
-    var commentIntputs = document.getElementsByClassName('new-comment-textarea');
+    var commentIntputs = document.getElementsByClassName('new-comment')[0]
+            .getElementsByClassName('new-comment-textarea');
     if (commentIntputs.length == 0) {
       console.log('comment input not found!')
     } else {
-      console.log('comment input found');
+      console.log('comment input found. inserting answer: ' + answer);
       commentIntputs[0].innerText = answer;
       var sendButtons = document.getElementsByClassName('btn-send');
       if (sendButtons.legnth == 0) {

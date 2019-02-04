@@ -1,5 +1,6 @@
-document.getElementById("ew-check-results").onclick = function() {
-	var gaps = document.getElementsByClassName('ew-gap-option');
+document.getElementById("ew-check-results").onclick = function(e) {
+  e.preventDefault();
+  var gaps = document.getElementsByClassName('ew-gap-option');
   
   var correctAnswers = 0;
   for (var i = 0; i < gaps.length; i++) {
@@ -17,6 +18,7 @@ document.getElementById("ew-check-results").onclick = function() {
 // --------  Common functions -------------------
 
 function showResult(score, total) {
+  document.getElementById("ew-check-results").classList.add('disabled');
   var resultText = "Набрано баллов: " + score + " из " + total;
   document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
@@ -29,10 +31,9 @@ function sendAnswer(answer) {
     console.log('answer input found!')
     answerInput.innerText = answer;
     var sendButton = document.getElementsByName('send-answer')[0];
-    sendButton.click();
   } else {
-    //var answerPanel = document.getElementsByClassName('answer-')
-    var commentIntputs = document.getElementsByClassName('new-comment-textarea');
+    var commentIntputs = document.getElementsByClassName('new-comment')[0]
+            .getElementsByClassName('new-comment-textarea');
     if (commentIntputs.length == 0) {
       console.log('comment input not found!')
     } else {
