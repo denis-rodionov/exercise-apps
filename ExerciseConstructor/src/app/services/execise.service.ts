@@ -56,7 +56,8 @@ export class ExerciseService {
             { value: ExerciseType.FillGaps, viewValue: 'Drag & Drop' },
             { value: ExerciseType.ChooseSentence, viewValue: 'Выбери предложение' },
             { value: ExerciseType.QuestionAnswers, viewValue: 'Вопрос ответ'},
-            { value: ExerciseType.FreeFormAnswer, viewValue: 'Свободная форма'}
+            { value: ExerciseType.FreeFormAnswer, viewValue: 'Свободная форма'},
+            { value: ExerciseType.DroppedGaps, viewValue: 'Выпадающие пробелы'}
         ];
     }
 
