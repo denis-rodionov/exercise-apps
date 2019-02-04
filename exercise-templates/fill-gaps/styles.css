@@ -30,6 +30,7 @@ tr:nth-child(even) {
   font-family: Arial;
   font-size: 17px;
   padding: 10px;
+  margin: 10px;
   text-decoration: none;
 }
 
@@ -39,7 +40,7 @@ tr:nth-child(even) {
   text-decoration: none;
 }
 
-.ew-button:active {
+.ew-button:focus {
   background-color: #21c784;
   color: white;
   text-decoration: none;

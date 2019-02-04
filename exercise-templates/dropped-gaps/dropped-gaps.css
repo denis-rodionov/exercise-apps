@@ -47,6 +47,7 @@
     font-family: Arial;
     font-size: 17px;
     padding: 10px;
+    margin: 10px;
     text-decoration: none;
   }
   
@@ -56,7 +57,7 @@
     text-decoration: none;
   }
   
-  .ew-button:active {
+  .ew-button:focus {
     background-color: #21c784;
     color: white;
     text-decoration: none;
