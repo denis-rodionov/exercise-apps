@@ -9,8 +9,23 @@
 }
 
 .ew-inner-table {
+  display: table;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0);
+}
+
+.ew-row {
+  display: table-row;
+  text-align: center;
+  width: 100%;
+}
+
+.ew-cell {
+  display: table-cell;
+  text-align: center;
+}
+
+.ew-column2 {
+  width: 50%;
 }
 
 .ew-controls {
@@ -23,7 +38,7 @@
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.ew-tr:nth-child(even) {
   background-color: #f7f3f3;
 }
 

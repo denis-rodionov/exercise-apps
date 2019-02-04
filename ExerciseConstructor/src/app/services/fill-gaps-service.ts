@@ -19,7 +19,7 @@ export class FillGapsService {
         const separator = '#';
         const _this = this;
 
-        let result = '';
+        let sentenceMarkup = '';
         let wordsCounter = 0;
         exercise.sentences.forEach(function (sentence) {
             // find words
@@ -28,23 +28,36 @@ export class FillGapsService {
                 words.push(word.trim());
             });
 
-            let processedText = sentence.text;
+            // column1 markup. It is the main text if no column 2.
+            let column1 = sentence.text;
             sentence.text.split(separator).forEach(function (str, index) {
                 if (index % 2 === 1) {
                     words.push(str);
-                    processedText = processedText.replace(separator + str + separator, preWord + str + postWord);
+                    column1 = column1.replace(separator + str + separator, preWord + str + postWord);
                 }
             });
-            words = _this.commonService.shuffle(words);
 
-            // markup
+            // column 2 if exists
+            let column2 = '';
+            if (sentence.extraText) {
+                sentence.extraText.split(separator).forEach(function (str, index) {
+                    if (index % 2 === 1) {
+                        words.push(str);
+                        column2 = column2.replace(separator + str + separator, preWord + str + postWord);
+                    }
+                });
+            }
+
+            // words markup
+            words = _this.commonService.shuffle(words);
             const wordsMarkup = words.map(function (word) {
                 return '<div id=\"' + wordsCounter++ + '\" class=\"ew-word\">' + word + '</div>';
             }).join('');
 
-            result += preText + processedText + middleMarkup + wordsMarkup + postText;
+            // sentence markup
+            sentenceMarkup += preText + column1 + middleMarkup + wordsMarkup + postText;
         });
 
-        return this.commonService.getHeader(exercise.header) + result + this.commonService.getFooter();
+        return this.commonService.getHeader(exercise.header) + sentenceMarkup + this.commonService.getFooter();
     }
 }
