@@ -8,11 +8,16 @@
   width: 100%;
 }
 
+.ew-inner-table {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .ew-controls {
   text-align: center;
 }
 
-td, th {
+.ew-table.td, .ew-table.th {
   text-align: left;
   vertical-align: top;
   padding: 8px;
@@ -69,6 +74,8 @@ tr:nth-child(even) {
 .ew-header {
   font-size: 20px;
   font-weight: bolt;
+  text-align: center;
+  width: 50%;
 }
 
 .ew-words {
@@ -77,6 +84,7 @@ tr:nth-child(even) {
   border-radius: 7px;
   min-height: 40px;
   min-width: 150px;
+  width: 100%;
   text-align: center;
   margin-top: 5px;
 }
