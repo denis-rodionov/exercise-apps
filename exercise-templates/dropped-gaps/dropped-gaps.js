@@ -1,17 +1,17 @@
-document.getElementById("ew-check-results").onclick = function(e) {
+document.getElementById("ew-check-results").onclick = function (e) {
   e.preventDefault();
   var gaps = document.getElementsByClassName('ew-gap-option');
-  
+
   var correctAnswers = 0;
   for (var i = 0; i < gaps.length; i++) {
-  	if (gaps[i].value === gaps[i].dataset.correct) {
-    	correctAnswers++;
+    if (gaps[i].value === gaps[i].dataset.correct) {
+      correctAnswers++;
       gaps[i].classList.add('right');
     } else {
-    	gaps[i].classList.add('wrong');
+      gaps[i].classList.add('wrong');
     }
   }
-  
+
   showResult(correctAnswers, gaps.length);
 }
 
@@ -33,7 +33,7 @@ function sendAnswer(answer) {
     var sendButton = document.getElementsByName('send-answer')[0];
   } else {
     var commentIntputs = document.getElementsByClassName('new-comment')[0]
-            .getElementsByClassName('new-comment-textarea');
+      .getElementsByClassName('new-comment-textarea');
     if (commentIntputs.length == 0) {
       console.log('comment input not found!')
     } else {

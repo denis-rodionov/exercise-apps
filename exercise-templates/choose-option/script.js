@@ -6,44 +6,44 @@ function sentenceOnClick(e) {
   var parent = this.parentElement.parentElement;
   var neighbour;
   if (parent.getElementsByClassName("ew-sentence")[0].innerHTML === this.innerHTML) {
-  	neighbour = parent.getElementsByClassName("ew-sentence")[1];
+    neighbour = parent.getElementsByClassName("ew-sentence")[1];
   } else {
-  	neighbour = parent.getElementsByClassName("ew-sentence")[0];
+    neighbour = parent.getElementsByClassName("ew-sentence")[0];
   }
-  
+
   this.classList.toggle('selected');
   if (this.classList.contains('selected') && neighbour.classList.contains('selected')) {
-  	neighbour.classList.remove('selected');
-  }  
+    neighbour.classList.remove('selected');
+  }
 }
 
-document.getElementById("ew-check-results").onclick = function(e) {
+document.getElementById("ew-check-results").onclick = function (e) {
   e.preventDefault();
   var rows = document.getElementsByClassName('ew-exercise')[0].getElementsByTagName('tr');
-  
+
   var score = 0;
   for (var i = 0; i < rows.length; i++) {
-  	var row = rows[i];
-    
+    var row = rows[i];
+
     var sentences = row.getElementsByClassName('ew-sentence');
     if (sentences.length != 2) {
-    	alert("System error: found " + sentences.length + " in one row");
+      alert("System error: found " + sentences.length + " in one row");
     };
-    
+
     // check if there is no answer
     if (!sentences[0].classList.contains('selected') && !sentences[1].classList.contains('selected')) {
-    	sentences[0].classList.add('wrong');
+      sentences[0].classList.add('wrong');
       sentences[1].classList.add('wrong');
       continue;
     }
-    
+
     // check the answer
-    var selected =  row.getElementsByClassName('selected')[0];
+    var selected = row.getElementsByClassName('selected')[0];
     if (selected.dataset.answer == "1") {
-    	score++;
+      score++;
       selected.classList.add('right');
     } else {
-    	selected.classList.add('wrong');
+      selected.classList.add('wrong');
     }
   }
 
@@ -68,7 +68,7 @@ function sendAnswer(answer) {
     var sendButton = document.getElementsByName('send-answer')[0];
   } else {
     var commentIntputs = document.getElementsByClassName('new-comment')[0]
-            .getElementsByClassName('new-comment-textarea');
+      .getElementsByClassName('new-comment-textarea');
     if (commentIntputs.length == 0) {
       console.log('comment input not found!')
     } else {

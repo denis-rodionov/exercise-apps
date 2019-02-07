@@ -6,7 +6,7 @@ if (!checkButton) {
   console.log('check button not found');
 }
 
-checkButton.onclick = function(e) {
+checkButton.onclick = function (e) {
   e.preventDefault();
   var rightCount = 0;
   var gaps = document.getElementsByClassName('ew-gap');
@@ -32,39 +32,39 @@ checkButton.onclick = function(e) {
 }
 
 function freeze() {
-	setWordsDraggable(false);
-  
+  setWordsDraggable(false);
+
   checkButton.classList.add('disabled');
 }
 
 function setWordsDraggable(value) {
-	var words = document.getElementsByClassName('ew-word');
+  var words = document.getElementsByClassName('ew-word');
   var i;
   for (i = 0; i < words.length; i++) {
     words[i].draggable = value;
   }
 }
 
-document.addEventListener("dragstart", function(event) {
+document.addEventListener("dragstart", function (event) {
   event.dataTransfer.setData("Text", event.target.id);
   event.target.style.opacity = "0.01";
 });
 
 // When the draggable p element enters the droptarget, change the DIVS's border style
-document.addEventListener("dragenter", function(event) {
+document.addEventListener("dragenter", function (event) {
   if (event.target.classList.contains('ew-gap') && !event.target.classList.contains('filled')) {
     event.target.classList.add('drag')
   }
 });
 
 // When the draggable p element leaves the droptarget, reset the DIVS's border style
-document.addEventListener("dragleave", function(event) {
+document.addEventListener("dragleave", function (event) {
   if (event.target.classList.contains('ew-gap')) {
     event.target.classList.remove('drag');
   }
 });
 
-document.addEventListener("dragend", function(event) {
+document.addEventListener("dragend", function (event) {
   fixGaps();
   fixWords();
 });
@@ -75,7 +75,7 @@ document.addEventListener("dragend", function(event) {
    The dragged data is the id of the dragged element ("drag1")
    Append the dragged element into the drop element
 */
-document.addEventListener("drop", function(event) {
+document.addEventListener("drop", function (event) {
   event.preventDefault();
   var wordId = event.dataTransfer.getData("Text");
   var word = document.getElementById(wordId);
@@ -117,7 +117,7 @@ function fixWords() {
 }
 
 // By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-document.addEventListener("dragover", function(event) {
+document.addEventListener("dragover", function (event) {
   event.preventDefault();
 });
 
@@ -139,7 +139,7 @@ function sendAnswer(answer) {
     var sendButton = document.getElementsByName('send-answer')[0];
   } else {
     var commentIntputs = document.getElementsByClassName('new-comment')[0]
-            .getElementsByClassName('new-comment-textarea');
+      .getElementsByClassName('new-comment-textarea');
     if (commentIntputs.length == 0) {
       console.log('comment input not found!')
     } else {
