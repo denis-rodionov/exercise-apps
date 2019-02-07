@@ -44,12 +44,35 @@ function showCorrectAnswer(number) {
   }
 }
 
+function generateAnswer(correctNumber, total) {
+  var exerciseTag = document.getElementsByClassName('ew-exercise');
+  console.log('exercise tags found: ' + exerciseTag.length);
+  
+  var rows = exerciseTag[0].getElementsByTagName('tr');
+
+  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
+  for (var i = 0; i < rows.length; i++) {
+    var question = rows[i].getElementsByClassName('ew-text')[0].innerText;
+    var answerTag = rows[i].getElementsByClassName('ew-input')[0];
+
+    result += '\n' + (i + 1) + ') ' + question;
+
+    if (answerTag.classList.contains('correct')) {
+      result += '     Answer: ' + answerTag.value;
+    } else {
+      result += '\nINCORRECT: ' + answerTag.value;
+    }
+  }
+
+  return result;
+}
+
 // --------  Common functions -------------------
 
 function showResult(score, total) {
   document.getElementById("ew-check-results").classList.add('disabled');
-  var resultText = "Набрано баллов: " + score + " из " + total;
-  document.getElementById("ew-result-text").innerText = resultText;
+  var resultText = generateAnswer(score, total);
+  //document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
 }
 
