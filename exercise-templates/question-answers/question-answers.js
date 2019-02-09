@@ -16,23 +16,30 @@ function answerOnClick(e) {
 
 document.getElementById("ew-check-results").onclick = function (e) {
   e.preventDefault();
-  var answers = document.getElementsByClassName('ew-answer');
   var totalAnswers = 0;
   var correctAnswers = 0;
-  for (var i = 0; i < answers.length; i++) {
-    if (answers[i].dataset.answer === '1') {
-      totalAnswers++;
-      answers[i].classList.add('right');
-    }
+  var rows = document.getElementsByClassName('ew-exercise')[0].getElementsByTagName('tr');
 
-    if (answers[i].classList.contains('selected')) {
-      if (answers[i].dataset.answer === '0') {
-        answers[i].classList.add('wrong');
-      } else {
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    totalAnswers++;
+
+    var selected = row.getElementsByClassName('selected');
+    if (selected.length != 0) {
+      if (selected[0].dataset.answer === '1') {
         correctAnswers++;
+        selected[0].classList.add('right');
+      } else {
+        selected[0].classList.add('wrong');
+      }
+      selected[0].classList.remove('selected');
+    } else {
+      // nothing is selected
+      var answers = row.getElementsByClassName('ew-answer');
+      for (var j = 0; j < answers.length; j++) {
+        answers[j].classList.add('wrong');
       }
     }
-    answers[i].classList.remove('selected');
   }
 
   showResult(correctAnswers, totalAnswers);
