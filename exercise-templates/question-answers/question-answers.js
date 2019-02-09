@@ -45,12 +45,40 @@ document.getElementById("ew-check-results").onclick = function (e) {
   showResult(correctAnswers, totalAnswers);
 }
 
+function generateAnswer(correctNumber, total) {
+  var exerciseTag = document.getElementsByClassName('ew-exercise');
+  console.log('exercise tags found: ' + exerciseTag.length);
+
+  var rows = exerciseTag[0].getElementsByTagName('tr');
+
+  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+
+    var question = row.getElementsByClassName('ew-question')[0].innerText;
+    result += '\n' + (i + 1) + ') ' + question;
+
+    var wrongAnswer = row.getElementsByClassName('wrong');
+    if (wrongAnswer.length > 1) {
+      result += '\nINCORRECT: no answer ';
+    } else if (wrongAnswer.length != 0) {
+      result += '\nINCORRECT: ' + wrongAnswer[0].innerText;
+    } else {
+      var correctAnswer = row.getElementsByClassName('right');
+      result += '     Answer: ' + correctAnswer[0].innerText;
+    }
+  }
+
+  return result;
+}
+
 // --------  Common functions -------------------
 
 function showResult(score, total) {
   document.getElementById("ew-check-results").classList.add('disabled');
-  var resultText = "Набрано баллов: " + score + " из " + total;
-  document.getElementById("ew-result-text").innerText = resultText;
+  var resultText = generateAnswer(score, total);
+  //document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
 }
 
