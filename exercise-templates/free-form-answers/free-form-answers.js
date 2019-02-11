@@ -47,7 +47,7 @@ function showCorrectAnswer(number) {
 function generateAnswer(correctNumber, total) {
   var exerciseTag = document.getElementsByClassName('ew-exercise');
   console.log('exercise tags found: ' + exerciseTag.length);
-  
+
   var rows = exerciseTag[0].getElementsByTagName('tr');
 
   var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
