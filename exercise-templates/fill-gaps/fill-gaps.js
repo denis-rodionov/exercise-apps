@@ -121,12 +121,46 @@ document.addEventListener("dragover", function (event) {
   event.preventDefault();
 });
 
+function generateAnswer(correctNumber, total) {
+  var exerciseTag = document.getElementsByClassName('ew-exercise');
+  console.log('exercise tags found: ' + exerciseTag.length);
+  
+  var rows = exerciseTag[0].getElementsByTagName('tr');
+
+  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
+  for (var i = 0; i < rows.length; i++) {
+  	var questions = rows[i].getElementsByClassName('ew-cell');
+    
+    if (questions.length == 1) {
+    	result += '\n' + (i + 1) + ') ' + generateAnswerForQuestion(questions[0]);
+    } else {
+    	result += '\n' + (i + 1) + 'a) ' + generateAnswerForQuestion(questions[0]);
+      result += '\n' + (i + 1) + 'b) ' + generateAnswerForQuestion(questions[1]);
+    }
+  }
+
+  return result;
+}
+
+function generateAnswerForQuestion(questionTag) {
+	var result = questionTag.innerText;
+
+  var wrongAnswers = questionTag.getElementsByClassName('missed');
+  
+  if (wrongAnswers.length != 0) {
+  	result += '\nINCORRECT: wrong answers: ' + wrongAnswers.length;
+  } else {
+  	result += '   Correct';
+  }
+  return result;
+}
+
 // --------  Common functions -------------------
 
 function showResult(score, total) {
   document.getElementById("ew-check-results").classList.add('disabled');
-  var resultText = "Набрано баллов: " + score + " из " + total;
-  document.getElementById("ew-result-text").innerText = resultText;
+  var resultText = generateAnswer(score, total);
+  //document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
 }
 
