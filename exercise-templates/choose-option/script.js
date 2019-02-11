@@ -50,12 +50,37 @@ document.getElementById("ew-check-results").onclick = function (e) {
   showResult(score, rows.length);
 }
 
+function generateAnswer(correctNumber, total) {
+  var exerciseTag = document.getElementsByClassName('ew-exercise');
+  console.log('exercise tags found: ' + exerciseTag.length);
+  
+  var rows = exerciseTag[0].getElementsByTagName('tr');
+
+  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
+  for (var i = 0; i < rows.length; i++) {
+    result += '\n' + (i + 1) + ') ';
+  
+  	var correctTag = rows[i].getElementsByClassName('right');
+    var wrongTag = rows[i].getElementsByClassName('wrong');
+    
+    if (correctTag.length != 0) {
+      result += correctTag[0].innerText + '     : Correct.';
+    } else if (wrongTag.length == 1) {
+    	result += 'INCORRECT: ' + wrongTag[0].innerText;
+    } else {
+    	result += 'INCORRECT: no answer selected';
+    }
+  }
+
+  return result;
+}
+
 // --------  Common functions -------------------
 
 function showResult(score, total) {
   document.getElementById("ew-check-results").classList.add('disabled');
-  var resultText = "Набрано баллов: " + score + " из " + total;
-  document.getElementById("ew-result-text").innerText = resultText;
+  var resultText = generateAnswer(score, total);
+  //document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
 }
 
@@ -83,4 +108,8 @@ function sendAnswer(answer) {
       }
     }
   }
+}
+
+function clearTags(text) {
+	return text.replace(/<([a-z][a-z0-9]*)\b[^>]*>/g, '').replace(/<\/([a-z][a-z0-9]*)\b[^>]*>/g, '');
 }
