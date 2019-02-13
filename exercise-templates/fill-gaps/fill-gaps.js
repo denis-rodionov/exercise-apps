@@ -1,6 +1,6 @@
 var checkButton = document.getElementById("ew-check-results");
 
-setWordsDraggable(true);
+setWordsDraggableAndClickable(true);
 
 if (!checkButton) {
   console.log('check button not found');
@@ -37,11 +37,34 @@ function freeze() {
   checkButton.classList.add('disabled');
 }
 
-function setWordsDraggable(value) {
+function onWordClick(event) {
+	var tr = event.target.closest(".ew-tr");
+  var word = event.target;
+
+  if (word.parentElement.classList.contains('ew-gap')) {
+  	var gap = word.parentElement;
+  	tr.getElementsByClassName('ew-words')[0].appendChild(word);
+    gap.classList.remove('filled');
+    return;
+  }
+	
+	var gaps = tr.getElementsByClassName('ew-gap');
+  
+  for (var i = 0; i < gaps.length; i++) {
+  	if (!gaps[i].classList.contains('filled')) {
+    	gaps[i].appendChild(word);
+    	gaps[i].classList.add('filled')
+      break;
+    }
+  }
+}
+
+function setWordsDraggableAndClickable(value) {
   var words = document.getElementsByClassName('ew-word');
   var i;
   for (i = 0; i < words.length; i++) {
     words[i].draggable = value;
+    words[i].onclick = onWordClick;
   }
 }
 
