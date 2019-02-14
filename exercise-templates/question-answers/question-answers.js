@@ -98,7 +98,7 @@ function sendAnswer(answer) {
       console.log('comment input found. inserting answer: ' + answer);
       commentIntputs[0].innerText = answer;
       var sendButtons = document.getElementsByClassName('btn-send');
-      if (sendButtons.legnth == 0) {
+      if (sendButtons.length == 0) {
         console.log('not found a button to send a comment');
       } else {
         console.log('send comment button found');
