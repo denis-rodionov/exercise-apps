@@ -32,7 +32,7 @@ checkButton.onclick = function (e) {
 }
 
 function freeze() {
-  setWordsDraggable(false);
+  setWordsDraggableAndClickable(false);
 
   checkButton.classList.add('disabled');
 }

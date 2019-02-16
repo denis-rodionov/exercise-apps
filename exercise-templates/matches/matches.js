@@ -112,6 +112,7 @@ function generateAnswer(correctNumber, total) {
     result += '\n' + (i + 1) + ') ';
 
     var correctSentences = rows[i].getElementsByClassName('right');
+    var wrongSentences = rows[i].getElementsByClassName('wrong');
 
     if (correctSentences.length == 2) {
       result += correctSentences[0].innerText + ' - ' + correctSentences[1].innerText + '     : Correct.';
@@ -121,7 +122,7 @@ function generateAnswer(correctNumber, total) {
   }
 
   var notUsedSentences = document.getElementById('ew-options-table').getElementsByClassName('ew-sentence');
-  if (notUsedSentences > 0) {
+  if (notUsedSentences.length > 0) {
     result += '\n\nНе использованные варианты: ' + notUsedSentences.length;
   }
 
