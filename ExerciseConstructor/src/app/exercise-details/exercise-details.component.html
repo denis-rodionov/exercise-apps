@@ -43,6 +43,11 @@
                 </app-dropped-gaps>
             </mat-accordion>
 
+            <mat-accordion *ngIf="isOfType('Matches')">
+                <app-matches [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-matches>
+            </mat-accordion>
+
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
                 одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
             </div>

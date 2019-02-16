@@ -18,12 +18,12 @@ export class CommonService {
         return newArray;
     }
 
-    getHeader(headertext: string) {
-        return '<div class=\"ew-exercise\"><p>' + headertext + '</p><table class="ew-table">';
+    getHeader(headertext: string, withTable: boolean = true) {
+        return '<div class=\"ew-exercise\"><p>' + headertext + '</p>' + (withTable ? '<table class="ew-table">' : '');
     }
 
-    getFooter() {
+    getFooter(withTable: boolean = true) {
         // tslint:disable-next-line:max-line-length
-        return '</table><div class="ew-controls"><a class="ew-button" id="ew-check-results" href="#" draggable="false">Проверить</a></div><div id="ew-result-text"></div></div>';
+        return (withTable ? '</table>' : '') +  '<div class="ew-controls"><a class="ew-button" id="ew-check-results" href="#" draggable="false">Проверить</a></div><div id="ew-result-text"></div></div>';
     }
 }

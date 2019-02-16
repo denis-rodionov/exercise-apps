@@ -1,0 +1,24 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ sentence.number }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ sentence.text }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field class="long-input">
+    <textarea matInput placeholder="Введите левое предложение" [(ngModel)]="sentence.text"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="long-input">
+    <textarea matInput placeholder="Введите правое предложение" [(ngModel)]="sentence.extraText"></textarea>
+  </mat-form-field>
+
+  <button mat-button (click)="delete()" color="warn">
+    <mat-icon>delete</mat-icon>Удалить предложение
+  </button>
+
+  
+</mat-expansion-panel>

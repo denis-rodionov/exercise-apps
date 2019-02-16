@@ -5,7 +5,8 @@ export enum ExerciseType {
     ChooseSentence = 2,
     QuestionAnswers = 3,
     FreeFormAnswer = 4,
-    DroppedGaps = 5
+    DroppedGaps = 5,
+    Matches = 6
 }
 
 export interface ExerciseTypeView {

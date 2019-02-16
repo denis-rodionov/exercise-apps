@@ -57,7 +57,8 @@ export class ExerciseService {
             { value: ExerciseType.ChooseSentence, viewValue: 'Выбери предложение' },
             { value: ExerciseType.QuestionAnswers, viewValue: 'Вопрос ответ'},
             { value: ExerciseType.FreeFormAnswer, viewValue: 'Свободная форма'},
-            { value: ExerciseType.DroppedGaps, viewValue: 'Выпадающие пробелы'}
+            { value: ExerciseType.DroppedGaps, viewValue: 'Выпадающие пробелы'},
+            { value: ExerciseType.Matches, viewValue: 'Сопоставления'}
         ];
     }
 

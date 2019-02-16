@@ -31,6 +31,7 @@ import { FreeFormAnswerComponent } from './exercise-components/free-form-answer/
 import { FreeFormAnswerService } from './services/free-form-answer.service';
 import { DroppedGapsComponent } from './exercise-components/dropped-gaps/dropped-gaps.component';
 import { DroppedGapsService } from './services/dropped-gaps.service';
+import { MatchesComponent } from './exercise-components/matches/matches.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DroppedGapsService } from './services/dropped-gaps.service';
     ChooseSentenceComponent,
     QuestionAnswersComponent,
     FreeFormAnswerComponent,
-    DroppedGapsComponent
+    DroppedGapsComponent,
+    MatchesComponent
   ],
   imports: [
     BrowserModule,
