@@ -1,0 +1,158 @@
+.ew-exercise>* {
+  margin: 10px;
+  padding: 10px;
+}
+
+.ew-sentence {
+  padding: 7px;
+  margin: 10px;
+  min-height: 100%;
+  user-select: none;
+  border: 1px dashed #222;
+  cursor: pointer;
+}
+
+.ew-sentence.selected {
+  background-color: #fdf8d2;
+}
+
+.ew-sentence.wrong {
+  background-color: #fc8d83;
+}
+
+.ew-sentence.right {
+  background-color: #71bb44;
+}
+
+.ew-inner-table {
+  display: table;
+  width: 100%;
+}
+
+.ew-row {
+  display: table-row;
+  text-align: center;
+  width: 100%;
+}
+
+.ew-cell {
+  display: table-cell;
+  text-align: center;
+  padding: 0 30px 0 30px;
+  width: 50%;
+}
+
+.ew-controls {
+  text-align: center;
+}
+
+.ew-table.td, .ew-table.th {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px;
+}
+
+.ew-tr:nth-child(even) {
+  background-color: #f7f3f3;
+}
+
+.ew-tr:nth-child(odd) {
+  background-color: #d8f3f3;
+}
+
+.ew-button {
+  background-color: #199c68;
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.ew-button:hover {
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
+}
+
+.ew-button:focus {
+  background-color: #21c784;
+  color: white;
+  text-decoration: none;
+}
+
+.ew-button.disabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.ew-text-half {
+  display: inline-block;
+  width: 400px;
+  text-align: center;
+}
+
+.ew-header {
+  font-size: 20px;
+  font-weight: bolt;
+  text-align: center;
+  width: 50%;
+}
+
+.ew-words {
+  border: 0px dotted #ccc;
+  padding: 4px;
+  border-radius: 7px;
+  min-height: 40px;
+  min-width: 150px;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.ew-gap {
+  display: inline-block;
+  border-bottom: 1px solid #ccc;
+  min-width: 60px;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+}
+
+.ew-gap.drag {
+  border-bottom: 2px dashed black;
+}
+
+.ew-gap.filled {
+  border: 0;
+}
+
+.ew-gap.missed {
+  background-color: #fc8d83;
+}
+
+.ew-word {
+  padding: 3px 10px 3px 10px;
+  margin: 2px;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
+  background-color: white;
+}
+
+.ew-word.right {
+  background-color: #71bb44;
+}
+
+.ew-word.wrong {
+  background-color: #fc8d83;
+}
+
+.ew-result {
+  width: 50%;
+}
