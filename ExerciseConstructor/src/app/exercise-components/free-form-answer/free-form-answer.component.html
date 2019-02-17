@@ -9,13 +9,13 @@
     </mat-expansion-panel-header>
   
     <mat-form-field class="long-input">
-      <textarea matInput placeholder="Введите базовый текст" [(ngModel)]="sentence.text"></textarea>
+      <textarea matInput matTextareaAutosize placeholder="Введите базовый текст" [(ngModel)]="sentence.text"></textarea>
     </mat-form-field>
   
     <br>
   
     <mat-form-field class="long-input">
-      <textarea matInput placeholder="Введите верные варианты ответа разделяя их символом 'решётка' (#)" [(ngModel)]="sentence.rightAnswer"></textarea>
+      <textarea matInput matTextareaAutosize placeholder="Введите верные варианты ответа разделяя их символом 'решётка' (#)" [(ngModel)]="sentence.rightAnswer"></textarea>
     </mat-form-field>
   
     <br>

@@ -9,7 +9,7 @@
   </mat-expansion-panel-header>
 
   <mat-form-field class="long-input big-text">
-    <textarea matInput placeholder="Введите текст предложения заключая в решётки (#) скрытые слова" [(ngModel)]="sentence.text"></textarea>
+    <textarea matInput matTextareaAutosize placeholder="Введите текст предложения заключая в решётки (#) скрытые слова" [(ngModel)]="sentence.text"></textarea>
   </mat-form-field>
 
   <mat-form-field class="long-input">
@@ -19,7 +19,7 @@
   <mat-checkbox [(ngModel)]="secondColumnEnabled">Колонка 2</mat-checkbox>
 
   <mat-form-field class="long-input big-text" *ngIf="secondColumnEnabled">
-    <textarea matInput
+    <textarea matInput matTextareaAutosize
       placeholder="Колонка 2: Введите текст предложения заключая в решётки (#) скрытые слова" 
       [(ngModel)]="sentence.extraText"></textarea>
   </mat-form-field>

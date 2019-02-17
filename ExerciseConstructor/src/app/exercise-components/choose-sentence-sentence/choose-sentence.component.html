@@ -9,13 +9,13 @@
   </mat-expansion-panel-header>
 
   <mat-form-field class="long-input">
-    <textarea matInput placeholder="Введите правильное предложение" [(ngModel)]="sentence.text"></textarea>
+    <textarea matInput matTextareaAutosize placeholder="Введите правильное предложение" [(ngModel)]="sentence.text"></textarea>
   </mat-form-field>
 
   <br>
 
   <mat-form-field class="long-input">
-    <textarea matInput placeholder="Введите неверный вариант" [(ngModel)]="sentence.wrongText"></textarea>
+    <textarea matInput matTextareaAutosize placeholder="Введите неверный вариант" [(ngModel)]="sentence.wrongText"></textarea>
   </mat-form-field>
 
   <br>

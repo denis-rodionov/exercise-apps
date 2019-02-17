@@ -9,11 +9,11 @@
   </mat-expansion-panel-header>
 
   <mat-form-field class="long-input">
-    <textarea matInput placeholder="Введите левое предложение" [(ngModel)]="sentence.text"></textarea>
+    <textarea matInput matTextareaAutosize placeholder="Введите левое предложение" [(ngModel)]="sentence.text"></textarea>
   </mat-form-field>
 
   <mat-form-field class="long-input">
-    <textarea matInput placeholder="Введите правое предложение" [(ngModel)]="sentence.extraText"></textarea>
+    <textarea matInput matTextareaAutosize placeholder="Введите правое предложение" [(ngModel)]="sentence.extraText"></textarea>
   </mat-form-field>
 
   <button mat-button (click)="delete()" color="warn">
