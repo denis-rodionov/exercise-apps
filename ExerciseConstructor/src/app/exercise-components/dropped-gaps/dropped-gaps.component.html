@@ -4,7 +4,7 @@
       {{ sentence.number }}
     </mat-panel-title>
     <mat-panel-description>
-      {{ sentence.text }}
+      {{ sentence.text.substring(0, 100) + (sentence.text.length > 100 ? '...' : '') }}
     </mat-panel-description>
   </mat-expansion-panel-header>
   
