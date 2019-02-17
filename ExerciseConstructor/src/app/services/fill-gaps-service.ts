@@ -25,7 +25,7 @@ export class FillGapsService {
         exercise.sentences.forEach(function (sentence) {
             // find words
             let words = [];
-            sentence.words.split(',').forEach(function (word) {
+            sentence.words.split(separator).forEach(function (word) {
                 if (word.trim() !== '') {
                     words.push(word.trim());
                 }

@@ -11,12 +11,12 @@ export class QuestionAnswersService {
 
   public createMarkup(exercise: Exercise): string {
     const _this = this;
-
+    const separator = '#';
     let sentences = '';
     let count = 1;
     exercise.sentences.forEach(function (sentence) {
         let answers = [];
-        sentence.words.split(',').forEach(function (word) {
+        sentence.words.split(separator).forEach(function (word) {
           answers.push(word.trim());
         });
         answers.push(sentence.rightAnswer);

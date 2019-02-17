@@ -19,7 +19,7 @@ export class DroppedGapsService {
         let processedSentence = sentence.text;
         sentence.text.split(separator).forEach(function (str, index) {
             if (index % 2 === 1) {
-              const words = str.split(',').map(s => s.trim()).filter(s => s !== '');
+              const words = str.split(separator).map(s => s.trim()).filter(s => s !== '');
               const wordsMarkup = _this.commonService.shuffle(words.map(s => '<option value="' + s + '">' + s + '</option>')).join('');
 
               const preGap = '<select class="ew-gap-option" data-correct="' + words[0] + '">';
