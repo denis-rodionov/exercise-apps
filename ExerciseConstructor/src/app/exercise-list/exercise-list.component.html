@@ -1,11 +1,11 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let exercise of exercises$ | async" [routerLink]="['/exercises-details', exercise.id]">
-    <div mat-line>
+    <div mat-line class="exercise-pile">
       {{ exercise.name }}
+      <mat-chip-list class="exercise-tags">
+        <mat-chip color="primary">{{ this.exerciseService.getExerciseTypeViewByType(exercise.type) }}</mat-chip>
+      </mat-chip-list>
     </div>
-    <p mat-line>
-      {{ exercise.tag }}
-    </p>
     <button mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu" [matMenuTriggerData]="{exercise: exercise}"  (click)="$event.stopPropagation()">
       <mat-icon>more_vert</mat-icon>
    </button>

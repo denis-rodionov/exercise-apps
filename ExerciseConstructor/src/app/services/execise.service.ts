@@ -70,7 +70,11 @@ export class ExerciseService {
 
     public getExerciseTypeView(exerciseType: string) {
         const exerciseTypeParsed: ExerciseType = ExerciseType[exerciseType];
-        return this.getTypes().find(t => t.value === exerciseTypeParsed).viewValue;
+        return this.getExerciseTypeViewByType(exerciseTypeParsed);
+    }
+
+    public getExerciseTypeViewByType(exerciseType: ExerciseType) {
+        return this.getTypes().find(t => t.value === exerciseType).viewValue;
     }
 
     getExercise(id: string): Observable<Exercise> {
