@@ -36,7 +36,9 @@ export class ExerciseService {
                 const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
                 data.id = a.payload.doc.id;
                 return data;
-            }).filter(ex => !this.filter || this.filter === ex.type);
+            })
+            .filter(ex => !this.filter || this.filter === ex.type)
+            .sort((a, b) => a.name > b.name ? -1 : 1);
         }));
     }
 
