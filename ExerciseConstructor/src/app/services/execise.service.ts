@@ -35,13 +35,6 @@ export class ExerciseService {
             return changes.map(a => {
                 const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
                 data.id = a.payload.doc.id;
-
-                // change commas to "#"
-                data.sentences.forEach(s => {
-                    s.words = s.words.replace(/,/gi, '#');
-                });
-                this.updateExercise(data);
-
                 return data;
             })
             .filter(ex => !this.filter || this.filter === ex.type)
