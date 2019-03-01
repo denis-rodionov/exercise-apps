@@ -67,11 +67,11 @@ function addResult(leftSentence, rightSentence) {
   row.classList.add('ew-tr');
 
   var cellRight = row.insertCell(0);
-  cellRight.appendChild(leftSentence);
+  cellRight.appendChild(rightSentence);
   cellRight.classList.add('ew-result')
 
   var cellLeft = row.insertCell(0);
-  cellLeft.appendChild(rightSentence);
+  cellLeft.appendChild(leftSentence);
   cellLeft.classList.add('ew-result');
 }
 
