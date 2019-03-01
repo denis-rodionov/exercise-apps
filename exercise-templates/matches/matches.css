@@ -1,11 +1,11 @@
 .ew-exercise>* {
-  margin: 10px;
-  padding: 10px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .ew-sentence {
-  padding: 7px;
-  margin: 10px;
+  padding: 3px;
+  margin: 3px;
   min-height: 100%;
   user-select: none;
   border: 1px dashed #222;
@@ -38,7 +38,7 @@
 .ew-cell {
   display: table-cell;
   text-align: center;
-  padding: 0 30px 0 30px;
+  padding: 0 2px 0 2px;
   width: 50%;
 }
 
@@ -46,10 +46,15 @@
   text-align: center;
 }
 
+.ew-table {
+  width: 100%;
+  margin: 15px 0px 20px 0px;
+}
+
 .ew-table.td, .ew-table.th {
   text-align: left;
   vertical-align: top;
-  padding: 8px;
+  padding: 4px;
 }
 
 .ew-tr:nth-child(even) {
