@@ -5,7 +5,7 @@
 
 .ew-sentence {
   padding: 3px;
-  margin: 3px;
+  margin: 7px 3px 7px 3px;
   min-height: 100%;
   user-select: none;
   border: 1px dashed #222;
