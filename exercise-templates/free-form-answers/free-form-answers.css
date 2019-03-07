@@ -10,15 +10,18 @@
   .ew-text {
     width: 300px;
     padding: 7px;
+    display: inline-block;
   }
   
   .ew-answer {
     width: 300px;
     padding: 10px;
+    display: inline-block;
   }
   
   .right-answer {
     padding: 10px;
+    display: inline-block;
   }
   
   .right-answer-text {

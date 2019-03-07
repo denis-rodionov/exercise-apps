@@ -18,9 +18,9 @@ export class FreeFormAnswerService {
         const rightAnswers = sentence.rightAnswer.split('#').map(w => w.trim());
 
         sentencesMarkup += '<tr><td><div class="ew-text">' + sentence.text +
-          '</div></td><td><div class="ew-answer"><textarea type="ew-text" class="ew-input" data-answers="' + rightAnswers.join('|') +
+          '</div><div class="ew-answer"><textarea type="ew-text" class="ew-input" data-answers="' + rightAnswers.join('|') +
           '"data-number="q' + count +
-          '"></textarea></div></td><td><div class="right-answer hidden" data-number="q' + count +
+          '"></textarea></div><div class="right-answer hidden" data-number="q' + count +
           '">Правильный ответ: <span class="right-answer-text">"' + rightAnswers[0] +
           '"</span></div></td></tr>';
 
