@@ -11,17 +11,20 @@
     width: 300px;
     padding: 7px;
     display: inline-block;
+    vertical-align: top;
   }
   
   .ew-answer {
     width: 300px;
     padding: 10px;
     display: inline-block;
+    vertical-align: top;
   }
   
   .right-answer {
     padding: 10px;
     display: inline-block;
+    vertical-align: top;
   }
   
   .right-answer-text {

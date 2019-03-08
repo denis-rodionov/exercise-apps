@@ -7,18 +7,19 @@
         {{ sentence.text.substring(0, 100) + (sentence.text.length > 100 ? '...' : '') }}
       </mat-panel-description>
     </mat-expansion-panel-header>
+
+    <mat-radio-group [(ngModel)]="sentence.type">
+      <mat-radio-button color="primary" value="text">Текст</mat-radio-button>
+      <mat-radio-button color="primary" value="audio">Аудио</mat-radio-button>
+    </mat-radio-group>
   
     <mat-form-field class="long-input">
-      <textarea matInput matTextareaAutosize placeholder="Введите базовый текст" [(ngModel)]="sentence.text"></textarea>
+      <textarea matInput matTextareaAutosize [placeholder]="getPlaceholder(sentence.type)" [(ngModel)]="sentence.text"></textarea>
     </mat-form-field>
-  
-    <br>
   
     <mat-form-field class="long-input">
       <textarea matInput matTextareaAutosize placeholder="Введите верные варианты ответа разделяя их символом 'решётка' (#)" [(ngModel)]="sentence.rightAnswer"></textarea>
     </mat-form-field>
-  
-    <br>
   
     <button mat-button (click)="delete()" color="warn">
       <mat-icon>delete</mat-icon>Удалить предложение

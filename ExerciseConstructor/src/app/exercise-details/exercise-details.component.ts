@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExerciseService } from '../services/execise.service';
 import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
-import { Sentence } from '../model/sentence';
+import { Sentence, TextType } from '../model/sentence';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
 import { FillGapsService } from '../services/fill-gaps-service';
@@ -74,7 +74,7 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   addSentence() {
-    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', '', '', '', ''));
+    this.exercise.sentences.push(new Sentence(this.exercise.sentences.length + 1, '', '', '', '', '', TextType.Text));
   }
 
   deleteSentence(sentence: Sentence) {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
 import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { AuthService } from './auth.service';
+import { Sentence, TextType } from '../model/sentence';
 
 
 @Injectable()
@@ -35,6 +36,7 @@ export class ExerciseService {
             return changes.map(a => {
                 const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
                 data.id = a.payload.doc.id;
+
                 return data;
             })
             .filter(ex => !this.filter || this.filter === ex.type)
@@ -82,9 +84,18 @@ export class ExerciseService {
             a => {
                 const data: Exercise = this.toExercise(a.data()['json'] as string);
                 data.id = a.id;
+                data.sentences.forEach(s => this.setDefaultsForSentence(s));
+
                 console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
                 return data;
             }));
+    }
+
+    setDefaultsForSentence(sentence: Sentence) {
+        if (!sentence.type) {
+            console.log('set defaults');
+            sentence.type = TextType.Text;
+        }
     }
 
     getDbPath(userId: string, exerciseId: string) {

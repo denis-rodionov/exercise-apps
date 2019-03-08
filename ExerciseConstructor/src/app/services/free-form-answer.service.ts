@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from './common.service';
 import { Exercise } from '../model/exercise';
+import { TextType } from '../model/sentence';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,17 @@ export class FreeFormAnswerService {
     exercise.sentences.forEach(function (sentence) {
         const rightAnswers = sentence.rightAnswer.split('#').map(w => w.trim());
 
-        sentencesMarkup += '<tr><td><div class="ew-text">' + sentence.text +
+        let text;
+        switch (sentence.type) {
+          case TextType.Text:
+            text = sentence.text;
+            break;
+          case TextType.AudioLink:
+            text = '<audio controls><source src="' + sentence.text + '">Ваш браузер не поддерживает аудио</audio>';
+            break;
+        }
+
+        sentencesMarkup += '<tr><td><div class="ew-text">' + text +
           '</div><div class="ew-answer"><textarea type="ew-text" class="ew-input" data-answers="' + rightAnswers.join('|') +
           '"data-number="q' + count +
           '"></textarea></div><div class="right-answer hidden" data-number="q' + count +

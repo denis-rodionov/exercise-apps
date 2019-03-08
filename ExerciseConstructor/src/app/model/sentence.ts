@@ -1,3 +1,8 @@
+export enum TextType {
+    Text = 'text',
+    AudioLink = 'audio',
+}
+
 export class Sentence {
     constructor(
         public number: number,
@@ -5,6 +10,7 @@ export class Sentence {
         public extraText: string,
         public words: string,
         public wrongText: string,
-        public rightAnswer: string) {
+        public rightAnswer: string,
+        public type: TextType) {
     }
 }
