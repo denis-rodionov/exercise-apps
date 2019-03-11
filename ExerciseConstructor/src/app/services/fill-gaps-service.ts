@@ -2,14 +2,33 @@ import { Injectable } from '@angular/core';
 import { Exercise } from '../model/exercise';
 import { CommonService } from './common.service';
 import { getFactoryOf } from '@angular/core/src/render3';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FillGapsService {
+    css: string;
+    js: string;
 
     constructor(private commonService: CommonService) {
+        commonService.getTextFromFile('assets/fill-gaps/fill-gaps.css')
+            .subscribe(
+                data => {
+                    console.log('FillGapsService: received css');
+                    this.css = data;
+                },
+                error => console.log(error)
+        );
+        commonService.getTextFromFile('assets/fill-gaps/fill-gaps.js')
+            .subscribe(
+                data => {
+                    console.log('FillGapsService: received js');
+                    this.js = data;
+                },
+                error => console.log(error)
+            );
     }
 
-    public createMarkup(exercise: Exercise): string {
+    public createMarkup(exercise: Exercise) {
         // tslint:disable-next-line:max-line-length
         const preSentence = '<tr class="ew-tr"><td><div class="ew-inner-table"><div class="ew-row"><div class="ew-cell">';
         const betweenColumnsMarkup = '</div><div class="ew-cell" class="ew-column2">';
@@ -67,6 +86,8 @@ export class FillGapsService {
             }
         });
 
-        return this.commonService.getHeader(exercise.header) + sentenceMarkup + this.commonService.getFooter();
+        const html = this.commonService.getHeader(exercise.header) + sentenceMarkup + this.commonService.getFooter();
+
+        return this.commonService.getCombinedDocument(html, this.css, this.js);
     }
 }

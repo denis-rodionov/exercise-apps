@@ -6,11 +6,29 @@ import { CommonService } from './common.service';
   providedIn: 'root'
 })
 export class DroppedGapsService {
+  css: string;
+  js: string;
 
   constructor(private commonService: CommonService) {
+    commonService.getTextFromFile('assets/dropped-gaps/dropped-gaps.css')
+      .subscribe(
+            data => {
+                console.log('DroppedGapsService: received css');
+                this.css = data;
+            },
+            error => console.log(error)
+        );
+    commonService.getTextFromFile('assets/dropped-gaps/dropped-gaps.js')
+      .subscribe(
+            data => {
+                console.log('DroppedGapsService: received js');
+                this.js = data;
+            },
+            error => console.log(error)
+        );
   }
 
-  public createMarkup(exercise: Exercise): string {
+  public createMarkup(exercise: Exercise) {
       const separator = '#';
       const _this = this;
 
@@ -31,6 +49,8 @@ export class DroppedGapsService {
         sentencesMarkup += '<tr><td class="ew-td"><div class="ew-text">' + processedSentence + '</div></td></tr>';
       });
 
-      return this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
+      const html = this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
+
+      return this.commonService.getCombinedDocument(html, this.css, this.js);
   }
 }

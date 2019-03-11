@@ -7,10 +7,29 @@ import { TextType } from '../model/sentence';
   providedIn: 'root'
 })
 export class FreeFormAnswerService {
+  css: string;
+  js: string;
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService) {
+      commonService.getTextFromFile('assets/free-form/free-form.css')
+          .subscribe(
+              data => {
+                  console.log('FreeFormAnswerService: received css');
+                  this.css = data;
+              },
+              error => console.log(error)
+      );
+      commonService.getTextFromFile('assets/free-form/free-form.js')
+          .subscribe(
+              data => {
+                  console.log('FreeFormAnswerService: received js');
+                  this.js = data;
+              },
+              error => console.log(error)
+          );
+  }
 
-  public createMarkup(exercise: Exercise): string {
+  public createMarkup(exercise: Exercise) {
     const _this = this;
 
     let sentencesMarkup = '';
@@ -38,6 +57,8 @@ export class FreeFormAnswerService {
         count++;
     });
 
-    return this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
+    const html = this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
+
+    return this.commonService.getCombinedDocument(html, this.css, this.js);
   }
 }

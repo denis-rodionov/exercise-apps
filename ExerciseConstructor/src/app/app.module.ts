@@ -32,6 +32,7 @@ import { FreeFormAnswerService } from './services/free-form-answer.service';
 import { DroppedGapsComponent } from './exercise-components/dropped-gaps/dropped-gaps.component';
 import { DroppedGapsService } from './services/dropped-gaps.service';
 import { MatchesComponent } from './exercise-components/matches/matches.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatchesComponent } from './exercise-components/matches/matches.componen
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,

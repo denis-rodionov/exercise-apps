@@ -6,10 +6,29 @@ import { Exercise } from '../model/exercise';
   providedIn: 'root'
 })
 export class MatchesService {
+  css: string;
+  js: string;
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService) {
+      commonService.getTextFromFile('assets/matches/matches.css')
+          .subscribe(
+              data => {
+                  console.log('MatchesService: received css');
+                  this.css = data;
+              },
+              error => console.log(error)
+      );
+      commonService.getTextFromFile('assets/matches/matches.js')
+          .subscribe(
+              data => {
+                  console.log('MatchesService: received js');
+                  this.js = data;
+              },
+              error => console.log(error)
+          );
+  }
 
-  public createMarkup(exercise: Exercise): string {
+  public createMarkup(exercise: Exercise) {
     const resultTable = '<table id="ew-result-table" class="ew-table"></table>';
 
     const beforeTable = '<div id="ew-options-table" class="ew-inner-table"><div class="ew-row"><div id="ew-left-column" class="ew-cell">';
@@ -32,7 +51,9 @@ export class MatchesService {
     leftColumn = this.commonService.shuffle(leftColumn);
     rightColunn = this.commonService.shuffle(rightColunn);
 
-    return this.commonService.getHeader(exercise.header, false) + resultTable +
+    const html = this.commonService.getHeader(exercise.header, false) + resultTable +
         beforeTable + leftColumn.join('') + betweenColumns + rightColunn.join('') + afterTable + this.commonService.getFooter(false);
+
+    return this.commonService.getCombinedDocument(html, this.css, this.js);
   }
 }

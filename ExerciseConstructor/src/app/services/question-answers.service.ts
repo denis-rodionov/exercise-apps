@@ -6,10 +6,29 @@ import { Exercise } from '../model/exercise';
   providedIn: 'root'
 })
 export class QuestionAnswersService {
+  css: string;
+  js: string;
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService) {
+      commonService.getTextFromFile('assets/question-answer/question-answer.css')
+          .subscribe(
+              data => {
+                  console.log('QuestionAnswersService: received css');
+                  this.css = data;
+              },
+              error => console.log(error)
+      );
+      commonService.getTextFromFile('assets/question-answer/question-answer.js')
+          .subscribe(
+              data => {
+                  console.log('QuestionAnswersService: received js');
+                  this.js = data;
+              },
+              error => console.log(error)
+          );
+  }
 
-  public createMarkup(exercise: Exercise): string {
+  public createMarkup(exercise: Exercise) {
     const _this = this;
     const separator = '#';
     let sentences = '';
@@ -32,7 +51,9 @@ export class QuestionAnswersService {
         count++;
     });
 
-    return this.commonService.getHeader(exercise.header) + sentences + this.commonService.getFooter();
+    const html = this.commonService.getHeader(exercise.header) + sentences + this.commonService.getFooter();
+
+    return this.commonService.getCombinedDocument(html, this.css, this.js);
   }
 
   isRightAnswer(answer: string, rightAnswer: string): string {
