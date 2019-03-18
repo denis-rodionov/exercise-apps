@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Sentence, TextType } from '../model/sentence';
 
 
 @Injectable()
@@ -35,5 +36,14 @@ export class CommonService {
 
     getTextFromFile(fileName: string): Observable<string> {
         return this.http.get(fileName, {responseType: 'text'});
+    }
+
+    getQuestionContent(sentence: Sentence) {
+        switch (sentence.type) {
+          case TextType.Text:
+            return sentence.text;
+          case TextType.AudioLink:
+            return '<audio controls><source src="' + sentence.text + '">Ваш браузер не поддерживает аудио</audio>';
+        }
     }
 }

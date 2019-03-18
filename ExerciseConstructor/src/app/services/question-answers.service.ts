@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from './common.service';
 import { Exercise } from '../model/exercise';
+import { TextType } from '../model/sentence';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ export class QuestionAnswersService {
 
         const answersMarkup = _this.commonService.shuffle(answers).join('');
 
-        sentences += '<tr><td><div class="ew-question" id="qw-' + count + '">' + sentence.text +
+        sentences += '<tr><td><div class="ew-question" id="qw-' + count + '">' + _this.commonService.getQuestionContent(sentence) +
           '</div><div class="ew-answers">' + answersMarkup + '</div></td></tr>';
 
         count++;
