@@ -39,3 +39,4 @@ yarn-error.log
 templates.js
 
 .firebase/
+environment.ts
