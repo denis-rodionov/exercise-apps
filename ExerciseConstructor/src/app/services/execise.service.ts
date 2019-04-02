@@ -1,10 +1,12 @@
 import { Injectable, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
 import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
 import { AuthService } from './auth.service';
 import { Sentence, TextType } from '../model/sentence';
+import { nodeChildrenAsMap } from '@angular/router/src/utils/tree';
+import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
 
 
 @Injectable()
@@ -17,6 +19,8 @@ export class ExerciseService {
     userId: string;
 
     filter: ExerciseType;
+
+    backupStarted = false;
 
     constructor(public database: AngularFirestore, private authService: AuthService) {
         this.init();
@@ -42,6 +46,9 @@ export class ExerciseService {
             .filter(ex => !this.filter || this.filter === ex.type)
             .sort((a, b) => a.name > b.name ? -1 : 1);
         }));
+
+        // semi-manual backup: uncomment this and run, when backup is needed. Do not deploy uncommented on production.
+        //this.backupExercises();
     }
 
     public filterExercises(filterValue: ExerciseType) {
@@ -108,9 +115,14 @@ export class ExerciseService {
         return res;
     }
 
-    createExercise(exercise) {
-        return this.database.collection(this.rootCollectionName + '/' + this.userId + '/' + this.collectionName)
-            .add(this.toDbEntity(exercise));
+    createExercise(exercise: Exercise) {
+        return this.createExerciseForUser(exercise, this.userId);
+    }
+
+    private createExerciseForUser(exercise: Exercise, userId: string) {
+        console.log('creating exercises for user ' + userId + ' with exerciseId: ' + exercise.id);
+        return this.database.collection(this.rootCollectionName + '/' + userId + '/' + this.collectionName)
+            .add(this.toDbEntity(exercise)).then(e => console.log('Document created: ' + e.id));
     }
 
     private toDbEntity(exercise: Exercise): {} {
@@ -120,8 +132,12 @@ export class ExerciseService {
     }
 
     deleteExercise(exercise: Exercise) {
-        console.log('deleting exercise with id=' + exercise.id + ' : ' + JSON.stringify(exercise));
-        const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
+        return this.deleteExerciseForUser(exercise, this.userId);
+    }
+
+    private deleteExerciseForUser(exercise: Exercise, userId: string) {
+        console.log('deleting exercise for user ' + userId + ' with id=' + exercise.id + ' : ' + JSON.stringify(exercise));
+        const ref = this.database.doc(this.getDbPath(userId, exercise.id));
         return ref.delete();
     }
 
@@ -133,5 +149,37 @@ export class ExerciseService {
     private toExercise(json: string): Exercise {
         const ex: Exercise = JSON.parse(json);
         return ex;
+    }
+
+    backupExercises() {
+        const backupUserId = 'QkvZYPuVEMXnNNCX9zXxlsEUWZA2';
+
+        if (this.userId === backupUserId) {
+            console.log('cannot make backup for the user ' + backupUserId + ' because this user ID is used for backup');
+            return;
+        }
+
+        let deletedCount = 0;
+
+        this.exercises$.subscribe(exercises => {
+            if (this.backupStarted) {
+                return;
+            }
+            this.backupStarted = true;
+            console.log('backup started...');
+            const backupCollectionPath = this.rootCollectionName + '/' + backupUserId + '/exercises';
+            this.database.collection(backupCollectionPath).get()
+                .subscribe(backupExercises => {
+                    exercises.forEach(e => {
+                        this.createExerciseForUser(e, backupUserId);
+                    });
+
+                    backupExercises.docs.forEach(e => {
+                        const path = backupCollectionPath + '/' + e.id;
+                        this.database.doc(path).delete()
+                            .then(() => console.log('document deleted: ' + path + ' (total: ' + ++deletedCount + ')'));
+                    });
+                });
+        });
     }
 }
