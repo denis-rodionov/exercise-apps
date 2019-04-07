@@ -1,0 +1,94 @@
+.ew-exercise >* {
+    margin: 10px;
+    padding: 10px
+  }
+
+.ew-controls {
+  text-align: center;
+}
+  
+.ew-table {
+  width: 100%;
+}
+
+.ew-tr {
+}
+
+.invisible {
+  display: none !important;
+}
+  
+  .ew-text {
+    display: block;
+    padding 10px;
+  }
+  
+  .ew-answer {
+    width: 300px;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .ew-right-answer {
+    display: block;
+    color: green;
+    padding: 10px;
+    font-style: italic;
+  }
+  
+  .wrong-answer-test {
+    background-color: #fc8d83;
+  }
+  
+  .ew-input {
+    width: 100%;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f7f3f3;
+  }
+  
+  .ew-button {
+    background-color: #199c68;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+  }
+  
+  .ew-wrong-button {
+    background-color: #fc8d83;
+  }
+  
+  .ew-button:hover {
+    background-color: #21c784;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .ew-wrong-button:hover {
+    background-color: #df8d83;
+  }
+  
+  .ew-button:focus {
+    background-color: #21c784;
+    color: white;
+    text-decoration: none;
+  }
+    
+    .ew-button.disabled {
+      color: currentColor;
+      cursor: not-allowed;
+      opacity: 0.5;
+      text-decoration: none;
+      pointer-events: none;
+    }
+    
+    .hidden {
+      display: none;
+    }
