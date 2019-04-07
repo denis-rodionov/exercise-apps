@@ -31,7 +31,7 @@ function isCorrectAnswer(answer) {
 
 function sanitize(text) {
   text = text.replace(/\s\s+/g, ' ');
-  text = text.replace(/(\r\n|\n|\r|\?|\.|\,|\'|\"|\`|\!)/gm, "");
+  text = text.replace(/(\r\n|\n|\r|\?|\.|\,|\'|\"|\`|\’|\!)/gm, "");
   return text.trim().toLowerCase();
 }
 
