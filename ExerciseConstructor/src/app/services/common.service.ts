@@ -38,12 +38,12 @@ export class CommonService {
         return this.http.get(fileName, {responseType: 'text'});
     }
 
-    getQuestionContent(sentence: Sentence) {
-        switch (sentence.type) {
+    getQuestionContent(text: string, textType: TextType) {
+        switch (textType) {
           case TextType.Text:
-            return sentence.text;
+            return text;
           case TextType.AudioLink:
-            return '<audio controls><source src="' + sentence.text + '">Ваш браузер не поддерживает аудио</audio>';
+            return '<audio controls><source src="' + text + '">Ваш браузер не поддерживает аудио</audio>';
         }
     }
 }

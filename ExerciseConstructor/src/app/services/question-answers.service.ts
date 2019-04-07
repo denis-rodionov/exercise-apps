@@ -46,7 +46,8 @@ export class QuestionAnswersService {
 
         const answersMarkup = _this.commonService.shuffle(answers).join('');
 
-        sentences += '<tr><td><div class="ew-question" id="qw-' + count + '">' + _this.commonService.getQuestionContent(sentence) +
+        sentences += '<tr><td><div class="ew-question" id="qw-' + count + '">' +
+          _this.commonService.getQuestionContent(sentence.text, sentence.type) +
           '</div><div class="ew-answers">' + answersMarkup + '</div></td></tr>';
 
         count++;

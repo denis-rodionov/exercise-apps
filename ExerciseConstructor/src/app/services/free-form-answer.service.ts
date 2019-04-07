@@ -37,7 +37,7 @@ export class FreeFormAnswerService {
     exercise.sentences.forEach(function (sentence) {
         const rightAnswers = sentence.rightAnswer.split('#').map(w => w.trim());
 
-        sentencesMarkup += '<tr><td><div class="ew-text">' + _this.commonService.getQuestionContent(sentence) +
+        sentencesMarkup += '<tr><td><div class="ew-text">' + _this.commonService.getQuestionContent(sentence.text, sentence.type) +
           '</div><div class="ew-answer"><textarea type="ew-text" class="ew-input" data-answers="' + rightAnswers.join('|') +
           '"data-number="q' + count +
           '"></textarea></div><div class="right-answer hidden" data-number="q' + count +
