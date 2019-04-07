@@ -12,6 +12,7 @@ import { QuestionAnswersService } from '../services/question-answers.service';
 import { FreeFormAnswerService } from '../services/free-form-answer.service';
 import { DroppedGapsService } from '../services/dropped-gaps.service';
 import { MatchesService } from '../services/matches.service';
+import { TranslationService } from '../services/translation.service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class ExerciseDetailsComponent implements OnInit {
   constructor(private exerciseService: ExerciseService, private router: Router, private route: ActivatedRoute,
       private fillGapsService: FillGapsService, private snackBar: MatSnackBar, private chooseSentenceService: ChooseSentenceService,
       private questionAnswersService: QuestionAnswersService, private freeFormAnswerService: FreeFormAnswerService,
-      private droppedGapsService: DroppedGapsService, private matchesService: MatchesService) {
+      private droppedGapsService: DroppedGapsService, private matchesService: MatchesService,
+      private translationService: TranslationService) {
     this.possibleTypes = this.exerciseService.getTypes();
   }
 
@@ -115,6 +117,10 @@ export class ExerciseDetailsComponent implements OnInit {
       }
       case ExerciseType.Matches: {
         this.copyToClipboard(this.matchesService.createMarkup(this.exercise));
+        break;
+      }
+      case ExerciseType.Translation: {
+        this.copyToClipboard(this.translationService.createMarkup(this.exercise));
         break;
       }
     }

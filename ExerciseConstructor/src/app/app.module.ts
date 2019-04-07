@@ -33,6 +33,7 @@ import { DroppedGapsComponent } from './exercise-components/dropped-gaps/dropped
 import { DroppedGapsService } from './services/dropped-gaps.service';
 import { MatchesComponent } from './exercise-components/matches/matches.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslationComponent } from './exercise-components/translation/translation.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     QuestionAnswersComponent,
     FreeFormAnswerComponent,
     DroppedGapsComponent,
-    MatchesComponent
+    MatchesComponent,
+    TranslationComponent
   ],
   imports: [
     BrowserModule,

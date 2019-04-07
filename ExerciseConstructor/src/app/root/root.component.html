@@ -25,6 +25,9 @@
       <mat-list-item [routerLink]="['exercises', 'Matches']">
         <mat-icon>compare_arrows</mat-icon>{{ this.exerciseService.getExerciseTypeView('Matches') }}
       </mat-list-item>
+      <mat-list-item [routerLink]="['exercises', 'Translation']">
+        <mat-icon>g_translate</mat-icon>{{ this.exerciseService.getExerciseTypeView('Translation') }}
+      </mat-list-item>
       <mat-list-item class="shrink-menu" (click)="toggleMenuExpanded()">
         <mat-icon>keyboard_arrow_left</mat-icon>
       </mat-list-item>
@@ -54,6 +57,9 @@
       </mat-list-item>
       <mat-list-item [routerLink]="['exercises', 'Matches']">
         <mat-icon>compare_arrows</mat-icon>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['exercises', 'Translation']">
+        <mat-icon>g_translate</mat-icon>
       </mat-list-item>
       <mat-list-item (click)="toggleMenuExpanded()">
         <mat-icon>keyboard_arrow_right</mat-icon>

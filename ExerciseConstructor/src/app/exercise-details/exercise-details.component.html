@@ -48,6 +48,11 @@
                 </app-matches>
             </mat-accordion>
 
+            <mat-accordion *ngIf="isOfType('Translation')">
+                <app-translation [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+                </app-translation>
+            </mat-accordion>
+
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
                 одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
             </div>
