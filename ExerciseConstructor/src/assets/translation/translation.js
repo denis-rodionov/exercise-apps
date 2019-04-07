@@ -66,7 +66,7 @@ function disable(tag) {
 function generateAnswer(correctNumber, totalNumber) {
 	var result = "Набрано баллов: " + correctNumber + " из " + totalNumber + '\nREPEATED:';
   repeatedQuestions.forEach(function(question) {
-  	result += question;
+  	result += '\n * ' + question;
   });
   return result;
 }
@@ -76,7 +76,7 @@ function generateAnswer(correctNumber, totalNumber) {
 function showResult(score, total) {
   document.getElementById("ew-check-results").classList.add('disabled');
   var resultText = generateAnswer(score, total);
-  document.getElementById("ew-result-text").innerText = resultText;
+  //document.getElementById("ew-result-text").innerText = resultText;
   sendAnswer(resultText);
 }
 
