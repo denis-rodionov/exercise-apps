@@ -37,14 +37,15 @@ export class ExerciseService {
         this.collectionRef = this.database.collection(this.getDbPath(this.userId, null));
         this.exercises$ = this.collectionRef.snapshotChanges().pipe(map(changes => {
             console.log('change comes: ' + changes.length + ', filter: ' + this.filter);
-            return changes.map(a => {
-                const data: Exercise = this.toExercise(a.payload.doc.data()['json'] as string);
-                data.id = a.payload.doc.id;
-
-                return data;
-            })
+            const defaultTimestamp = new Date(2019, 1, 1).getTime();
+            return changes.map(a => this.toExercise(a.payload.doc.data()['json'] as string, a.payload.doc.id, defaultTimestamp))
             .filter(ex => !this.filter || this.filter === ex.type)
-            .sort((a, b) => a.name > b.name ? -1 : 1);
+            .sort((a, b) => {
+                if (a.timestamp < b.timestamp) { return 1; }
+                if (a.timestamp > b.timestamp) { return -1; }
+
+                return a.name > b.name ? -1 : 1;
+            });
         }));
 
         // semi-manual backup: uncomment this and run, when backup is needed. Do not deploy uncommented on production.
@@ -90,10 +91,8 @@ export class ExerciseService {
     getExercise(id: string): Observable<Exercise> {
         return this.database.doc(this.getDbPath(this.userId, id)).get().pipe(map(
             a => {
-                const data: Exercise = this.toExercise(a.data()['json'] as string);
-                data.id = a.id;
+                const data: Exercise = this.toExercise(a.data()['json'] as string, a.id, new Date(2019, 1, 1).getTime());
                 data.sentences.forEach(s => this.setDefaultsForSentence(s));
-
                 console.log('exercise converted: Exercise id:' + data.id + ', json:' + JSON.stringify(data));
                 return data;
             }));
@@ -144,11 +143,16 @@ export class ExerciseService {
 
     updateExercise(exercise: Exercise) {
         const ref = this.database.doc(this.getDbPath(this.userId, exercise.id));
+        exercise.timestamp = new Date().getTime();
         return ref.update(this.toDbEntity(exercise));
     }
 
-    private toExercise(json: string): Exercise {
+    private toExercise(json: string, id: string, defaultTimestamp: number): Exercise {
         const ex: Exercise = JSON.parse(json);
+        ex.id = id;
+        if (!ex.timestamp) {
+            ex.timestamp = defaultTimestamp;
+        }
         return ex;
     }
 

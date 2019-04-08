@@ -22,7 +22,8 @@ export class Exercise {
         public type: ExerciseType,
         public tag: string,
         public header: string,
-        public sentences: Sentence[]) {
+        public sentences: Sentence[],
+        public timestamp: number) {
     }
 }
 

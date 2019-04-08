@@ -38,7 +38,7 @@ export class ExerciseDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.inProgress = true;
-    this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', '', []);
+    this.exercise = new Exercise(null, '', ExerciseType.FillGaps, '', '', [], new Date().getTime());
     this.route.params.subscribe( params => {
       console.log('params' + params);
       if (params['id']) {
