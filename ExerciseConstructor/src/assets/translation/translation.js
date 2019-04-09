@@ -14,13 +14,17 @@ function showQuestion(index) {
   
   var checkButton = enable(question.getElementsByClassName('ew-check-button')[0]);
   checkButton.onclick = function(event) {
+    event.preventDefault();
+
     disable(event.target);
 
     enable(question.getElementsByClassName('ew-right-answer')[0]);
     var rightButton = enable(question.getElementsByClassName('ew-right-button')[0]);
     var wrongButton = enable(question.getElementsByClassName('ew-wrong-button')[0]);
 
-    rightButton.onclick = function() {
+    rightButton.onclick = function(e) {
+      e.preventDefault();
+
       disable(rightButton);
       disable(wrongButton);
       
@@ -32,7 +36,9 @@ function showQuestion(index) {
       }
     }
     
-    wrongButton.onclick = function() {
+    wrongButton.onclick = function(e) {
+      e.preventDefault();
+
     	disable(rightButton);
       disable(wrongButton);
     	repeatQuestion(question);
