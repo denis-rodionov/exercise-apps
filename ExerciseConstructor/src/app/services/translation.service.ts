@@ -38,8 +38,8 @@ export class TranslationService {
 
     let sentencesMarkup = '';
     exercise.sentences.forEach(function(sentence) {
-      sentencesMarkup += preSentence + sentence.text + middleSentence +
-        _this.commonService.getQuestionContent(sentence.rightAnswer, sentence.type) + postSentence;
+      sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence +
+        sentence.rightAnswer + postSentence;
     });
 
     const html = this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
