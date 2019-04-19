@@ -1,6 +1,7 @@
 export enum TextType {
     Text = 'text',
     AudioLink = 'audio',
+    Separator = 'separator'
 }
 
 export class Sentence {

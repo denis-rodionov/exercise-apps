@@ -41,6 +41,7 @@ export class CommonService {
     getQuestionContent(text: string, textType: TextType) {
         switch (textType) {
           case TextType.Text:
+          case TextType.Separator:
             return text;
           case TextType.AudioLink:
             return '<audio controls><source src="' + text + '">Ваш браузер не поддерживает аудио</audio>';

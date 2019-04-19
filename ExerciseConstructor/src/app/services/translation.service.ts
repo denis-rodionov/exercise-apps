@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from './common.service';
 import { Exercise } from '../model/exercise';
+import { Type } from '@angular/compiler';
+import { TextType } from '../model/sentence';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +36,19 @@ export class TranslationService {
     const middleSentence = '</div><a class="ew-button ew-check-button invisible" href="#" draggable="false">Проверить</a><div class="ew-right-answer invisible">';
     // tslint:disable-next-line:max-line-length
     const postSentence = '</div><a class="ew-button ew-right-button invisible" href="#" draggable="false">Правильно</a><a class="ew-button ew-wrong-button invisible" href="#" draggable="false">Повторить</a></td></tr>';
+    // tslint:disable-next-line:max-line-length
+    const postSeparator = '</div><a class="ew-button ew-check-button ew-continue-button invisible" href="#" draggable="false">Продолжить</a><br></td></tr>';
     const _this = this;
 
     let sentencesMarkup = '';
     exercise.sentences.forEach(function(sentence) {
-      sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence +
+
+      if (sentence.type === TextType.Separator) {
+        sentencesMarkup += preSentence + sentence.text + postSeparator;
+      } else {
+        sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence +
         sentence.rightAnswer + postSentence;
+      }
     });
 
     const html = this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();

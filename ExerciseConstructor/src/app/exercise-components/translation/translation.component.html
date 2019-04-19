@@ -11,14 +11,15 @@
   <mat-radio-group [(ngModel)]="sentence.type">
     <mat-radio-button color="primary" value="text">Текст</mat-radio-button>
     <mat-radio-button color="primary" value="audio">Аудио</mat-radio-button>
+    <mat-radio-button color="primary" value="separator">Разделитель</mat-radio-button>
   </mat-radio-group>
 
   <mat-form-field class="long-input">
-    <textarea matInput matTextareaAutosize placeholder="Введите фразу на русском для перевода" [(ngModel)]="sentence.text"></textarea>
+    <textarea matInput matTextareaAutosize [placeholder]="getPlaceholder(sentence.type)" [(ngModel)]="sentence.text"></textarea>
   </mat-form-field>
 
-  <mat-form-field class="long-input">
-    <textarea matInput matTextareaAutosize [placeholder]="getPlaceholder(sentence.type)" [(ngModel)]="sentence.rightAnswer"></textarea>
+  <mat-form-field class="long-input" *ngIf="sentence.type !== 'separator'">
+    <textarea matInput matTextareaAutosize placeholder="Введите перевод фразы на аглийском" [(ngModel)]="sentence.rightAnswer"></textarea>
   </mat-form-field>
 
   <button mat-button (click)="delete()" color="warn">

@@ -12,6 +12,19 @@ function showQuestion(index) {
 	var questions = exercise.getElementsByClassName('ew-tr');
 	var question = enable(questions[index]);
   
+  // check if the current quesion is a separator
+  var continueButtons = question.getElementsByClassName('ew-continue-button');
+  if (continueButtons.length != 0) {
+  	enable(continueButtons[0]).onclick = function(event) {
+    	event.preventDefault();
+      totalNumber--;
+      correctNumber--;
+      disable(continueButtons[0]);
+      showQuestion(index + 1);
+    }
+    return;
+	}
+  
   var checkButton = enable(question.getElementsByClassName('ew-check-button')[0]);
   checkButton.onclick = function(event) {
     event.preventDefault();
@@ -70,9 +83,9 @@ function disable(tag) {
 }
 
 function generateAnswer(correctNumber, totalNumber) {
-	var result = "Набрано баллов: " + correctNumber + " из " + totalNumber + '\nREPEATED:';
+	var result = "Набрано баллов: " + correctNumber + " из " + totalNumber + '\t\nREPEATED:';
   repeatedQuestions.forEach(function(question) {
-  	result += '\n * ' + question;
+  	result += '\t\n * ' + question;
   });
   return result;
 }

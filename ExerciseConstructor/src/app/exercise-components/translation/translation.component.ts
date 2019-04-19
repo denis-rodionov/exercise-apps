@@ -25,9 +25,11 @@ export class TranslationComponent implements OnInit {
   getPlaceholder(textType: TextType) {
     switch (textType) {
       case TextType.Text:
-        return 'Введите перевод фразы на аглийском';
+        return 'Введите фразу на русском для перевода';
       case TextType.AudioLink:
-        return 'Вставьте ссылку на аудио файл с переводом фразы';
+        return 'Вставьте ссылку на аудио файл';
+      case TextType.Separator:
+        return 'Вставьте фразу или инструкцию, предполагающую разделить части упражнения или оставьте поле пустым';
     }
   }
 }
