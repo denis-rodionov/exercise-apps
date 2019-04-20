@@ -69,6 +69,7 @@ export class ExerciseDetailsComponent implements OnInit {
 
     promise.then(
         res => {
+            this.isNew = false;
             this.inProgress = false;
             this.changed = false;
         }

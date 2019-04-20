@@ -122,7 +122,10 @@ export class ExerciseService {
     private createExerciseForUser(exercise: Exercise, userId: string) {
         console.log('creating exercises for user ' + userId + ' with exerciseId: ' + exercise.id);
         return this.database.collection(this.rootCollectionName + '/' + userId + '/' + this.collectionName)
-            .add(this.toDbEntity(exercise)).then(e => console.log('Document created: ' + e.id));
+            .add(this.toDbEntity(exercise)).then(e => {
+                console.log('Document created: ' + e.id);
+                exercise.id = e.id;
+            });
     }
 
     private toDbEntity(exercise: Exercise): {} {
