@@ -155,7 +155,7 @@
 
     .old-price {
     color: #ff5656;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     text-decoration: line-through;
     }
@@ -174,8 +174,9 @@
     }
 
     .current-price {
-        font-size: 20px;
-        font-weight: 500;
+        color: #5ba651;
+        font-size: 25px;
+        font-weight: 700;
     }
 
     .monthly-price {
