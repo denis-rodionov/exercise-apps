@@ -23,7 +23,7 @@ checkButton.onclick = function (e) {
         word.classList.add('wrong');
       }
     } else {
-      gap.classList.add('missed');
+      gap.classList.add('wrong');
     }
   }
 
@@ -150,15 +150,15 @@ function generateAnswer(correctNumber, total) {
   
   var rows = exerciseTag[0].getElementsByTagName('tr');
 
-  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n';
+  var result = "Набрано баллов: " + correctNumber + " из " + total + '\n ';
   for (var i = 0; i < rows.length; i++) {
   	var questions = rows[i].getElementsByClassName('ew-cell');
     
     if (questions.length == 1) {
-    	result += '\n' + (i + 1) + ') ' + generateAnswerForQuestion(questions[0]);
+    	result += '\n ' + (i + 1) + ') ' + generateAnswerForQuestion(questions[0]);
     } else {
-    	result += '\n' + (i + 1) + 'a) ' + generateAnswerForQuestion(questions[0]);
-      result += '\n' + (i + 1) + 'b) ' + generateAnswerForQuestion(questions[1]);
+    	result += '\n ' + (i + 1) + 'a) ' + generateAnswerForQuestion(questions[0]);
+      result += '\n ' + (i + 1) + 'b) ' + generateAnswerForQuestion(questions[1]);
     }
   }
 
@@ -168,10 +168,10 @@ function generateAnswer(correctNumber, total) {
 function generateAnswerForQuestion(questionTag) {
 	var result = questionTag.innerText;
 
-  var wrongAnswers = questionTag.getElementsByClassName('missed');
+  var wrongAnswers = questionTag.getElementsByClassName('wrong');
   
-  if (wrongAnswers.length != 0) {
-  	result += '\nINCORRECT: wrong answers: ' + wrongAnswers.length;
+  if (wrongAnswers.length !== 0) {
+  	result += '\n INCORRECT: wrong answers: ' + wrongAnswers.length + ' ';
   } else {
   	result += '   Correct';
   }
