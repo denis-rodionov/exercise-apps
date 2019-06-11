@@ -63,7 +63,7 @@ function addResult(leftSentence, rightSentence) {
   rightSentence.classList.remove('selected');
 
   var table = document.getElementById('ew-result-table');
-  var row = table.insertRow(0);
+  var row = table.insertRow(-1);
   row.classList.add('ew-tr');
 
   var cellRight = row.insertCell(0);
