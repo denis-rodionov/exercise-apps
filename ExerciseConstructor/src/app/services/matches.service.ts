@@ -40,7 +40,7 @@ export class MatchesService {
     const middleSentence = '">';
     const afterSentence = '</div>';
 
-    let leftColumn = [];
+    const leftColumn = [];
     let rightColunn = [];
     let matchNumber = 0;
     exercise.sentences.forEach(sentence => {
@@ -48,7 +48,6 @@ export class MatchesService {
       rightColunn.push(beforeSentence + 'ew-right-answer' + afterClass + matchNumber + middleSentence + sentence.extraText + afterSentence);
       matchNumber++;
     });
-    leftColumn = this.commonService.shuffle(leftColumn);
     rightColunn = this.commonService.shuffle(rightColunn);
 
     const html = this.commonService.getHeader(exercise.header, false) + resultTable +
