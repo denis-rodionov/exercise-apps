@@ -22,7 +22,11 @@
     <textarea matInput matTextareaAutosize placeholder="Введите перевод фразы на аглийском" [(ngModel)]="sentence.rightAnswer"></textarea>
   </mat-form-field>
 
+  <mat-form-field class="long-input" *ngIf="sentence.type !== 'separator'">
+    <textarea matInput matTextareaAutosize placeholder="Ссылка на аудио файл (не обязательно)" [(ngModel)]="sentence.extraAudioUrl"></textarea>
+  </mat-form-field>
+
   <button mat-button (click)="delete()" color="warn">
     <mat-icon>delete</mat-icon>Удалить предложение
   </button>
-</mat-expansion-panel>
+</mat-expansion-panel>  

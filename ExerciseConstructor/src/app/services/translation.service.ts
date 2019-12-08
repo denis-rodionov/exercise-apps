@@ -3,6 +3,7 @@ import { CommonService } from './common.service';
 import { Exercise } from '../model/exercise';
 import { Type } from '@angular/compiler';
 import { TextType } from '../model/sentence';
+import { ChooseSentenceComponent } from '../exercise-components/choose-sentence-sentence/choose-sentence.component';
 
 @Injectable({
   providedIn: 'root'
@@ -40,14 +41,20 @@ export class TranslationService {
     const postSeparator = '</div><a class="ew-button ew-check-button ew-continue-button invisible" href="#" draggable="false">Продолжить</a><br></td></tr>';
     const _this = this;
 
-    let sentencesMarkup = '';
+    var sentencesMarkup = '';
     exercise.sentences.forEach(function(sentence) {
 
       if (sentence.type === TextType.Separator) {
         sentencesMarkup += preSentence + sentence.text + postSeparator;
       } else {
-        sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence +
-        sentence.rightAnswer + postSentence;
+        sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence;
+        sentencesMarkup += sentence.rightAnswer;
+        
+        if (sentence.extraAudioUrl) {
+          sentencesMarkup += '<br/><br/>' + _this.commonService.getQuestionContent(sentence.extraAudioUrl, TextType.AudioLink);
+        }
+
+        sentencesMarkup += postSentence;
       }
     });
 

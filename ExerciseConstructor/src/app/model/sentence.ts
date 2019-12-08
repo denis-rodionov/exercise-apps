@@ -12,6 +12,7 @@ export class Sentence {
         public words: string,
         public wrongText: string,
         public rightAnswer: string,
-        public type: TextType) {
+        public type: TextType,
+        public extraAudioUrl: string) {
     }
 }
