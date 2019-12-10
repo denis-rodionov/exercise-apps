@@ -23,7 +23,8 @@ export class Exercise {
         public tag: string,
         public header: string,
         public sentences: Sentence[],
-        public timestamp: number) {
+        public timestamp: number,
+        public shuffle: boolean) {
     }
 }
 

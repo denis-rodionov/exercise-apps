@@ -86,7 +86,7 @@ export class FillGapsService {
             }
         });
 
-        const html = this.commonService.getHeader(exercise.header) + sentenceMarkup + this.commonService.getFooter();
+        const html = this.commonService.getHeader(exercise) + sentenceMarkup + this.commonService.getFooter();
 
         return this.commonService.getCombinedDocument(html, this.css, this.js);
     }

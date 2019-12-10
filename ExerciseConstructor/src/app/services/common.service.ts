@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sentence, TextType } from '../model/sentence';
+import { Exercise } from '../model/exercise';
 
 
 @Injectable()
@@ -21,8 +22,9 @@ export class CommonService {
         return newArray;
     }
 
-    getHeader(headertext: string, withTable: boolean = true) {
-        return '<div class=\"ew-exercise\"><p>' + headertext + '</p>' + (withTable ? '<table class="ew-table">' : '');
+    getHeader(exercise: Exercise, withTable: boolean = true) {
+        return '<div class=\"ew-exercise\"' + (exercise.shuffle ? ' data-shuffle="true"' : '') +
+            '><p>' + exercise.header + '</p>' + (withTable ? '<table class="ew-table">' : '');
     }
 
     getFooter(withTable: boolean = true) {

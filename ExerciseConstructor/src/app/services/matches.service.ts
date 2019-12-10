@@ -50,7 +50,7 @@ export class MatchesService {
     });
     rightColunn = this.commonService.shuffle(rightColunn);
 
-    const html = this.commonService.getHeader(exercise.header, false) + resultTable +
+    const html = this.commonService.getHeader(exercise, false) + resultTable +
         beforeTable + leftColumn.join('') + betweenColumns + rightColunn.join('') + afterTable + this.commonService.getFooter(false);
 
     return this.commonService.getCombinedDocument(html, this.css, this.js);

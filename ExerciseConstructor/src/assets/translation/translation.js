@@ -6,7 +6,30 @@ var table = document.getElementsByClassName('ew-table')[0];
 var totalNumber = exercise.getElementsByClassName('ew-tr').length;
 var correctNumber = totalNumber;	// it is supposed to be decreased when user press "repeat the sentence"
 var repeatedQuestions = [];
+var shuffle = exercise.dataset.shuffle;
+
+if (shuffle === 'true') {
+	shuffleTable(table);
+}
+
 showQuestion(0);
+
+
+function shuffleTable(table) {
+  var rowsCollection = table.querySelectorAll('tr');
+  let rows = Array.from(rowsCollection);
+  
+  for (var i = rows.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = rows[i];
+    rows[i] = rows[j];
+    rows[j] = temp;
+  }
+  
+  for (const row of rows) {
+    table.appendChild(row);
+  }
+}
 
 function showQuestion(index) {
 	var questions = exercise.getElementsByClassName('ew-tr');

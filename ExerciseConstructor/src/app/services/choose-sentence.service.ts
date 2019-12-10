@@ -45,7 +45,7 @@ export class ChooseSentenceService {
             sentences += '<tr>' + sentenceMarkup + '</tr>';
         });
 
-        const html = this.commonService.getHeader(exercise.header) + sentences + this.commonService.getFooter();
+        const html = this.commonService.getHeader(exercise) + sentences + this.commonService.getFooter();
 
         return this.commonService.getCombinedDocument(html, this.css, this.js);
     }

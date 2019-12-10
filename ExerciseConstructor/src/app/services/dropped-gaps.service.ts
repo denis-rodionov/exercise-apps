@@ -49,7 +49,7 @@ export class DroppedGapsService {
         sentencesMarkup += '<tr><td class="ew-td"><div class="ew-text">' + processedSentence + '</div></td></tr>';
       });
 
-      const html = this.commonService.getHeader(exercise.header) + sentencesMarkup + this.commonService.getFooter();
+      const html = this.commonService.getHeader(exercise) + sentencesMarkup + this.commonService.getFooter();
 
       return this.commonService.getCombinedDocument(html, this.css, this.js);
   }
