@@ -23,7 +23,8 @@ export class CommonService {
     }
 
     getHeader(exercise: Exercise, withTable: boolean = true) {
-        return '<div class=\"ew-exercise\"' + (exercise.shuffle ? ' data-shuffle="true"' : '') +
+        return '<div class=\"ew-exercise\" data-autoplay="true"' + 
+            (exercise.shuffle ? ' data-shuffle="true"' : '') +
             '><p>' + exercise.header + '</p>' + (withTable ? '<table class="ew-table">' : '');
     }
 

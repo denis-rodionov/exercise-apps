@@ -21,6 +21,7 @@
             <mat-checkbox *ngIf="isOfType('Translation')" [(ngModel)]="exercise.shuffle" name="shuffle">
                 Перемешать
             </mat-checkbox>
+            <br *ngIf="isOfType('Translation')" />
 
             <mat-accordion *ngIf="isOfType('FillGaps')">
                 <app-fill-gaps-sentence [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">

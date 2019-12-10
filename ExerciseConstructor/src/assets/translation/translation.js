@@ -96,7 +96,16 @@ function repeatQuestion(question) {
 }
 
 function enable(tag) {
-	tag.classList.remove('invisible');
+  tag.classList.remove('invisible');
+  
+  // autoplay audio
+  if (exercise.dataset.autoplay === 'true') {
+    var audioTags = tag.getElementsByTagName('audio');
+    if (audioTags.length > 0 && audioTags[0].parentElement === tag) {
+      audioTags[0].play();
+    }
+  }
+  
   return tag;
 }
 
