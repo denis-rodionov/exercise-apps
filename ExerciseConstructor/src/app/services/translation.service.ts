@@ -54,6 +54,10 @@ export class TranslationService {
           sentencesMarkup += '<br/><br/>' + _this.commonService.getQuestionContent(sentence.extraAudioUrl, TextType.AudioLink);
         }
 
+        if (sentence.extraImageUrl) {
+          sentencesMarkup += '<br/><br/><img src="' + sentence.extraImageUrl + '"/>';
+        }
+
         sentencesMarkup += postSentence;
       }
     });

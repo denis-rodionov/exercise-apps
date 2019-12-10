@@ -26,6 +26,10 @@
     <textarea matInput matTextareaAutosize placeholder="Ссылка на аудио файл (не обязательно)" [(ngModel)]="sentence.extraAudioUrl"></textarea>
   </mat-form-field>
 
+  <mat-form-field class="long-input" *ngIf="sentence.type !== 'separator'">
+    <textarea matInput matTextareaAutosize placeholder="Ссылка на изображение (не обязательно)" [(ngModel)]="sentence.extraImageUrl"></textarea>
+  </mat-form-field>
+
   <button mat-button (click)="delete()" color="warn">
     <mat-icon>delete</mat-icon>Удалить предложение
   </button>

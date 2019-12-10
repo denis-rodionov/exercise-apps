@@ -13,6 +13,7 @@ export class Sentence {
         public wrongText: string,
         public rightAnswer: string,
         public type: TextType,
-        public extraAudioUrl: string) {
+        public extraAudioUrl: string,
+        public extraImageUrl: string) {
     }
 }
