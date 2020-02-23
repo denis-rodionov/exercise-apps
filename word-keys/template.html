@@ -2,40 +2,27 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@3.5.1/select2.js"></script>
 
 <script>
-    var data = [
-        {
-            id: 0,
-            text: 'enhancement',
-            description: 'Enhancement is small o big improvement of the code'
-        },
-        {
-            id: 1,
-            text: 'bug',
-            description: 'Bug is a problem in the code, added by mistake'
-        },
-        {
-            id: 2,
-            text: 'make to duplicate',
-            description: 'Duplicate is the ticket, which already exists'
-        },
-        {
-            id: 3,
-            text: 'sduplicateinvalid',
-            description: 'Invalid is a ticket created by mistake'
-        },
-        {
-            id: 4,
-            text: 'wontfix',
-            description: 'Wont fix is a ticket, which is not going to be done'
-        }
-    ];
+    var data = [];
 
     $(document).ready(function() {
-        $('.js-example-basic-single').select2({
-          placeholder: 'Введите слово',
-          allowClear: true,
-          formatSelection: formatState,
-          data: data
+        $.ajax({
+            type: "GET",
+            //url: "https://storage.googleapis.com/english-with.appspot.com/word-keys.json",
+            url: "https://00e9e64bac7f57af349ebf9d7a127d09394eabf6a3756ae6cd-apidata.googleusercontent.com/download/storage/v1/b/english-with.appspot.com/o/word-keys.json?qk=AD5uMEvCMYEkmm7uhunJ1VAuKbc-1VEQHvERxIFiAkH7ajecmjLYaMc_dN0OUOAO8IPtY2E76DYvAuNmgQLU2_ZvV--ArRhXMzTOK4V7xa0sSiVjuVpNjoBvqC79Vn5UfTAQTlUPtRh3Qo-1bjOU2FBNW-Q5G3GOQheF0MvEni-bv61oANYinGsGkbFop8t8Bwswq2NyE2V4TeaFtEP0eYHdtMGurIJoqYTNMyYtb40DnHE0sQmuNYdLF-BMz1sgEUdjxbKFXy6sL1dRSccU27mjfod7aOTbsryZuSoEGTEqPCiDTjjyB7G-JRP8M1si_gLVQ_FBSaMQRqWBML2RZdCO0IPT4rlOWIyeBmzArVbJygs0Srjmghlp-dbxUlgO9V0BpR5girP-RVBPhlH7mWfBla-eGGsWWT2vwwDVJGb21LY8zy4fJk1V3bSBYwSFo7y25UXkuq7bZ2wbxBBoQ6s1DzApfWwuYUi4fVKwl9lAS0oHkSWWkmKIXM5firtzMPXfaVChg4lq846SZBxaabRDjvSKqEaWtzgfF2q-hhP614DyoGBy_V-shgDEhtwd1_OFXiRL8L62EvtocwR0JHSucH6cnDeqJ5Jo_yV97pfpGI8O1HJvGh-4Ee2UEPJSkwrp-_5Cf6Z0NtIMaRYvwK8-XlvKNmWGD9UhpV2TkQMmNxdVszmvalF5f9GsKnSNSuqiiq8nQReEQHoC98Tr_JOaTT9engTweDMd-9kF_hWSFM6abB-QjZzhMxygZqWE1S5tCccvdAhCpXZ4vtsyO54ND6SSV-YrXtOPwOQ5rA7nEEHDHw3p4-U",
+            crossDomain: true,
+            success: function(data) {
+                addIds(data);   // all elements should contain IDs
+
+                $('.js-example-basic-single').select2({
+                    placeholder: 'Введите слово',
+                    allowClear: true,
+                    formatSelection: formatState,
+                    data: data
+                })
+            },
+            error: function(error) {
+                alert('Error: ' + JSON.stringify(error));
+            }
         });
     });
     
@@ -43,6 +30,22 @@
         $("#ew-article").html("<h3>" + state.text + "</h3> <p>" + state.description + "</p>");
         return state.text;
     };
+
+    var iterator = 0;
+    function addIds(json) {
+        for(var i in json){
+            var c = json[i];        
+
+            if(typeof c === 'object'){
+                if(c.length === undefined){
+                    //c is not an array
+                    c.id = iterator;
+                    iterator++;
+                }
+            }
+        }
+        alert(JSON.stringify(json));
+    }
 </script>
 
 <br>
