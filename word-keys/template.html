@@ -1,0 +1,50 @@
+<link href="https://cdn.jsdelivr.net/npm/select2@3.5.1/select2.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/select2@3.5.1/select2.js"></script>
+
+<script>
+    var data = [
+        {
+            id: 0,
+            text: 'enhancement'
+        },
+        {
+            id: 1,
+            text: 'bug'
+        },
+        {
+            id: 2,
+            text: 'duplicate'
+        },
+        {
+            id: 3,
+            text: 'invalid'
+        },
+        {
+            id: 4,
+            text: 'wontfix'
+        }
+    ];
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+          placeholder: 'Введите слово',
+          allowClear: true,
+          formatSelection: formatState,
+          data: data
+        });
+    });
+    
+    function formatState (state) {
+        $("#ew-article").html("<b>" + state.text + "</b>: описание ключей слова");
+        return state.text;
+    };
+</script>
+
+<h3>Выберите слово для поиска ключей</h3>
+<input type=“hidden” class="js-example-basic-single" name="state" style="width:300px">
+<br>
+<div id="ew-article">
+</div>
+<br>
+<br>
+<br>
