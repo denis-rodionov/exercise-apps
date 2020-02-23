@@ -5,23 +5,28 @@
     var data = [
         {
             id: 0,
-            text: 'enhancement'
+            text: 'enhancement',
+            description: 'Enhancement is small o big improvement of the code'
         },
         {
             id: 1,
-            text: 'bug'
+            text: 'bug',
+            description: 'Bug is a problem in the code, added by mistake'
         },
         {
             id: 2,
-            text: 'duplicate'
+            text: 'make to duplicate',
+            description: 'Duplicate is the ticket, which already exists'
         },
         {
             id: 3,
-            text: 'invalid'
+            text: 'sduplicateinvalid',
+            description: 'Invalid is a ticket created by mistake'
         },
         {
             id: 4,
-            text: 'wontfix'
+            text: 'wontfix',
+            description: 'Wont fix is a ticket, which is not going to be done'
         }
     ];
 
@@ -35,13 +40,15 @@
     });
     
     function formatState (state) {
-        $("#ew-article").html("<b>" + state.text + "</b>: описание ключей слова");
+        $("#ew-article").html("<h3>" + state.text + "</h3> <p>" + state.description + "</p>");
         return state.text;
     };
 </script>
 
-<h3>Выберите слово для поиска ключей</h3>
+<br>
+<br>
 <input type=“hidden” class="js-example-basic-single" name="state" style="width:300px">
+<br>
 <br>
 <div id="ew-article">
 </div>
