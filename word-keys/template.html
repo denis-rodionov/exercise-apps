@@ -7,8 +7,8 @@
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            //url: "https://storage.googleapis.com/english-with.appspot.com/word-keys.json",
-            url: "https://00e9e64bac7f57af349ebf9d7a127d09394eabf6a3756ae6cd-apidata.googleusercontent.com/download/storage/v1/b/english-with.appspot.com/o/word-keys.json?qk=AD5uMEvCMYEkmm7uhunJ1VAuKbc-1VEQHvERxIFiAkH7ajecmjLYaMc_dN0OUOAO8IPtY2E76DYvAuNmgQLU2_ZvV--ArRhXMzTOK4V7xa0sSiVjuVpNjoBvqC79Vn5UfTAQTlUPtRh3Qo-1bjOU2FBNW-Q5G3GOQheF0MvEni-bv61oANYinGsGkbFop8t8Bwswq2NyE2V4TeaFtEP0eYHdtMGurIJoqYTNMyYtb40DnHE0sQmuNYdLF-BMz1sgEUdjxbKFXy6sL1dRSccU27mjfod7aOTbsryZuSoEGTEqPCiDTjjyB7G-JRP8M1si_gLVQ_FBSaMQRqWBML2RZdCO0IPT4rlOWIyeBmzArVbJygs0Srjmghlp-dbxUlgO9V0BpR5girP-RVBPhlH7mWfBla-eGGsWWT2vwwDVJGb21LY8zy4fJk1V3bSBYwSFo7y25UXkuq7bZ2wbxBBoQ6s1DzApfWwuYUi4fVKwl9lAS0oHkSWWkmKIXM5firtzMPXfaVChg4lq846SZBxaabRDjvSKqEaWtzgfF2q-hhP614DyoGBy_V-shgDEhtwd1_OFXiRL8L62EvtocwR0JHSucH6cnDeqJ5Jo_yV97pfpGI8O1HJvGh-4Ee2UEPJSkwrp-_5Cf6Z0NtIMaRYvwK8-XlvKNmWGD9UhpV2TkQMmNxdVszmvalF5f9GsKnSNSuqiiq8nQReEQHoC98Tr_JOaTT9engTweDMd-9kF_hWSFM6abB-QjZzhMxygZqWE1S5tCccvdAhCpXZ4vtsyO54ND6SSV-YrXtOPwOQ5rA7nEEHDHw3p4-U",
+            url: "https://storage.googleapis.com/english-with.appspot.com/word-keys.json",
+            //url: "https://00e9e64bac182f30a4b1f98d922a90ca2ed2b68f47af2ec970-apidata.googleusercontent.com/download/storage/v1/b/english-with.appspot.com/o/word-keys.json?qk=AD5uMEtYhK115vGmxpYtT2ynOkw8HLKqq5OXNryx1aS_FMsUlAytRRkzedxHAotHwfJy3j2W-BXxAqVVJ-W5cPl-AMm3O8Zcdr7cX5eP1y18vq6WNFX7yW_ZIuoLp4J1yFkZA8tSp1zwImIg15bLcooEufmWZBCRLFJoCMaQOHIt6OkSTam7untVirEfflmWS3ynWytx8NftXFlQ58OpRElDkmGJJEhe626_NKxJA-2fRL49OZYgYQc_lvv3VD6cZmiVfQJfWprGAjA5mytSJOybaUSGlPBph66q0FAHTojwdb7PGkQLxgM-47NsXGj9dRlK5dz16Y8h-zbnLysfhjZRxDJVOFq7B_zdKEEqWfZ-AnFxDtsNOeTiP_BbusbTvAWS4SzwKDDhbv_1Da2NUp6vZmM0k3qGleU2gWZDlbSE60Yp-P-KZDk9JNiEP3yVBKvuIKJrKUlmS--jjqYIT0tSZN91dF_wIyFYhlNXoBM7iqbnwVJeLiVKjY3eJXSypKso0tYG76_cmCKetEfUkMwN2ZFR09R8_RvHSQsjWfou0-_XbikuDqOBn2F6V0L4CfQEul4OUqm8EHUkAlfM7SMjRlhhoGAkDkgHUVQXhLknUljB0wlhF-sYr6IPPhWNNXpLiBaPkZ32cx5-jqw78jD8uTr-qIHVx14TEQsXoJINKoIcuCBCKx5DA0XsJhg2GsNKueZFFlJYzISw-_UZWcUvWK4PnajTb0TvhYfz5DbMfWH37SBH0CukJCkTWeb8MiyLpmHVmm3QQFKMepTWn9YOLUIBzJL4RaDUBvHgwS8d9fbMLhzXbJQ",
             crossDomain: true,
             success: function(data) {
                 addIds(data);   // all elements should contain IDs
@@ -16,20 +16,24 @@
                 $('.js-example-basic-single').select2({
                     placeholder: 'Введите слово',
                     allowClear: true,
-                    formatSelection: formatState,
                     data: data
-                })
+                }).on('change', function (e) {
+                    if (e.added) {
+                        $("#ew-article").html("<h3>" + e.added.text + "</h3> <p>" + e.added.description + "</p>");
+                    } else if (e.removed) {
+                        $("#ew-article").html("");
+                    }
+                });
             },
             error: function(error) {
                 alert('Error: ' + JSON.stringify(error));
             }
         });
     });
-    
-    function formatState (state) {
-        $("#ew-article").html("<h3>" + state.text + "</h3> <p>" + state.description + "</p>");
-        return state.text;
-    };
+
+    function onChange(state) {
+        alert(JSON.stringify(state));
+    }
 
     var iterator = 0;
     function addIds(json) {
@@ -44,7 +48,6 @@
                 }
             }
         }
-        alert(JSON.stringify(json));
     }
 </script>
 
