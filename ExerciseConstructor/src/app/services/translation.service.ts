@@ -32,37 +32,39 @@ export class TranslationService {
   }
 
   public createMarkup(exercise: Exercise) {
-    const preSentence = '<tr class="ew-tr invisible"><td><div class="ew-text">';
-    // tslint:disable-next-line:max-line-length
-    const middleSentence = '</div><a class="ew-button ew-check-button invisible" href="#" draggable="false">Проверить</a><div class="ew-right-answer invisible">';
-    // tslint:disable-next-line:max-line-length
-    const postSentence = '</div><a class="ew-button ew-right-button invisible" href="#" draggable="false">Правильно</a><a class="ew-button ew-wrong-button invisible" href="#" draggable="false">Повторить</a></td></tr>';
-    // tslint:disable-next-line:max-line-length
-    const postSeparator = '</div><a class="ew-button ew-check-button ew-continue-button invisible" href="#" draggable="false">Продолжить</a><br></td></tr>';
+    const templateTable = "<table>\n" +
+      "        <tbody id=\"ew-table\">\n" +
+      "        <tr id=\"ew-template\" class=\"hidden\">\n" +
+      "            <td>\n" +
+      "                <div class=\"ew-text\">\n" +
+      "                    He is suspicious-looking (I).\n" +
+      "                </div>\n" +
+      "                <div class=\"ew-answer\">\n" +
+      "                    <textarea type=\"text\" class=\"ew-input\"\n" +
+      "                              data-answers=\"Template sentence\" data-number=\"q1\"></textarea>\n" +
+      "                </div>\n" +
+      "                <div class=\"right-answer hidden\" data-number=\"q1\">\n" +
+      "                    Правильный ответ: <span class=\"right-answer-text\">\"Template answer\"</span>\n" +
+      "                </div>\n" +
+      "            </td>\n" +
+      "        </tr>\n" +
+      "        </tbody>\n" +
+      "    </table>";
+
+    const preSentence = '<p class="ew-hidden-sentense">';
+    const postSentence = '</p>';
     const _this = this;
 
-    var sentencesMarkup = '';
+    var sentencesMarkup = '<div id="ew-hidden-sentenses" class="hidden">';
     exercise.sentences.forEach(function(sentence) {
-
-      if (sentence.type === TextType.Separator) {
-        sentencesMarkup += preSentence + sentence.text + postSeparator;
-      } else {
-        sentencesMarkup += preSentence + _this.commonService.getQuestionContent(sentence.text, sentence.type) + middleSentence;
-        sentencesMarkup += sentence.rightAnswer;
-        
-        if (sentence.extraAudioUrl) {
-          sentencesMarkup += '<br/><br/>' + _this.commonService.getQuestionContent(sentence.extraAudioUrl, TextType.AudioLink);
-        }
-
-        if (sentence.extraImageUrl) {
-          sentencesMarkup += '<br/><br/><img src="' + sentence.extraImageUrl + '"/>';
-        }
-
-        sentencesMarkup += postSentence;
-      }
+      sentencesMarkup += preSentence + sentence.text + postSentence;
     });
+    sentencesMarkup += '</div>';
 
-    const html = this.commonService.getHeader(exercise) + sentencesMarkup + this.commonService.getFooter();
+    const html = this.commonService.getHeader(exercise, false) +
+                 sentencesMarkup +
+                 templateTable +
+                 this.commonService.getFooter(false);
 
     return this.commonService.getCombinedDocument(html, this.css, this.js);
   }

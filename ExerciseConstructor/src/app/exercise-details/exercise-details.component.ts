@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ExerciseService } from '../services/execise.service';
-import { Exercise, ExerciseType, ExerciseTypeView } from '../model/exercise';
-import { Sentence, TextType } from '../model/sentence';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
-import { FillGapsService } from '../services/fill-gaps-service';
-import { MatSnackBar } from '@angular/material';
-import { ChooseSentenceService } from '../services/choose-sentence.service';
-import { QuestionAnswersService } from '../services/question-answers.service';
-import { FreeFormAnswerService } from '../services/free-form-answer.service';
-import { DroppedGapsService } from '../services/dropped-gaps.service';
-import { MatchesService } from '../services/matches.service';
-import { TranslationService } from '../services/translation.service';
+import {Component, OnInit} from '@angular/core';
+import {ExerciseService} from '../services/execise.service';
+import {Exercise, ExerciseType, ExerciseTypeView} from '../model/exercise';
+import {Sentence, TextType} from '../model/sentence';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FillGapsService} from '../services/fill-gaps-service';
+import {MatSnackBar} from '@angular/material';
+import {ChooseSentenceService} from '../services/choose-sentence.service';
+import {QuestionAnswersService} from '../services/question-answers.service';
+import {FreeFormAnswerService} from '../services/free-form-answer.service';
+import {DroppedGapsService} from '../services/dropped-gaps.service';
+import {MatchesService} from '../services/matches.service';
+import {TranslationService} from '../services/translation.service';
+import {TenseTrainerService} from "../services/tense-trainer-service";
 
 
 @Component({
@@ -32,7 +31,7 @@ export class ExerciseDetailsComponent implements OnInit {
       private fillGapsService: FillGapsService, private snackBar: MatSnackBar, private chooseSentenceService: ChooseSentenceService,
       private questionAnswersService: QuestionAnswersService, private freeFormAnswerService: FreeFormAnswerService,
       private droppedGapsService: DroppedGapsService, private matchesService: MatchesService,
-      private translationService: TranslationService) {
+      private translationService: TranslationService, private tenseTrainerService: TenseTrainerService) {
     this.possibleTypes = this.exerciseService.getTypes();
   }
 
@@ -122,6 +121,10 @@ export class ExerciseDetailsComponent implements OnInit {
       }
       case ExerciseType.Translation: {
         this.copyToClipboard(this.translationService.createMarkup(this.exercise));
+        break;
+      }
+      case ExerciseType.TenseTrainer: {
+        this.copyToClipboard(this.tenseTrainerService.createMarkup(this.exercise));
         break;
       }
     }
