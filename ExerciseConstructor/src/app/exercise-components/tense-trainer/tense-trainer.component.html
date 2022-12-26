@@ -1,0 +1,18 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ sentence.number }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ sentence.text.substring(0, 100) + (sentence.text.length > 100 ? '...' : '') }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field class="long-input">
+    <textarea matInput matTextareaAutosize [placeholder]="getPlaceholder(sentence.type)" [(ngModel)]="sentence.text"></textarea>
+  </mat-form-field>
+
+  <button mat-button (click)="delete()" color="warn">
+    <mat-icon>delete</mat-icon>Удалить предложение
+  </button>
+</mat-expansion-panel>

@@ -1,7 +1,7 @@
 <div class="exercise">
     <h1 *ngIf="isNew">Новое упражнение
     </h1>
-    
+
     <form name="exerciseDetailForm" novalidate>
         <div>
             <mat-form-field class="long-input">
@@ -58,6 +58,11 @@
                 </app-translation>
             </mat-accordion>
 
+            <mat-accordion *ngIf="isOfType('TenseTrainer')">
+              <app-tense-trainer [sentence]="sentence" (deleted)="deleteSentence($event)" *ngFor="let sentence of exercise.sentences">
+              </app-tense-trainer>
+            </mat-accordion>
+
             <div *ngIf="exercise.sentences.length == 0" class="exercises__empty">Пока что упражнение не содержит ни
                 одного предложения. Добавьте первое предложение кнопкой "Добавить предложение"
             </div>
@@ -84,5 +89,5 @@
             <button mat-raised-button *ngIf="markupText" (click)="copyToClipboard()">Скопировать в буфер обмена</button>
         </div>
     </form>
-    
+
 </div>

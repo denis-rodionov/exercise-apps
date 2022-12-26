@@ -7,7 +7,8 @@ export enum ExerciseType {
     FreeFormAnswer = 4,
     DroppedGaps = 5,
     Matches = 6,
-    Translation = 7
+    Translation = 7,
+    TenseTrainer = 8
 }
 
 export interface ExerciseTypeView {
