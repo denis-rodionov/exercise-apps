@@ -6,7 +6,7 @@ import { Sentence, TextType } from '../model/sentence';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExerciseListComponent } from '../exercise-list/exercise-list.component';
 import { FillGapsService } from '../services/fill-gaps-service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChooseSentenceService } from '../services/choose-sentence.service';
 import { QuestionAnswersService } from '../services/question-answers.service';
 import { FreeFormAnswerService } from '../services/free-form-answer.service';
